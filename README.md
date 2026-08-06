@@ -1,6 +1,6 @@
 # Git-Based Data Lineage Indexer
 
-This project clones or updates the Git repositories listed in `git_repo_list.csv`, then indexes them separately with Codebase Memory (CBM). The active SQLite graph indexes are kept inside this project under `.cbm-cache/`.
+This project clones or updates the Git repositories listed in `git_repo_list.csv`, then indexes them separately with Codebase Memory (CBM). The active SQLite graph indexes are kept inside this project under `.cbm-cache/`. after indexing is completed, context is created and fed into multi-AI agents to create lineage based on the context created.
 
 ## Prerequisites
 
