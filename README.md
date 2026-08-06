@@ -17,6 +17,7 @@ Agent 2 then joins compatible runtime boundaries across those repository
 outputs, producing an evidence-backed view of application-to-application data
 movement and the final cross-boundary lineage report.
 
+
 ## Lineage workflow
 
 ```mermaid
@@ -269,3 +270,7 @@ independent deterministic checks and an evaluator agent that:
 - compares each Agent 1 context with its `repo-lineage.json`;
 - compares the Agent 2 repository inputs with `cross-boundary-lineage.md`; and
 - reports unsupported mappings, missing connections, and incorrect confidence.
+
+## Solution Expansion
+
+This solution can be expanded to support other type of repositories such as ETL/ELT pipelines, Batch and file-processing jobs, Analytics and BI repositories, Machine-learning, pipelines, RAG and AI applications
