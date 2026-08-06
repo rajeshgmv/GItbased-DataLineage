@@ -112,8 +112,8 @@ Do not emit:
 
 - flows contained entirely within one repository;
 - two repositories that merely use the same database vendor or protocol;
-- matches based only on component, table, collection, file, topic, or field-name
-  similarity;
+- matches based only on a generic component, table, collection, file, topic, or
+  field-name similarity with no compatible operations or schema evidence;
 - an external system as an input repository unless another input JSON explicitly
   proves that repository implements the matching boundary; or
 - a transitive source-to-target edge when no ordered chain of matched direct
@@ -148,17 +148,81 @@ Locator rules:
 - Preserve both repositories' normalized and raw locators in the detailed table.
 - Treat exact normalized-locator equality as the strongest boundary evidence.
 - Ignore harmless protocol/host case differences and one trailing route slash.
-- Do not assume that different absolute paths refer to the same file.
-- Do not assume a repository-relative file is the same as an absolute file based
-  only on its basename.
-- Do not assume a logical database/collection locator is the same as a physical
-  database path without additional direct evidence.
+- Different application, service, endpoint, broker, database, file, or object
+  locators may represent the same runtime boundary only as an assumption when a
+  distinctive shared boundary identifier and at least one additional independent
+  signal support the match.
+- Application or service identities may match as an assumption when stable
+  service names, routes or operations, and compatible request/response schemas
+  align across a caller and handler. Repository-name similarity alone is
+  insufficient.
+- A repository-relative file may match an absolute file as an assumption when the
+  stable filename or suffix, complementary operations, and compatible schema are
+  present. A basename alone is insufficient.
+- A logical database or collection locator may match a physical database path as
+  an assumption when the inputs share a distinctive database or collection
+  identifier and compatible write/read operations and schemas. Do not present
+  this as a proven physical equivalence.
+- HTTP, GraphQL, gRPC, or SOAP locators may match as an assumption when stable
+  route or operation portions, complementary client/handler operations, and
+  compatible request or response schemas align despite different hosts, base
+  paths, ports, protocols, or environment-derived segments.
+- Kafka topics, queues, and streams may match as an assumption when a distinctive
+  topic or queue identifier, complementary publish/consume operations, and
+  compatible payload schema or serialization align despite different broker or
+  environment locators.
+- Object-storage boundaries may match as an assumption when stable bucket,
+  container, object-key, or key-prefix portions, complementary write/read
+  operations, and compatible object schemas align despite different endpoint or
+  environment locators.
 - Unresolved environment variables match only when the variable name and all
   known stable locator parts are compatible.
 
 A non-exact locator match requires at least two independent supporting signals,
 such as compatible stable resource parts plus a compatible schema, explicit
-aliases, or complementary source/target operations. It cannot be `confirmed`.
+aliases, or complementary source/target operations. It cannot be `confirmed` and
+must be marked as an assumption.
+
+## Assumption handling
+
+Agent 2 may emit an assumed cross-repository connection when an exact boundary
+match is unavailable but the evidence establishes a plausible shared runtime
+boundary. An assumed connection must satisfy all of the following:
+
+1. The repositories have complementary source and target operations.
+2. At least two independent matching signals exist beyond generic name
+   similarity. Signals may include a distinctive application or service
+   identifier, route or operation, topic or queue, database or collection,
+   filename or object key, another stable locator fragment, compatible schema
+   signatures, explicit aliases, compatible field mappings, or an ordered
+   transformation chain.
+3. No input evidence directly contradicts the proposed connection.
+4. The report states the exact assumption being made and the evidence gap that
+   prevents an exact match.
+
+Use `Assumption = No` only for an exact, directly proven shared boundary. Use
+`Assumption = Yes — <concise assumption>` for every non-exact or inferred
+connection and for all detailed rows derived from it.
+
+Assumptions may bridge forms such as:
+
+- differently named application or service locators whose client/handler
+  operations, stable route, and request/response schemas align;
+- a relative file locator and an absolute file locator with the same distinctive
+  suffix and compatible file schema;
+- a logical database or collection locator and a physical database path with a
+  shared distinctive identifier and compatible field-level read/write evidence;
+- HTTP or RPC endpoint locators whose stable route, operation, and schemas are
+  compatible but whose host, port, base path, protocol, or environment-derived
+  portions differ;
+- Kafka, queue, or stream locators whose topic or queue identity, complementary
+  publish/consume operations, serialization, and payload schemas align despite
+  different broker locators; and
+- object-store locators whose stable bucket or object-key portions and object
+  schemas align despite different service endpoints.
+
+Never use an assumption to connect repositories solely because their names,
+generic field names, database vendors, protocols, or frameworks are similar.
 
 ## Field-level mapping
 
@@ -188,12 +252,13 @@ Never invent an alias or transformation.
 Assign one confidence value to every high-level and detailed row:
 
 - `confirmed`: complementary operations, exact compatible boundary locator, and
-  direct element/mapping evidence exist on both sides;
+  direct element/mapping evidence exist on both sides; `Assumption` must be `No`;
 - `partial`: the boundary connection is proven, but some locator, schema, or
   field mapping is incomplete; or a non-exact locator is supported by at least
-  two independent signals;
-- `inferred`: the connection is supported only by indirect contract, locator, or
-  schema evidence.
+  two independent signals; any non-exact match must have `Assumption = Yes`;
+- `inferred`: the connection is supported by an allowed assumption using
+  indirect contract, locator, schema, alias, or transformation evidence;
+  `Assumption` must be `Yes`.
 
 The cross-repository confidence cannot exceed the weakest participating Agent 1
 contract, flow, or mapping. Any `partial` or `inferred` row must contain a
@@ -238,8 +303,8 @@ Create one row per deduplicated direct connection:
 ```markdown
 ## Application-to-Application Lineage
 
-| Flow ID | Source Application | Target Application | Mechanism | Operation | Shared Boundary | Data Summary | Confidence | Issues |
-|---|---|---|---|---|---|---|---|---|
+| Flow ID | Source Application | Target Application | Mechanism | Operation | Shared Boundary | Data Summary | Confidence | Assumption | Issues |
+|---|---|---|---|---|---|---|---|---|---|
 ```
 
 Column rules:
@@ -249,6 +314,8 @@ Column rules:
   show `source locator ⇢ target locator`.
 - `Data Summary` is a short list of the principal technical element paths, not a
   paragraph and not a count alone.
+- `Assumption` is `No` for an exact directly proven match or
+  `Yes — <concise assumption>` for a non-exact or inferred match.
 - `Issues` contains namespaced Agent 1 issue IDs and concise Agent 2 matching
   issues, or `—`.
 
@@ -259,8 +326,8 @@ Create one row per deduplicated field mapping or multi-field derivation:
 ```markdown
 ## Detailed Data Flow
 
-| Detail ID | Flow ID | Source Application | Source Contract / Flow | Source Data Element(s) | Source Type | Source Raw / Normalized Locator | Mechanism | Operation | Transformation Chain | Target Application | Target Contract / Flow | Target Data Element | Target Type | Target Raw / Normalized Locator | Confidence | Evidence | Issues |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Detail ID | Flow ID | Source Application | Source Contract / Flow | Source Data Element(s) | Source Type | Source Raw / Normalized Locator | Mechanism | Operation | Transformation Chain | Target Application | Target Contract / Flow | Target Data Element | Target Type | Target Raw / Normalized Locator | Confidence | Assumption | Evidence | Issues |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 ```
 
 Detailed-table rules:
@@ -271,6 +338,9 @@ Detailed-table rules:
 - Show raw and normalized locators without silently reconciling differences.
 - List the complete ordered transformation chain; use `none` only when both
   Agent 1 outputs prove a direct unchanged mapping.
+- Copy the corresponding high-level assumption into `Assumption`, refined for
+  the field mapping when necessary. A detailed row under an assumed high-level
+  connection cannot use `Assumption = No`.
 - Namespace evidence and issue IDs as `<repository>:<ID>`.
 - Do not paste evidence excerpts or source code.
 
@@ -286,6 +356,7 @@ flowchart LR
   APP_001["source-repository"]
   APP_002["target-repository"]
   APP_001 -->|"HL-001 · mechanism · shared boundary"| APP_002
+  APP_001 -.->|"HL-002 · assumed · mechanism · boundary"| APP_002
 ```
 ````
 
@@ -295,6 +366,9 @@ Diagram rules:
 - Use safe sequential node IDs such as `APP_001`; show repository names only in
   node labels.
 - Create exactly one directed edge for every Table 1 row and no other edges.
+- Use a solid `-->` edge when `Assumption = No`.
+- Use a dotted `-.->` edge when `Assumption = Yes — ...` and include the word
+  `assumed` in the edge label.
 - Edge direction, Flow ID, mechanism, and boundary must agree with Table 1.
 - Keep edge labels short; abbreviate the displayed boundary without changing its
   meaning.
@@ -320,9 +394,15 @@ Before completing, verify:
 - no match relies only on names or field similarity;
 - every non-exact locator match has at least two independent supporting signals
   and is not `confirmed`;
+- every exact directly proven match has `Assumption = No`;
+- every non-exact or inferred match has `Assumption = Yes — <concise
+  assumption>` in both tables;
+- no assumed match relies only on generic names, vendors, protocols, or
+  frameworks;
 - every `partial` or `inferred` row has a specific issue;
 - high-level confidence does not exceed its weakest detailed row;
 - Table 1 and Table 2 contain no duplicate keys;
-- the Mermaid diagram has exactly the same directed connections as Table 1; and
+- the Mermaid diagram has exactly the same directed connections as Table 1,
+  using solid edges for non-assumed rows and dotted edges for assumed rows; and
 - the report contains no source-code excerpts, repository-internal-only flows,
   unsupported transitive edges, or invented mappings.
