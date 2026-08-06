@@ -221,11 +221,10 @@ If only file paths are supplied, the runtime must provide controlled file access
 
 
 ## Agent eval and Evaluator agent
-```
+
 Current agnets does self-validation. Agent eval and Evaluator agent can be created validate the data independently. 
 read Agent 1’s context and repo-lineage.json
 read Agent 2’s repository JSON inputs and final Markdown
 evaluate whether evidence supports the claimed lineage
 identify unsupported mappings, missing connections, or incorrect confidence levels
-```
->>>>>>> Stashed changes
+
