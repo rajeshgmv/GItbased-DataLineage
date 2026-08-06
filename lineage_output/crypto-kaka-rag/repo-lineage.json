@@ -1,0 +1,1038 @@
+{
+  "schema_version": "repository-lineage/1.0",
+  "repository": {
+    "name": "crypto-kaka-rag",
+    "origin_url": "https://github.com/rajeshgmv/crypto-kaka-rag.git",
+    "commit_sha": "be2a62532ed4d7ab00f749d30711e3932010bdba",
+    "branch": "main",
+    "context_exported_at": "2026-08-06T05:22:04.129177+00:00"
+  },
+  "input_coverage": [
+    {
+      "section": "manifest",
+      "records_considered": 1,
+      "used_for": ["repository_identity", "provenance", "context_completeness"]
+    },
+    {
+      "section": "graph_summary",
+      "records_considered": 1,
+      "used_for": ["graph_coverage", "boundary_discovery"]
+    },
+    {
+      "section": "architecture",
+      "records_considered": 1,
+      "used_for": ["runtime_language"]
+    },
+    {
+      "section": "symbols",
+      "records_considered": 7,
+      "used_for": ["interface_locators", "source_candidates"]
+    },
+    {
+      "section": "relationships",
+      "records_considered": 6,
+      "used_for": ["boundary_discovery", "execution_path_candidates"]
+    },
+    {
+      "section": "interfaces",
+      "records_considered": 10,
+      "used_for": ["kafka_channel", "configuration_review"]
+    },
+    {
+      "section": "source_evidence",
+      "records_considered": 3,
+      "used_for": ["operations", "field_mappings", "transformations", "runtime_locators"]
+    }
+  ],
+  "components": [
+    {
+      "component_id": "CMP-001",
+      "name": "crypto-kaka-rag",
+      "kind": "service",
+      "repository": "crypto-kaka-rag",
+      "raw_locator": "crypto-kaka-rag",
+      "normalized_locator": "service://crypto-kaka-rag",
+      "evidence_ids": ["EV-004", "EV-008", "EV-012"]
+    },
+    {
+      "component_id": "CMP-002",
+      "name": "CoinGecko Simple Price API",
+      "kind": "external_api",
+      "raw_locator": "https://api.coingecko.com/api/v3/simple/price",
+      "normalized_locator": "https://api.coingecko.com/api/v3/simple/price",
+      "evidence_ids": ["EV-002", "EV-004"]
+    },
+    {
+      "component_id": "CMP-003",
+      "name": "Kafka topic crypto-ticks",
+      "kind": "stream",
+      "raw_locator": "localhost:9092 | topic=crypto-ticks",
+      "normalized_locator": "kafka://localhost:9092/crypto-ticks",
+      "evidence_ids": ["EV-001", "EV-006", "EV-007", "EV-008"]
+    },
+    {
+      "component_id": "CMP-004",
+      "name": "Chroma market_insights collection",
+      "kind": "database",
+      "raw_locator": "./chroma_db | collection=market_insights",
+      "normalized_locator": "chroma://repo/crypto-kaka-rag/chroma_db/market_insights",
+      "evidence_ids": ["EV-010", "EV-011", "EV-012"]
+    },
+    {
+      "component_id": "CMP-005",
+      "name": "Ollama llama3.1 service",
+      "kind": "external_service",
+      "raw_locator": "http://127.0.0.1:11434 | model=llama3.1:latest",
+      "normalized_locator": "http://127.0.0.1:11434/models/llama3.1:latest",
+      "evidence_ids": ["EV-015"]
+    }
+  ],
+  "data_elements": [
+    {
+      "element_id": "EL-001",
+      "name": "ids",
+      "element_path": "query.ids",
+      "component_id": "CMP-002",
+      "container": "request",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": ["EV-003"]
+    },
+    {
+      "element_id": "EL-002",
+      "name": "vs_currencies",
+      "element_path": "query.vs_currencies",
+      "component_id": "CMP-002",
+      "container": "request",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": ["EV-003"]
+    },
+    {
+      "element_id": "EL-003",
+      "name": "include_24hr_vol",
+      "element_path": "query.include_24hr_vol",
+      "component_id": "CMP-002",
+      "container": "request",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": ["EV-003"]
+    },
+    {
+      "element_id": "EL-004",
+      "name": "include_24hr_change",
+      "element_path": "query.include_24hr_change",
+      "component_id": "CMP-002",
+      "container": "request",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": ["EV-003"]
+    },
+    {
+      "element_id": "EL-005",
+      "name": "usd",
+      "element_path": "response.bitcoin.usd",
+      "component_id": "CMP-002",
+      "container": "response",
+      "data_type": "number",
+      "aliases": [],
+      "evidence_ids": ["EV-004", "EV-005"]
+    },
+    {
+      "element_id": "EL-006",
+      "name": "usd_24h_vol",
+      "element_path": "response.bitcoin.usd_24h_vol",
+      "component_id": "CMP-002",
+      "container": "response",
+      "data_type": "number",
+      "aliases": [],
+      "evidence_ids": ["EV-004", "EV-005"]
+    },
+    {
+      "element_id": "EL-007",
+      "name": "usd_24h_change",
+      "element_path": "response.bitcoin.usd_24h_change",
+      "component_id": "CMP-002",
+      "container": "response",
+      "data_type": "number",
+      "aliases": [],
+      "evidence_ids": ["EV-004", "EV-005"]
+    },
+    {
+      "element_id": "EL-008",
+      "name": "ids",
+      "element_path": "producer.request.ids",
+      "component_id": "CMP-001",
+      "container": "request",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": ["EV-003"]
+    },
+    {
+      "element_id": "EL-009",
+      "name": "vs_currencies",
+      "element_path": "producer.request.vs_currencies",
+      "component_id": "CMP-001",
+      "container": "request",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": ["EV-003"]
+    },
+    {
+      "element_id": "EL-010",
+      "name": "include_24hr_vol",
+      "element_path": "producer.request.include_24hr_vol",
+      "component_id": "CMP-001",
+      "container": "request",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": ["EV-003"]
+    },
+    {
+      "element_id": "EL-011",
+      "name": "include_24hr_change",
+      "element_path": "producer.request.include_24hr_change",
+      "component_id": "CMP-001",
+      "container": "request",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": ["EV-003"]
+    },
+    {
+      "element_id": "EL-012",
+      "name": "asset",
+      "element_path": "producer.payload.asset",
+      "component_id": "CMP-001",
+      "container": "payload",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": ["EV-005"]
+    },
+    {
+      "element_id": "EL-013",
+      "name": "price",
+      "element_path": "producer.payload.price",
+      "component_id": "CMP-001",
+      "container": "payload",
+      "data_type": "number",
+      "aliases": ["usd"],
+      "evidence_ids": ["EV-005"]
+    },
+    {
+      "element_id": "EL-014",
+      "name": "volume_24h",
+      "element_path": "producer.payload.volume_24h",
+      "component_id": "CMP-001",
+      "container": "payload",
+      "data_type": "number",
+      "aliases": ["usd_24h_vol"],
+      "evidence_ids": ["EV-005"]
+    },
+    {
+      "element_id": "EL-015",
+      "name": "change_24h",
+      "element_path": "producer.payload.change_24h",
+      "component_id": "CMP-001",
+      "container": "payload",
+      "data_type": "number",
+      "aliases": ["usd_24h_change"],
+      "evidence_ids": ["EV-005"]
+    },
+    {
+      "element_id": "EL-016",
+      "name": "timestamp",
+      "element_path": "producer.payload.timestamp",
+      "component_id": "CMP-001",
+      "container": "payload",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": ["EV-005"]
+    },
+    {
+      "element_id": "EL-017",
+      "name": "asset",
+      "element_path": "processor.row.asset",
+      "component_id": "CMP-001",
+      "container": "payload",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": ["EV-008", "EV-009"]
+    },
+    {
+      "element_id": "EL-018",
+      "name": "price",
+      "element_path": "processor.row.price",
+      "component_id": "CMP-001",
+      "container": "payload",
+      "data_type": "number",
+      "aliases": [],
+      "evidence_ids": ["EV-008", "EV-009"]
+    },
+    {
+      "element_id": "EL-019",
+      "name": "volume_24h",
+      "element_path": "processor.row.volume_24h",
+      "component_id": "CMP-001",
+      "container": "payload",
+      "data_type": "number",
+      "aliases": [],
+      "evidence_ids": ["EV-008", "EV-009"]
+    },
+    {
+      "element_id": "EL-020",
+      "name": "change_24h",
+      "element_path": "processor.row.change_24h",
+      "component_id": "CMP-001",
+      "container": "payload",
+      "data_type": "number",
+      "aliases": [],
+      "evidence_ids": ["EV-008", "EV-009"]
+    },
+    {
+      "element_id": "EL-021",
+      "name": "timestamp",
+      "element_path": "processor.row.timestamp",
+      "component_id": "CMP-001",
+      "container": "payload",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": ["EV-008", "EV-009"]
+    },
+    {
+      "element_id": "EL-022",
+      "name": "offset",
+      "element_path": "processor.message.offset",
+      "component_id": "CMP-001",
+      "container": "payload",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": ["EV-009"]
+    },
+    {
+      "element_id": "EL-023",
+      "name": "user_question",
+      "element_path": "agent.user_question",
+      "component_id": "CMP-001",
+      "container": "request",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": ["EV-012", "EV-014"]
+    },
+    {
+      "element_id": "EL-024",
+      "name": "retrieved_context",
+      "element_path": "agent.retrieved_context",
+      "component_id": "CMP-001",
+      "container": "response",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": ["EV-013", "EV-014"]
+    },
+    {
+      "element_id": "EL-025",
+      "name": "content",
+      "element_path": "agent.llm_response.content",
+      "component_id": "CMP-001",
+      "container": "response",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": ["EV-015"]
+    },
+    {
+      "element_id": "EL-026",
+      "name": "asset",
+      "element_path": "payload.asset",
+      "component_id": "CMP-003",
+      "container": "payload",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": ["EV-005", "EV-006", "EV-008"]
+    },
+    {
+      "element_id": "EL-027",
+      "name": "price",
+      "element_path": "payload.price",
+      "component_id": "CMP-003",
+      "container": "payload",
+      "data_type": "number",
+      "aliases": [],
+      "evidence_ids": ["EV-005", "EV-006", "EV-008"]
+    },
+    {
+      "element_id": "EL-028",
+      "name": "volume_24h",
+      "element_path": "payload.volume_24h",
+      "component_id": "CMP-003",
+      "container": "payload",
+      "data_type": "number",
+      "aliases": [],
+      "evidence_ids": ["EV-005", "EV-006", "EV-008"]
+    },
+    {
+      "element_id": "EL-029",
+      "name": "change_24h",
+      "element_path": "payload.change_24h",
+      "component_id": "CMP-003",
+      "container": "payload",
+      "data_type": "number",
+      "aliases": [],
+      "evidence_ids": ["EV-005", "EV-006", "EV-008"]
+    },
+    {
+      "element_id": "EL-030",
+      "name": "timestamp",
+      "element_path": "payload.timestamp",
+      "component_id": "CMP-003",
+      "container": "payload",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": ["EV-005", "EV-006", "EV-008"]
+    },
+    {
+      "element_id": "EL-031",
+      "name": "offset",
+      "element_path": "message.offset",
+      "component_id": "CMP-003",
+      "container": "payload",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": ["EV-009"]
+    },
+    {
+      "element_id": "EL-032",
+      "name": "text",
+      "element_path": "documents[].text",
+      "component_id": "CMP-004",
+      "container": "collection",
+      "data_type": "string",
+      "aliases": ["doc_text"],
+      "evidence_ids": ["EV-009", "EV-011", "EV-013"]
+    },
+    {
+      "element_id": "EL-033",
+      "name": "asset",
+      "element_path": "metadatas[].asset",
+      "component_id": "CMP-004",
+      "container": "collection",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": ["EV-011"]
+    },
+    {
+      "element_id": "EL-034",
+      "name": "time",
+      "element_path": "metadatas[].time",
+      "component_id": "CMP-004",
+      "container": "collection",
+      "data_type": "integer",
+      "aliases": ["timestamp"],
+      "evidence_ids": ["EV-011"]
+    },
+    {
+      "element_id": "EL-035",
+      "name": "id",
+      "element_path": "ids[]",
+      "component_id": "CMP-004",
+      "container": "collection",
+      "data_type": "string",
+      "aliases": ["unique_id"],
+      "evidence_ids": ["EV-009", "EV-011"]
+    },
+    {
+      "element_id": "EL-036",
+      "name": "query_text",
+      "element_path": "query.query_texts[]",
+      "component_id": "CMP-004",
+      "container": "request",
+      "data_type": "string",
+      "aliases": ["user_question"],
+      "evidence_ids": ["EV-012"]
+    },
+    {
+      "element_id": "EL-037",
+      "name": "prompt",
+      "element_path": "request.prompt",
+      "component_id": "CMP-005",
+      "container": "request",
+      "data_type": "string",
+      "aliases": ["rag_prompt"],
+      "evidence_ids": ["EV-014", "EV-015"]
+    },
+    {
+      "element_id": "EL-038",
+      "name": "content",
+      "element_path": "response.content",
+      "component_id": "CMP-005",
+      "container": "response",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": ["EV-015"]
+    }
+  ],
+  "boundary_contracts": [
+    {
+      "contract_id": "CTR-001",
+      "direction": "outbound",
+      "mechanism": "http",
+      "operation": "GET",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-002",
+      "raw_locator": "https://api.coingecko.com/api/v3/simple/price",
+      "normalized_locator": "https://api.coingecko.com/api/v3/simple/price",
+      "data_element_ids": ["EL-001", "EL-002", "EL-003", "EL-004", "EL-005", "EL-006", "EL-007"],
+      "schema_signature": [
+        "query.ids:string",
+        "query.include_24hr_change:string",
+        "query.include_24hr_vol:string",
+        "query.vs_currencies:string",
+        "response.bitcoin.usd:number",
+        "response.bitcoin.usd_24h_change:number",
+        "response.bitcoin.usd_24h_vol:number"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": ["EV-002", "EV-003", "EV-004", "EV-005"]
+    },
+    {
+      "contract_id": "CTR-002",
+      "direction": "outbound",
+      "mechanism": "kafka",
+      "operation": "publish",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-003",
+      "raw_locator": "localhost:9092 | topic=crypto-ticks",
+      "normalized_locator": "kafka://localhost:9092/crypto-ticks",
+      "data_element_ids": ["EL-026", "EL-027", "EL-028", "EL-029", "EL-030"],
+      "schema_signature": [
+        "payload.asset:string",
+        "payload.change_24h:number",
+        "payload.price:number",
+        "payload.timestamp:integer",
+        "payload.volume_24h:number"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": ["EV-001", "EV-005", "EV-006"]
+    },
+    {
+      "contract_id": "CTR-003",
+      "direction": "inbound",
+      "mechanism": "kafka",
+      "operation": "consume",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-003",
+      "raw_locator": "localhost:9092 | topic=crypto-ticks",
+      "normalized_locator": "kafka://localhost:9092/crypto-ticks",
+      "data_element_ids": ["EL-026", "EL-027", "EL-028", "EL-029", "EL-030", "EL-031"],
+      "schema_signature": [
+        "message.offset:integer",
+        "payload.asset:string",
+        "payload.change_24h:number",
+        "payload.price:number",
+        "payload.timestamp:integer",
+        "payload.volume_24h:number"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": ["EV-007", "EV-008", "EV-009"]
+    },
+    {
+      "contract_id": "CTR-004",
+      "direction": "outbound",
+      "mechanism": "database",
+      "operation": "insert",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-004",
+      "raw_locator": "./chroma_db | collection=market_insights",
+      "normalized_locator": "chroma://repo/crypto-kaka-rag/chroma_db/market_insights",
+      "data_element_ids": ["EL-032", "EL-033", "EL-034", "EL-035"],
+      "schema_signature": [
+        "documents[].text:string",
+        "ids[]:string",
+        "metadatas[].asset:string",
+        "metadatas[].time:integer"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": ["EV-009", "EV-010", "EV-011"]
+    },
+    {
+      "contract_id": "CTR-005",
+      "direction": "inbound",
+      "mechanism": "database",
+      "operation": "query",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-004",
+      "raw_locator": "./chroma_db | collection=market_insights",
+      "normalized_locator": "chroma://repo/crypto-kaka-rag/chroma_db/market_insights",
+      "data_element_ids": ["EL-032", "EL-036"],
+      "schema_signature": [
+        "documents[].text:string",
+        "query.query_texts[]:string"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": ["EV-012", "EV-013"]
+    },
+    {
+      "contract_id": "CTR-006",
+      "direction": "outbound",
+      "mechanism": "other",
+      "operation": "invoke",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-005",
+      "raw_locator": "http://127.0.0.1:11434 | model=llama3.1:latest",
+      "normalized_locator": "http://127.0.0.1:11434/models/llama3.1:latest",
+      "data_element_ids": ["EL-037", "EL-038"],
+      "schema_signature": [
+        "request.prompt:string",
+        "response.content:string"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": ["EV-014", "EV-015"]
+    }
+  ],
+  "lineage_flows": [
+    {
+      "flow_id": "FL-001",
+      "flow_type": "service_to_external_api",
+      "source_component_id": "CMP-001",
+      "target_component_id": "CMP-002",
+      "operation": "GET simple price request",
+      "mechanism": "HTTP GET query parameters",
+      "element_mappings": [
+        {
+          "source_element_ids": ["EL-008"],
+          "target_element_id": "EL-001",
+          "transformation_type": "none",
+          "expression": "params['ids']",
+          "evidence_ids": ["EV-003", "EV-004"]
+        },
+        {
+          "source_element_ids": ["EL-009"],
+          "target_element_id": "EL-002",
+          "transformation_type": "none",
+          "expression": "params['vs_currencies']",
+          "evidence_ids": ["EV-003", "EV-004"]
+        },
+        {
+          "source_element_ids": ["EL-010"],
+          "target_element_id": "EL-003",
+          "transformation_type": "none",
+          "expression": "params['include_24hr_vol']",
+          "evidence_ids": ["EV-003", "EV-004"]
+        },
+        {
+          "source_element_ids": ["EL-011"],
+          "target_element_id": "EL-004",
+          "transformation_type": "none",
+          "expression": "params['include_24hr_change']",
+          "evidence_ids": ["EV-003", "EV-004"]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": ["EV-002", "EV-003", "EV-004"]
+    },
+    {
+      "flow_id": "FL-002",
+      "flow_type": "external_api_to_service",
+      "source_component_id": "CMP-002",
+      "target_component_id": "CMP-001",
+      "operation": "receive successful simple price response",
+      "mechanism": "HTTP JSON response",
+      "element_mappings": [
+        {
+          "source_element_ids": ["EL-005"],
+          "target_element_id": "EL-013",
+          "transformation_type": "cast",
+          "expression": "float(data['usd'])",
+          "evidence_ids": ["EV-004", "EV-005"]
+        },
+        {
+          "source_element_ids": ["EL-006"],
+          "target_element_id": "EL-014",
+          "transformation_type": "cast",
+          "expression": "float(data['usd_24h_vol'])",
+          "evidence_ids": ["EV-004", "EV-005"]
+        },
+        {
+          "source_element_ids": ["EL-007"],
+          "target_element_id": "EL-015",
+          "transformation_type": "cast",
+          "expression": "float(data['usd_24h_change'])",
+          "evidence_ids": ["EV-004", "EV-005"]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": ["EV-004", "EV-005"]
+    },
+    {
+      "flow_id": "FL-003",
+      "flow_type": "service_to_stream",
+      "source_component_id": "CMP-001",
+      "target_component_id": "CMP-003",
+      "operation": "publish crypto tick",
+      "mechanism": "Kafka JSON UTF-8",
+      "element_mappings": [
+        {
+          "source_element_ids": ["EL-012"],
+          "target_element_id": "EL-026",
+          "transformation_type": "serialize",
+          "expression": "json.dumps(payload).encode('utf-8')",
+          "evidence_ids": ["EV-001", "EV-005", "EV-006"]
+        },
+        {
+          "source_element_ids": ["EL-013"],
+          "target_element_id": "EL-027",
+          "transformation_type": "serialize",
+          "expression": "json.dumps(payload).encode('utf-8')",
+          "evidence_ids": ["EV-001", "EV-005", "EV-006"]
+        },
+        {
+          "source_element_ids": ["EL-014"],
+          "target_element_id": "EL-028",
+          "transformation_type": "serialize",
+          "expression": "json.dumps(payload).encode('utf-8')",
+          "evidence_ids": ["EV-001", "EV-005", "EV-006"]
+        },
+        {
+          "source_element_ids": ["EL-015"],
+          "target_element_id": "EL-029",
+          "transformation_type": "serialize",
+          "expression": "json.dumps(payload).encode('utf-8')",
+          "evidence_ids": ["EV-001", "EV-005", "EV-006"]
+        },
+        {
+          "source_element_ids": ["EL-016"],
+          "target_element_id": "EL-030",
+          "transformation_type": "serialize",
+          "expression": "json.dumps(payload).encode('utf-8')",
+          "evidence_ids": ["EV-001", "EV-005", "EV-006"]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": ["EV-001", "EV-005", "EV-006"]
+    },
+    {
+      "flow_id": "FL-004",
+      "flow_type": "stream_to_service",
+      "source_component_id": "CMP-003",
+      "target_component_id": "CMP-001",
+      "operation": "consume crypto tick",
+      "mechanism": "Kafka JSON UTF-8",
+      "element_mappings": [
+        {
+          "source_element_ids": ["EL-026"],
+          "target_element_id": "EL-017",
+          "transformation_type": "deserialize",
+          "expression": "json.loads(x.decode('utf-8'))",
+          "evidence_ids": ["EV-007", "EV-008"]
+        },
+        {
+          "source_element_ids": ["EL-027"],
+          "target_element_id": "EL-018",
+          "transformation_type": "deserialize",
+          "expression": "json.loads(x.decode('utf-8'))",
+          "evidence_ids": ["EV-007", "EV-008"]
+        },
+        {
+          "source_element_ids": ["EL-028"],
+          "target_element_id": "EL-019",
+          "transformation_type": "deserialize",
+          "expression": "json.loads(x.decode('utf-8'))",
+          "evidence_ids": ["EV-007", "EV-008"]
+        },
+        {
+          "source_element_ids": ["EL-029"],
+          "target_element_id": "EL-020",
+          "transformation_type": "deserialize",
+          "expression": "json.loads(x.decode('utf-8'))",
+          "evidence_ids": ["EV-007", "EV-008"]
+        },
+        {
+          "source_element_ids": ["EL-030"],
+          "target_element_id": "EL-021",
+          "transformation_type": "deserialize",
+          "expression": "json.loads(x.decode('utf-8'))",
+          "evidence_ids": ["EV-007", "EV-008"]
+        },
+        {
+          "source_element_ids": ["EL-031"],
+          "target_element_id": "EL-022",
+          "transformation_type": "none",
+          "expression": "message.offset",
+          "evidence_ids": ["EV-008", "EV-009"]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": ["EV-007", "EV-008", "EV-009"]
+    },
+    {
+      "flow_id": "FL-005",
+      "flow_type": "service_to_database",
+      "source_component_id": "CMP-001",
+      "target_component_id": "CMP-004",
+      "operation": "insert market insight",
+      "mechanism": "Chroma collection.add",
+      "element_mappings": [
+        {
+          "source_element_ids": ["EL-017", "EL-021", "EL-018", "EL-019", "EL-020"],
+          "target_element_id": "EL-032",
+          "transformation_type": "derive",
+          "expression": "formatted natural-language doc_text from asset, timestamp, price, volume_24h, and change_24h",
+          "evidence_ids": ["EV-009", "EV-011"]
+        },
+        {
+          "source_element_ids": ["EL-017"],
+          "target_element_id": "EL-033",
+          "transformation_type": "none",
+          "expression": "metadata.asset = row['asset']",
+          "evidence_ids": ["EV-011"]
+        },
+        {
+          "source_element_ids": ["EL-021"],
+          "target_element_id": "EL-034",
+          "transformation_type": "rename",
+          "expression": "metadata.time = row['timestamp']",
+          "evidence_ids": ["EV-011"]
+        },
+        {
+          "source_element_ids": ["EL-021", "EL-022"],
+          "target_element_id": "EL-035",
+          "transformation_type": "derive",
+          "expression": "f\"{row['timestamp']}_{message.offset}\"",
+          "evidence_ids": ["EV-009", "EV-011"]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": ["EV-009", "EV-010", "EV-011"]
+    },
+    {
+      "flow_id": "FL-006",
+      "flow_type": "database_to_service",
+      "source_component_id": "CMP-004",
+      "target_component_id": "CMP-001",
+      "operation": "query top five matching documents",
+      "mechanism": "Chroma collection.query",
+      "element_mappings": [
+        {
+          "source_element_ids": ["EL-032"],
+          "target_element_id": "EL-024",
+          "transformation_type": "aggregate",
+          "expression": "'\\n'.join(results['documents'][0])",
+          "evidence_ids": ["EV-012", "EV-013"]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": ["EV-012", "EV-013"]
+    },
+    {
+      "flow_id": "FL-007",
+      "flow_type": "service_to_external_api",
+      "source_component_id": "CMP-001",
+      "target_component_id": "CMP-005",
+      "operation": "invoke llama3.1",
+      "mechanism": "LangChain ChatOllama",
+      "element_mappings": [
+        {
+          "source_element_ids": ["EL-024", "EL-023"],
+          "target_element_id": "EL-037",
+          "transformation_type": "derive",
+          "expression": "rag_prompt embeds retrieved_context and user_question",
+          "evidence_ids": ["EV-014", "EV-015"]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": ["EV-014", "EV-015"]
+    },
+    {
+      "flow_id": "FL-008",
+      "flow_type": "external_api_to_service",
+      "source_component_id": "CMP-005",
+      "target_component_id": "CMP-001",
+      "operation": "receive model response",
+      "mechanism": "LangChain ChatOllama",
+      "element_mappings": [
+        {
+          "source_element_ids": ["EL-038"],
+          "target_element_id": "EL-025",
+          "transformation_type": "none",
+          "expression": "response.content",
+          "evidence_ids": ["EV-015"]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": ["EV-015"]
+    }
+  ],
+  "end_to_end_paths": [
+    {
+      "path_id": "PATH-001",
+      "name": "CoinGecko market data to Kafka",
+      "flow_ids": ["FL-002", "FL-003"],
+      "source_component_id": "CMP-002",
+      "target_component_id": "CMP-003",
+      "data_element_ids": ["EL-005", "EL-006", "EL-007", "EL-026", "EL-027", "EL-028", "EL-029", "EL-030"],
+      "confidence": "confirmed",
+      "issue_ids": []
+    },
+    {
+      "path_id": "PATH-002",
+      "name": "Kafka crypto tick to Chroma market insight",
+      "flow_ids": ["FL-004", "FL-005"],
+      "source_component_id": "CMP-003",
+      "target_component_id": "CMP-004",
+      "data_element_ids": ["EL-026", "EL-027", "EL-028", "EL-029", "EL-030", "EL-031", "EL-032", "EL-033", "EL-034", "EL-035"],
+      "confidence": "confirmed",
+      "issue_ids": []
+    },
+    {
+      "path_id": "PATH-003",
+      "name": "CoinGecko market data to Chroma persistence",
+      "flow_ids": ["FL-002", "FL-003", "FL-004", "FL-005"],
+      "source_component_id": "CMP-002",
+      "target_component_id": "CMP-004",
+      "data_element_ids": ["EL-005", "EL-006", "EL-007", "EL-026", "EL-027", "EL-028", "EL-029", "EL-030", "EL-032", "EL-033", "EL-034", "EL-035"],
+      "confidence": "confirmed",
+      "issue_ids": []
+    },
+    {
+      "path_id": "PATH-004",
+      "name": "Chroma market insight to Ollama prompt",
+      "flow_ids": ["FL-006", "FL-007"],
+      "source_component_id": "CMP-004",
+      "target_component_id": "CMP-005",
+      "data_element_ids": ["EL-032", "EL-024", "EL-023", "EL-037"],
+      "confidence": "confirmed",
+      "issue_ids": []
+    }
+  ],
+  "issues": [],
+  "evidence": [
+    {
+      "evidence_id": "EV-001",
+      "file_path": "producer.py",
+      "start_line": 7,
+      "end_line": 13,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.producer",
+      "evidence_type": "configuration",
+      "excerpt": "BOOTSTRAP_SERVERS = \"localhost:9092\"\nTOPIC_NAME = \"crypto-ticks\"\nvalue_serializer=lambda v: json.dumps(v).encode('utf-8')"
+    },
+    {
+      "evidence_id": "EV-002",
+      "file_path": "producer.py",
+      "start_line": 22,
+      "end_line": 22,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.producer",
+      "evidence_type": "configuration",
+      "excerpt": "url = \"https://api.coingecko.com/api/v3/simple/price\""
+    },
+    {
+      "evidence_id": "EV-003",
+      "file_path": "producer.py",
+      "start_line": 24,
+      "end_line": 29,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.producer",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-004",
+      "file_path": "producer.py",
+      "start_line": 39,
+      "end_line": 42,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.producer",
+      "evidence_type": "source",
+      "excerpt": "response = requests.get(url, params=params, headers=headers)\nif response.status_code == 200:\n    data = response.json()['bitcoin']"
+    },
+    {
+      "evidence_id": "EV-005",
+      "file_path": "producer.py",
+      "start_line": 44,
+      "end_line": 50,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.producer",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-006",
+      "file_path": "producer.py",
+      "start_line": 52,
+      "end_line": 52,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.producer",
+      "evidence_type": "source",
+      "excerpt": "producer.send(TOPIC_NAME, payload)"
+    },
+    {
+      "evidence_id": "EV-007",
+      "file_path": "processor.py",
+      "start_line": 7,
+      "end_line": 18,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.processor",
+      "evidence_type": "configuration"
+    },
+    {
+      "evidence_id": "EV-008",
+      "file_path": "processor.py",
+      "start_line": 32,
+      "end_line": 33,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.processor",
+      "evidence_type": "source",
+      "excerpt": "for message in consumer:\n    row = message.value"
+    },
+    {
+      "evidence_id": "EV-009",
+      "file_path": "processor.py",
+      "start_line": 37,
+      "end_line": 40,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.processor",
+      "evidence_type": "source",
+      "excerpt": "doc_text = f\"Asset: {row['asset']} at timestamp: {row['timestamp']} is tracking at a price of ${row['price']:.2f}. The 24-hour exchange volume is ${row['volume_24h']:.2f} and the 24-hour value change rate is {row['change_24h']:.4f}%.\"\nunique_id = f\"{row['timestamp']}_{message.offset}\""
+    },
+    {
+      "evidence_id": "EV-010",
+      "file_path": "processor.py",
+      "start_line": 26,
+      "end_line": 27,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.processor",
+      "evidence_type": "configuration",
+      "excerpt": "chroma_client = chromadb.PersistentClient(path=\"./chroma_db\")\ncollection = chroma_client.get_or_create_collection(name=\"market_insights\")"
+    },
+    {
+      "evidence_id": "EV-011",
+      "file_path": "processor.py",
+      "start_line": 43,
+      "end_line": 47,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.processor",
+      "evidence_type": "source",
+      "excerpt": "documents=[doc_text],\nmetadatas=[{\"asset\": row['asset'], \"time\": row['timestamp']}],\nids=[unique_id]"
+    },
+    {
+      "evidence_id": "EV-012",
+      "file_path": "agent.py",
+      "start_line": 14,
+      "end_line": 20,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.agent",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-013",
+      "file_path": "agent.py",
+      "start_line": 24,
+      "end_line": 28,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.agent",
+      "evidence_type": "source",
+      "excerpt": "if not results or not results.get('documents') or not results['documents'][0]:\n    retrieved_context = \"No recent data streamed from Kafka yet.\"\nretrieved_context = \"\\n\".join(results['documents'][0])"
+    },
+    {
+      "evidence_id": "EV-014",
+      "file_path": "agent.py",
+      "start_line": 31,
+      "end_line": 38,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.agent",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-015",
+      "file_path": "agent.py",
+      "start_line": 47,
+      "end_line": 50,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.agent",
+      "evidence_type": "source",
+      "excerpt": "llm = ChatOllama(model=\"llama3.1:latest\", base_url=OLLAMA_BASE_URL)\nresponse = llm.invoke(rag_prompt)\nprint(f\"🤖 Agent Response:\\n{response.content}\\n\")"
+    }
+  ]
+}
