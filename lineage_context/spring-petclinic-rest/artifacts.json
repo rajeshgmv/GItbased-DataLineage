@@ -1,0 +1,146 @@
+[
+  {
+    "artifact_type": "configuration_file",
+    "name": "docker-compose.yml",
+    "file_path": "docker-compose.yml",
+    "format": "yml",
+    "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.docker-compose",
+    "start_line": "1",
+    "end_line": "27"
+  },
+  {
+    "artifact_type": "configuration_file",
+    "name": "pom.xml",
+    "file_path": "pom.xml",
+    "format": "xml",
+    "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.pom",
+    "start_line": "1",
+    "end_line": "476"
+  },
+  {
+    "artifact_type": "configuration_file",
+    "name": "src/main/resources/application-h2.properties",
+    "file_path": "src/main/resources/application-h2.properties",
+    "format": "properties",
+    "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.application-h2",
+    "start_line": "1",
+    "end_line": "17"
+  },
+  {
+    "artifact_type": "configuration_file",
+    "name": "src/main/resources/application-hsqldb.properties",
+    "file_path": "src/main/resources/application-hsqldb.properties",
+    "format": "properties",
+    "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.application-hsqldb",
+    "start_line": "1",
+    "end_line": "10"
+  },
+  {
+    "artifact_type": "configuration_file",
+    "name": "src/main/resources/application-mysql.properties",
+    "file_path": "src/main/resources/application-mysql.properties",
+    "format": "properties",
+    "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.application-mysql",
+    "start_line": "1",
+    "end_line": "8"
+  },
+  {
+    "artifact_type": "configuration_file",
+    "name": "src/main/resources/application-postgres.properties",
+    "file_path": "src/main/resources/application-postgres.properties",
+    "format": "properties",
+    "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.application-postgres",
+    "start_line": "1",
+    "end_line": "7"
+  },
+  {
+    "artifact_type": "configuration_file",
+    "name": "src/main/resources/application.properties",
+    "file_path": "src/main/resources/application.properties",
+    "format": "properties",
+    "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.application",
+    "start_line": "1",
+    "end_line": "51"
+  },
+  {
+    "artifact_type": "schema_file",
+    "name": "src/main/resources/db/h2/data.sql",
+    "file_path": "src/main/resources/db/h2/data.sql",
+    "format": "sql",
+    "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.db.h2.data",
+    "start_line": "1",
+    "end_line": "78"
+  },
+  {
+    "artifact_type": "schema_file",
+    "name": "src/main/resources/db/h2/schema.sql",
+    "file_path": "src/main/resources/db/h2/schema.sql",
+    "format": "sql",
+    "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.db.h2.schema",
+    "start_line": "1",
+    "end_line": "74"
+  },
+  {
+    "artifact_type": "schema_file",
+    "name": "src/main/resources/db/hsqldb/data.sql",
+    "file_path": "src/main/resources/db/hsqldb/data.sql",
+    "format": "sql",
+    "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.db.hsqldb.data",
+    "start_line": "1",
+    "end_line": "61"
+  },
+  {
+    "artifact_type": "schema_file",
+    "name": "src/main/resources/db/hsqldb/schema.sql",
+    "file_path": "src/main/resources/db/hsqldb/schema.sql",
+    "format": "sql",
+    "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.db.hsqldb.schema",
+    "start_line": "1",
+    "end_line": "83"
+  },
+  {
+    "artifact_type": "schema_file",
+    "name": "src/main/resources/db/mysql/data.sql",
+    "file_path": "src/main/resources/db/mysql/data.sql",
+    "format": "sql",
+    "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.db.mysql.data",
+    "start_line": "1",
+    "end_line": "61"
+  },
+  {
+    "artifact_type": "schema_file",
+    "name": "src/main/resources/db/mysql/schema.sql",
+    "file_path": "src/main/resources/db/mysql/schema.sql",
+    "format": "sql",
+    "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.db.mysql.schema",
+    "start_line": "1",
+    "end_line": "73"
+  },
+  {
+    "artifact_type": "schema_file",
+    "name": "src/main/resources/db/postgres/data.sql",
+    "file_path": "src/main/resources/db/postgres/data.sql",
+    "format": "sql",
+    "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.db.postgres.data",
+    "start_line": "1",
+    "end_line": "61"
+  },
+  {
+    "artifact_type": "schema_file",
+    "name": "src/main/resources/db/postgres/schema.sql",
+    "file_path": "src/main/resources/db/postgres/schema.sql",
+    "format": "sql",
+    "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.db.postgres.schema",
+    "start_line": "1",
+    "end_line": "68"
+  },
+  {
+    "artifact_type": "configuration_file",
+    "name": "src/main/resources/openapi.yml",
+    "file_path": "src/main/resources/openapi.yml",
+    "format": "yml",
+    "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.openapi",
+    "start_line": "1",
+    "end_line": "2384"
+  }
+]

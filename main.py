@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from lib.clone_repos import main as clone_repositories
 from lib.index_repos import main as index_repositories
+from lib.export_lineage_context import export_pending_repository_contexts
 
 def Title_printer(title: str):
     """Print a formatted title for the current phase."""
@@ -15,6 +16,9 @@ def main():
     
     Title_printer("Phase 2: Index repositories")
     index_repositories()
+
+    Title_printer("Phase 3: Creating lineage context")
+    export_pending_repository_contexts()
 
 
 if __name__ == "__main__":

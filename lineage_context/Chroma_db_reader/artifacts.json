@@ -1,0 +1,11 @@
+[
+  {
+    "artifact_type": "configuration_file",
+    "name": "pom.xml",
+    "file_path": "pom.xml",
+    "format": "xml",
+    "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader.pom",
+    "start_line": "1",
+    "end_line": "38"
+  }
+]

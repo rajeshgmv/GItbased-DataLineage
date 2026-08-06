@@ -8,6 +8,8 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
+from config.lineage_context_config import CSV_FIELDS, CONTEXT_STATUS_PENDING
+
 
 SCRIPT_DIR = Path(__file__).resolve().parent.parent
 ENV_FILE = SCRIPT_DIR / ".env"
@@ -32,7 +34,6 @@ CODEBASE_MEMORY_MCP_BIN = configured_path(
     PROJECT_DIR / ".venv" / "bin" / "codebase-memory-mcp",
 )
 os.environ["CBM_CACHE_DIR"] = str(CBM_CACHE_DIR)
-CSV_FIELDS = ("repo_url", "CloneStatus", "IndexStatus")
 
 
 def run_command(cmd):
@@ -45,7 +46,7 @@ def run_command(cmd):
 
 
 def load_repository_rows(csv_path: Path):
-    """Load and validate repository clone/index statuses from the CSV file."""
+    """Load and validate repository clone, index, and context statuses."""
     if not csv_path.is_file():
         raise FileNotFoundError(f"Repository CSV file not found: {csv_path}")
 
@@ -64,6 +65,7 @@ def load_repository_rows(csv_path: Path):
                 "repo_url": repo_url,
                 "CloneStatus": (row.get("CloneStatus") or "").strip(),
                 "IndexStatus": (row.get("IndexStatus") or "").strip(),
+                "ContextStatus": (row.get("ContextStatus") or "").strip(),
             })
         return rows
 
@@ -72,7 +74,11 @@ def write_repository_rows(csv_path: Path, rows):
     """Atomically save indexing status changes to the repository CSV file."""
     temporary_path = csv_path.with_suffix(f"{csv_path.suffix}.tmp")
     with temporary_path.open("w", encoding="utf-8", newline="") as csv_file:
-        writer = csv.DictWriter(csv_file, fieldnames=CSV_FIELDS)
+        writer = csv.DictWriter(
+            csv_file,
+            fieldnames=CSV_FIELDS,
+            lineterminator="\n",
+        )
         writer.writeheader()
         writer.writerows(rows)
     temporary_path.replace(csv_path)
@@ -150,6 +156,7 @@ def main():
                 index_arguments,
             ])
             row["IndexStatus"] = "Indexed"
+            row["ContextStatus"] = CONTEXT_STATUS_PENDING
             write_repository_rows(REPO_LIST_FILE, rows)
             print(f"Finished indexing {name}\n{'-' * 40}")
         except subprocess.CalledProcessError as exc:

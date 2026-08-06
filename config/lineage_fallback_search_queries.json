@@ -1,0 +1,37 @@
+[
+  {
+    "name": "integration_boundaries",
+    "pattern": "https?://|Kafka|TOPIC|topic|queue|producer|consumer|requests\\.|RestTemplate|WebClient|HttpClient|PersistentClient|get_or_create_collection|collection\\.(add|query|upsert)|ChatOllama",
+    "regex": true,
+    "mode": "full",
+    "limit": 200
+  },
+  {
+    "name": "persistence_and_sql",
+    "pattern": "SELECT|INSERT|UPDATE|DELETE|MERGE|UPSERT|CREATE TABLE|@Entity|@Table|@Column|Repository|JdbcTemplate|DataSource|jdbc:|sqlite3|chroma\\.sqlite3",
+    "regex": true,
+    "mode": "full",
+    "limit": 200
+  },
+  {
+    "name": "files_and_objects",
+    "pattern": "open\\(|Path\\.of|Files\\.|read_csv|write_csv|json\\.load|json\\.dump|csv|parquet|S3|bucket|blob",
+    "regex": true,
+    "mode": "full",
+    "limit": 200
+  },
+  {
+    "name": "contracts_and_mapping",
+    "pattern": "@RequestMapping|@GetMapping|@PostMapping|@PutMapping|@DeleteMapping|@PatchMapping|openapi|swagger|GraphQL|Avro|Protobuf|json\\.dumps|json\\.loads|serialize|deserialize|Mapper",
+    "regex": true,
+    "mode": "full",
+    "limit": 200
+  },
+  {
+    "name": "configuration",
+    "pattern": "spring\\.datasource|bootstrap_servers|BOOTSTRAP_SERVERS|TOPIC_NAME|QUEUE|DATABASE|DB_|URL|ENDPOINT|CHROMA|OLLAMA|collection",
+    "regex": true,
+    "mode": "full",
+    "limit": 200
+  }
+]

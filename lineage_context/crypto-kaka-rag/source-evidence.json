@@ -1,0 +1,153 @@
+{
+  "discovery_mode": "graph_first",
+  "selection": {
+    "rules": [
+      "select interface nodes and nodes carrying entry-point, route, semantic decorator-tag, transport, or environment metadata",
+      "exclude test, generated, dependency, and CI symbols from Agent 1 context",
+      "select both endpoints of direct boundary relationships; require a resource endpoint for CONFIGURES, READS, and WRITES",
+      "expand up to two graph hops across code and data relationships",
+      "select configuration and schema modules by indexed file extension",
+      "for graphs with at most 100 nodes, include all non-documentation source modules",
+      "retrieve one containing module per selected file when available",
+      "record data-file modules as artifacts without embedding their contents"
+    ],
+    "candidate_count": 7,
+    "source_file_count": 3,
+    "candidates": [
+      {
+        "qualified_name": "__channel__kafka__crypto-ticks",
+        "label": "Channel",
+        "name": "crypto-ticks",
+        "start_line": "0",
+        "end_line": "0",
+        "selection_reasons": [
+          "boundary_relationship:EMITS:target",
+          "interface_node",
+          "lineage_metadata"
+        ]
+      },
+      {
+        "qualified_name": "__env__HTTPS_PROXY",
+        "label": "EnvVar",
+        "name": "HTTPS_PROXY",
+        "start_line": "0",
+        "end_line": "0",
+        "selection_reasons": [
+          "boundary_relationship:CONFIGURES:target",
+          "interface_node",
+          "lineage_metadata"
+        ]
+      },
+      {
+        "qualified_name": "__env__HTTP_PROXY",
+        "label": "EnvVar",
+        "name": "HTTP_PROXY",
+        "start_line": "0",
+        "end_line": "0",
+        "selection_reasons": [
+          "boundary_relationship:CONFIGURES:target",
+          "interface_node",
+          "lineage_metadata"
+        ]
+      },
+      {
+        "qualified_name": "__env__NO_PROXY",
+        "label": "EnvVar",
+        "name": "NO_PROXY",
+        "start_line": "0",
+        "end_line": "0",
+        "selection_reasons": [
+          "boundary_relationship:CONFIGURES:target",
+          "interface_node",
+          "lineage_metadata"
+        ]
+      },
+      {
+        "qualified_name": "__env__OLLAMA_HOST",
+        "label": "EnvVar",
+        "name": "OLLAMA_HOST",
+        "start_line": "0",
+        "end_line": "0",
+        "selection_reasons": [
+          "boundary_relationship:CONFIGURES:target",
+          "interface_node",
+          "lineage_metadata"
+        ]
+      },
+      {
+        "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.agent.query_rag_agent",
+        "label": "Function",
+        "name": "query_rag_agent",
+        "file_path": "agent.py",
+        "start_line": "6",
+        "end_line": "50",
+        "selection_reasons": [
+          "boundary_relationship:CONFIGURES:source"
+        ]
+      },
+      {
+        "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.producer.__file__",
+        "label": "File",
+        "name": "producer.py",
+        "file_path": "producer.py",
+        "start_line": "0",
+        "end_line": "0",
+        "selection_reasons": [
+          "boundary_relationship:EMITS:source"
+        ]
+      }
+    ]
+  },
+  "snippets": [
+    {
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.agent",
+      "label": "SourceFile",
+      "name": "agent.py",
+      "file_path": "/Users/guttikonda/gitbased-DataLineage/GItbased-DataLineage/repo_local_clone/crypto-kaka-rag/agent.py",
+      "start_line": 1,
+      "end_line": 55,
+      "selection_reasons": [
+        "boundary_relationship:CONFIGURES:source",
+        "containing_module:Function",
+        "containing_module:Module",
+        "graph_neighbor:CALLS:depth_1",
+        "small_graph_source_module"
+      ],
+      "retrieval_method": "cbm_get_code_snippet",
+      "source": "# agent.py\nimport os\nimport chromadb\nfrom langchain_ollama import ChatOllama\n\ndef query_rag_agent(user_question):\n    if \"HTTP_PROXY\" in os.environ: del os.environ[\"HTTP_PROXY\"]\n    if \"HTTPS_PROXY\" in os.environ: del os.environ[\"HTTPS_PROXY\"]\n    if \"OLLAMA_HOST\" in os.environ: del os.environ[\"OLLAMA_HOST\"]\n    os.environ[\"NO_PROXY\"] = \"localhost\"\n    OLLAMA_BASE_URL = \"http://127.0.0.1:11434\"\n    \n    # Connect to the local vector storage folder updated by the processor\n    chroma_client = chromadb.PersistentClient(path=\"./chroma_db\")\n    collection = chroma_client.get_or_create_collection(name=\"market_insights\")\n    \n    # Query Chroma for the top 5 closest market updates\n    results = collection.query(\n        query_texts=[user_question],\n        n_results=5\n    )\n    \n    # Safe checks to ensure we actually retrieved historical matches\n    if not results or not results.get('documents') or not results['documents'][0]:\n        retrieved_context = \"No recent data streamed from Kafka yet.\"\n    else:\n        # Join the top returned documents for the single query\n        retrieved_context = \"\\n\".join(results['documents'][0])\n    \n    # Formulate system context prompt (using a unique variable name to prevent Typer library conflict)\n    rag_prompt = f\"\"\"You are a financial advisor assistant. Use the following real-time data snippets to answer the user question accurately.\n    \n    Context Data:\n    {retrieved_context}\n    \n    Question: {user_question}\n    Answer:\"\"\"\n    \n    print(\"\\n--- System Context Fed To Agent ---\")\n    print(retrieved_context)\n    print(\"-----------------------------------\\n\")\n    \n    # Connect directly to the active Ollama background engine\n    try:\n        llm = ChatOllama(model=\"llama3.1:latest\", base_url=OLLAMA_BASE_URL)\n        response = llm.invoke(rag_prompt)\n        # LangChain ChatOllama returns a dynamic object; extract .content for clean string text\n        print(f\"🤖 Agent Response:\\n{response.content}\\n\")\n    except Exception as e:\n        print(f\"❌ Failed to reach the local LLM engine: {e}\")\n\nif __name__ == \"__main__\":\n    question = input(\"Enter your question: \")\n    query_rag_agent(question)\n"
+    },
+    {
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.processor",
+      "label": "SourceFile",
+      "name": "processor.py",
+      "file_path": "/Users/guttikonda/gitbased-DataLineage/GItbased-DataLineage/repo_local_clone/crypto-kaka-rag/processor.py",
+      "start_line": 1,
+      "end_line": 51,
+      "selection_reasons": [
+        "containing_module:Module",
+        "small_graph_source_module"
+      ],
+      "retrieval_method": "cbm_get_code_snippet",
+      "source": "# processor_pure.py\nimport json\nimport time\nfrom kafka import KafkaConsumer\nimport chromadb\n\nTOPIC_NAME = 'crypto-ticks'\n\nprint(\"Initializing pure Python Kafka Consumer...\")\ntry:\n    # Set up a pure Python Kafka client (No Java required)\n    consumer = KafkaConsumer(\n        TOPIC_NAME,\n        bootstrap_servers=['localhost:9092'],\n        auto_offset_reset='earliest',  # Listen to fresh data flowing from this point onward - earliest or latest\n        enable_auto_commit=True,\n        value_deserializer=lambda x: json.loads(x.decode('utf-8')) # Decode JSON bytes directly\n    )\n   # consumer.seek_to_beginning()\nexcept Exception as kafka_error:\n    print(f\"❌ Failed to connect to local Kafka Broker: {kafka_error}\")\n    print(\"Ensure you ran 'brew services start kafka' in a separate terminal window!\")\n    exit(1)\n\n# Connect to a local folder-based persistent Chroma Vector Database\nchroma_client = chromadb.PersistentClient(path=\"./chroma_db\")\ncollection = chroma_client.get_or_create_collection(name=\"market_insights\")\n\nprint(\"🚀 Pure Python Stream Processor is active! Listening for Kafka messages...\")\n\ntry:\n    for message in consumer:\n        row = message.value\n        print(f\"📥 Received data from Kafka: {row}\")\n        \n        # Structure raw integers into natural language paragraphs for RAG embeddings\n        doc_text = f\"Asset: {row['asset']} at timestamp: {row['timestamp']} is tracking at a price of ${row['price']:.2f}. The 24-hour exchange volume is ${row['volume_24h']:.2f} and the 24-hour value change rate is {row['change_24h']:.4f}%.\"\n        \n        # Create a unique database key combining timestamp and block index\n        unique_id = f\"{row['timestamp']}_{message.offset}\"\n        \n        # Insert raw context directly into Chroma Vector Database\n        collection.add(\n            documents=[doc_text],\n            metadatas=[{\"asset\": row['asset'], \"time\": row['timestamp']}],\n            ids=[unique_id]\n        )\n        print(f\"💾 Successfully indexed event {unique_id} into Chroma DB.\\n\")\n        \nexcept KeyboardInterrupt:\n    print(\"\\nStopping processor stream smoothly...\")"
+    },
+    {
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.producer",
+      "label": "SourceFile",
+      "name": "producer.py",
+      "file_path": "/Users/guttikonda/gitbased-DataLineage/GItbased-DataLineage/repo_local_clone/crypto-kaka-rag/producer.py",
+      "start_line": 1,
+      "end_line": 63,
+      "selection_reasons": [
+        "containing_module:File",
+        "containing_module:Module",
+        "small_graph_source_module"
+      ],
+      "retrieval_method": "cbm_get_code_snippet",
+      "source": "# producer.py\nimport time\nimport json\nimport requests\nfrom kafka import KafkaProducer\n\nBOOTSTRAP_SERVERS = \"localhost:9092\"\nTOPIC_NAME = \"crypto-ticks\"\n# Initialize Kafka Producer\ntry:\n    producer = KafkaProducer(\n        bootstrap_servers=[BOOTSTRAP_SERVERS],\n        value_serializer=lambda v: json.dumps(v).encode('utf-8')\n    )\nexcept Exception as kafka_error:\n    print(f\"❌ Failed to connect to local Kafka Broker: {kafka_error}\")\n    print(\"Ensure you ran 'brew services start kafka' in a separate terminal!\")\n    exit(1)\n\nDEMO_API_KEY = \"<REDACTED>\"\n\nurl = \"https://api.coingecko.com/api/v3/simple/price\"\n\nparams = {\n    \"ids\": \"bitcoin\",\n    \"vs_currencies\": \"usd\",\n    \"include_24hr_vol\": \"true\",\n    \"include_24hr_change\": \"true\",\n}\n\nheaders = {\n    \"x-cg-demo-api-key\": DEMO_API_KEY\n}\n\n\nwhile True:\n    try:\n        # requests.get automatically appends the parameters securely to the URL\n        response = requests.get(url, params=params, headers=headers)\n        \n        if response.status_code == 200:\n            data = response.json()['bitcoin']\n            \n            payload = {\n                \"asset\": \"BTC\",\n                \"price\": float(data[\"usd\"]),\n                \"volume_24h\": float(data[\"usd_24h_vol\"]),\n                \"change_24h\": float(data[\"usd_24h_change\"]),\n                \"timestamp\": int(time.time())\n            }\n            \n            producer.send(TOPIC_NAME, payload)\n            print(f\"🚀 Sent to Kafka: {payload}\")\n        else:\n            print(f\"⚠️ API Error: Status {response.status_code}. Raw response: {response.text[:100]}\")\n            \n    except requests.exceptions.JSONDecodeError:\n        print(\"❌ Received non-JSON response from API endpoint.\")\n    except Exception as e:\n        print(f\"❌ Unexpected Error: {e}\")\n        \n    # 15 seconds keeps you safe under free demo tier rate limits\n    time.sleep(20)"
+    }
+  ],
+  "text_fallback": {
+    "enabled": false
+  },
+  "redactions_applied": true
+}

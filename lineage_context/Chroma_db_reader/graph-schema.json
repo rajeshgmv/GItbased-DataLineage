@@ -1,0 +1,17 @@
+{
+  "project": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader",
+  "raw_graph_coverage": {
+    "complete": true,
+    "expected_nodes": 44,
+    "exported_nodes": 44,
+    "expected_relationships": 41,
+    "exported_relationships": 41,
+    "query_limit": 100000
+  },
+  "selected_artifact_types": [
+    {
+      "type": "configuration_file",
+      "count": 1
+    }
+  ]
+}

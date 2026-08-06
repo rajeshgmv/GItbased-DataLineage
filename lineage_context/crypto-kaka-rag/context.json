@@ -1,0 +1,551 @@
+{
+  "manifest": {
+    "lineage_context_schema_version": "1.2",
+    "exported_at": "2026-08-06T05:22:04.129177+00:00",
+    "repository": {
+      "name": "crypto-kaka-rag",
+      "configured_url": "https://github.com/rajeshgmv/crypto-kaka-rag.git",
+      "origin_url": "https://github.com/rajeshgmv/crypto-kaka-rag.git",
+      "branch": "main",
+      "commit_sha": "be2a62532ed4d7ab00f749d30711e3932010bdba",
+      "commit_timestamp": "2026-07-25T22:56:05-05:00",
+      "root_path": "/Users/guttikonda/gitbased-DataLineage/GItbased-DataLineage/repo_local_clone/crypto-kaka-rag",
+      "working_tree_clean": true
+    },
+    "csv_status": {
+      "CloneStatus": "cloned",
+      "IndexStatus": "Indexed",
+      "ContextStatus": "Contexted"
+    },
+    "codebase_memory": {
+      "version": "codebase-memory-mcp 0.8.1",
+      "project": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag",
+      "root_path": "/Users/guttikonda/gitbased-DataLineage/GItbased-DataLineage/repo_local_clone/crypto-kaka-rag",
+      "index_status": {
+        "project": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag",
+        "nodes": 42,
+        "edges": 82,
+        "status": "ready"
+      },
+      "graph_export_coverage": {
+        "complete": true,
+        "expected_nodes": 42,
+        "exported_nodes": 42,
+        "expected_relationships": 82,
+        "exported_relationships": 82,
+        "query_limit": 100000
+      }
+    },
+    "agent_context_scope": {
+      "test_files_excluded": true,
+      "module_records_excluded": true,
+      "empty_attributes_excluded": true,
+      "selected_symbols": 7,
+      "selected_relationships": 6,
+      "lineage_artifacts": 0,
+      "source_snippets": 3
+    },
+    "limitations": [
+      "Graph relationships are discovery evidence, not proof of field movement.",
+      "Confirmed lineage requires source evidence such as assignments, SQL, schemas, mappings, serialization, or configuration.",
+      "Source excerpts are selected from CBM graph metadata and retrieved by qualified name.",
+      "Optional text search is a fallback for graph coverage gaps and is disabled unless --enable-text-fallback is supplied.",
+      "The current Git commit is recorded, but CBM 0.8.1 does not expose the indexed commit SHA directly."
+    ],
+    "files": {
+      "graph_summary": "graph-schema.json",
+      "architecture": "architecture.json",
+      "symbols": "symbols.json",
+      "relationships": "relationships.json",
+      "artifacts": "artifacts.json",
+      "interfaces": "interfaces.json",
+      "source_evidence": "source-evidence.json",
+      "combined_context": "context.json"
+    }
+  },
+  "graph_summary": {
+    "project": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag",
+    "raw_graph_coverage": {
+      "complete": true,
+      "expected_nodes": 42,
+      "exported_nodes": 42,
+      "expected_relationships": 82,
+      "exported_relationships": 82,
+      "query_limit": 100000
+    },
+    "selected_node_labels": [
+      {
+        "label": "Channel",
+        "count": 1
+      },
+      {
+        "label": "EnvVar",
+        "count": 4
+      },
+      {
+        "label": "File",
+        "count": 1
+      },
+      {
+        "label": "Function",
+        "count": 1
+      }
+    ],
+    "selected_relationship_types": [
+      {
+        "type": "CALLS",
+        "count": 1
+      },
+      {
+        "type": "CONFIGURES",
+        "count": 4
+      },
+      {
+        "type": "EMITS",
+        "count": 1
+      }
+    ]
+  },
+  "architecture": {
+    "project": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag",
+    "languages": [
+      "Python"
+    ]
+  },
+  "symbols": [
+    {
+      "label": "EnvVar",
+      "name": "HTTPS_PROXY",
+      "qualified_name": "__env__HTTPS_PROXY",
+      "start_line": "0",
+      "end_line": "0",
+      "env_key": "HTTPS_PROXY"
+    },
+    {
+      "label": "EnvVar",
+      "name": "HTTP_PROXY",
+      "qualified_name": "__env__HTTP_PROXY",
+      "start_line": "0",
+      "end_line": "0",
+      "env_key": "HTTP_PROXY"
+    },
+    {
+      "label": "EnvVar",
+      "name": "NO_PROXY",
+      "qualified_name": "__env__NO_PROXY",
+      "start_line": "0",
+      "end_line": "0",
+      "env_key": "NO_PROXY"
+    },
+    {
+      "label": "EnvVar",
+      "name": "OLLAMA_HOST",
+      "qualified_name": "__env__OLLAMA_HOST",
+      "start_line": "0",
+      "end_line": "0",
+      "env_key": "OLLAMA_HOST"
+    },
+    {
+      "label": "Channel",
+      "name": "crypto-ticks",
+      "qualified_name": "__channel__kafka__crypto-ticks",
+      "start_line": "0",
+      "end_line": "0",
+      "transport": "kafka"
+    },
+    {
+      "label": "File",
+      "name": "producer.py",
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.producer.__file__",
+      "file_path": "producer.py",
+      "start_line": "0",
+      "end_line": "0",
+      "extension": ".py"
+    },
+    {
+      "label": "Function",
+      "name": "query_rag_agent",
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.agent.query_rag_agent",
+      "file_path": "agent.py",
+      "start_line": "6",
+      "end_line": "50",
+      "signature": "(user_question)",
+      "param_names": "[\"user_question\"]",
+      "is_entry_point": "false",
+      "is_exported": "true",
+      "is_test": "false"
+    }
+  ],
+  "relationships": [
+    {
+      "relationship": "CALLS",
+      "source_label": "SourceFile",
+      "source_name": "agent.py",
+      "source_qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.agent",
+      "source_file_path": "agent.py",
+      "source_start_line": "1",
+      "source_end_line": "55",
+      "target_label": "Function",
+      "target_name": "query_rag_agent",
+      "target_qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.agent.query_rag_agent",
+      "target_file_path": "agent.py",
+      "target_start_line": "6",
+      "target_end_line": "50",
+      "callee": "query_rag_agent",
+      "candidates": "1",
+      "confidence": "0.90",
+      "strategy": "same_module"
+    },
+    {
+      "relationship": "EMITS",
+      "source_label": "File",
+      "source_name": "producer.py",
+      "source_qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.producer.__file__",
+      "source_file_path": "producer.py",
+      "source_start_line": "0",
+      "source_end_line": "0",
+      "target_label": "Channel",
+      "target_name": "crypto-ticks",
+      "target_qualified_name": "__channel__kafka__crypto-ticks",
+      "target_start_line": "0",
+      "target_end_line": "0",
+      "callee": "kafka",
+      "transport": "kafka"
+    },
+    {
+      "relationship": "CONFIGURES",
+      "source_label": "Function",
+      "source_name": "query_rag_agent",
+      "source_qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.agent.query_rag_agent",
+      "source_file_path": "agent.py",
+      "source_start_line": "6",
+      "source_end_line": "50",
+      "target_label": "EnvVar",
+      "target_name": "HTTP_PROXY",
+      "target_qualified_name": "__env__HTTP_PROXY",
+      "target_start_line": "0",
+      "target_end_line": "0",
+      "strategy": "env_access"
+    },
+    {
+      "relationship": "CONFIGURES",
+      "source_label": "Function",
+      "source_name": "query_rag_agent",
+      "source_qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.agent.query_rag_agent",
+      "source_file_path": "agent.py",
+      "source_start_line": "6",
+      "source_end_line": "50",
+      "target_label": "EnvVar",
+      "target_name": "HTTPS_PROXY",
+      "target_qualified_name": "__env__HTTPS_PROXY",
+      "target_start_line": "0",
+      "target_end_line": "0",
+      "strategy": "env_access"
+    },
+    {
+      "relationship": "CONFIGURES",
+      "source_label": "Function",
+      "source_name": "query_rag_agent",
+      "source_qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.agent.query_rag_agent",
+      "source_file_path": "agent.py",
+      "source_start_line": "6",
+      "source_end_line": "50",
+      "target_label": "EnvVar",
+      "target_name": "OLLAMA_HOST",
+      "target_qualified_name": "__env__OLLAMA_HOST",
+      "target_start_line": "0",
+      "target_end_line": "0",
+      "strategy": "env_access"
+    },
+    {
+      "relationship": "CONFIGURES",
+      "source_label": "Function",
+      "source_name": "query_rag_agent",
+      "source_qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.agent.query_rag_agent",
+      "source_file_path": "agent.py",
+      "source_start_line": "6",
+      "source_end_line": "50",
+      "target_label": "EnvVar",
+      "target_name": "NO_PROXY",
+      "target_qualified_name": "__env__NO_PROXY",
+      "target_start_line": "0",
+      "target_end_line": "0",
+      "strategy": "env_access"
+    }
+  ],
+  "interfaces": {
+    "nodes": [
+      {
+        "label": "EnvVar",
+        "name": "HTTPS_PROXY",
+        "qualified_name": "__env__HTTPS_PROXY",
+        "start_line": "0",
+        "end_line": "0",
+        "env_key": "HTTPS_PROXY"
+      },
+      {
+        "label": "EnvVar",
+        "name": "HTTP_PROXY",
+        "qualified_name": "__env__HTTP_PROXY",
+        "start_line": "0",
+        "end_line": "0",
+        "env_key": "HTTP_PROXY"
+      },
+      {
+        "label": "EnvVar",
+        "name": "NO_PROXY",
+        "qualified_name": "__env__NO_PROXY",
+        "start_line": "0",
+        "end_line": "0",
+        "env_key": "NO_PROXY"
+      },
+      {
+        "label": "EnvVar",
+        "name": "OLLAMA_HOST",
+        "qualified_name": "__env__OLLAMA_HOST",
+        "start_line": "0",
+        "end_line": "0",
+        "env_key": "OLLAMA_HOST"
+      },
+      {
+        "label": "Channel",
+        "name": "crypto-ticks",
+        "qualified_name": "__channel__kafka__crypto-ticks",
+        "start_line": "0",
+        "end_line": "0",
+        "transport": "kafka"
+      }
+    ],
+    "relationships": [
+      {
+        "relationship": "EMITS",
+        "source_label": "File",
+        "source_name": "producer.py",
+        "source_qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.producer.__file__",
+        "source_file_path": "producer.py",
+        "source_start_line": "0",
+        "source_end_line": "0",
+        "target_label": "Channel",
+        "target_name": "crypto-ticks",
+        "target_qualified_name": "__channel__kafka__crypto-ticks",
+        "target_start_line": "0",
+        "target_end_line": "0",
+        "callee": "kafka",
+        "transport": "kafka"
+      },
+      {
+        "relationship": "CONFIGURES",
+        "source_label": "Function",
+        "source_name": "query_rag_agent",
+        "source_qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.agent.query_rag_agent",
+        "source_file_path": "agent.py",
+        "source_start_line": "6",
+        "source_end_line": "50",
+        "target_label": "EnvVar",
+        "target_name": "HTTP_PROXY",
+        "target_qualified_name": "__env__HTTP_PROXY",
+        "target_start_line": "0",
+        "target_end_line": "0",
+        "strategy": "env_access"
+      },
+      {
+        "relationship": "CONFIGURES",
+        "source_label": "Function",
+        "source_name": "query_rag_agent",
+        "source_qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.agent.query_rag_agent",
+        "source_file_path": "agent.py",
+        "source_start_line": "6",
+        "source_end_line": "50",
+        "target_label": "EnvVar",
+        "target_name": "HTTPS_PROXY",
+        "target_qualified_name": "__env__HTTPS_PROXY",
+        "target_start_line": "0",
+        "target_end_line": "0",
+        "strategy": "env_access"
+      },
+      {
+        "relationship": "CONFIGURES",
+        "source_label": "Function",
+        "source_name": "query_rag_agent",
+        "source_qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.agent.query_rag_agent",
+        "source_file_path": "agent.py",
+        "source_start_line": "6",
+        "source_end_line": "50",
+        "target_label": "EnvVar",
+        "target_name": "OLLAMA_HOST",
+        "target_qualified_name": "__env__OLLAMA_HOST",
+        "target_start_line": "0",
+        "target_end_line": "0",
+        "strategy": "env_access"
+      },
+      {
+        "relationship": "CONFIGURES",
+        "source_label": "Function",
+        "source_name": "query_rag_agent",
+        "source_qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.agent.query_rag_agent",
+        "source_file_path": "agent.py",
+        "source_start_line": "6",
+        "source_end_line": "50",
+        "target_label": "EnvVar",
+        "target_name": "NO_PROXY",
+        "target_qualified_name": "__env__NO_PROXY",
+        "target_start_line": "0",
+        "target_end_line": "0",
+        "strategy": "env_access"
+      }
+    ]
+  },
+  "source_evidence": {
+    "discovery_mode": "graph_first",
+    "selection": {
+      "rules": [
+        "select interface nodes and nodes carrying entry-point, route, semantic decorator-tag, transport, or environment metadata",
+        "exclude test, generated, dependency, and CI symbols from Agent 1 context",
+        "select both endpoints of direct boundary relationships; require a resource endpoint for CONFIGURES, READS, and WRITES",
+        "expand up to two graph hops across code and data relationships",
+        "select configuration and schema modules by indexed file extension",
+        "for graphs with at most 100 nodes, include all non-documentation source modules",
+        "retrieve one containing module per selected file when available",
+        "record data-file modules as artifacts without embedding their contents"
+      ],
+      "candidate_count": 7,
+      "source_file_count": 3,
+      "candidates": [
+        {
+          "qualified_name": "__channel__kafka__crypto-ticks",
+          "label": "Channel",
+          "name": "crypto-ticks",
+          "start_line": "0",
+          "end_line": "0",
+          "selection_reasons": [
+            "boundary_relationship:EMITS:target",
+            "interface_node",
+            "lineage_metadata"
+          ]
+        },
+        {
+          "qualified_name": "__env__HTTPS_PROXY",
+          "label": "EnvVar",
+          "name": "HTTPS_PROXY",
+          "start_line": "0",
+          "end_line": "0",
+          "selection_reasons": [
+            "boundary_relationship:CONFIGURES:target",
+            "interface_node",
+            "lineage_metadata"
+          ]
+        },
+        {
+          "qualified_name": "__env__HTTP_PROXY",
+          "label": "EnvVar",
+          "name": "HTTP_PROXY",
+          "start_line": "0",
+          "end_line": "0",
+          "selection_reasons": [
+            "boundary_relationship:CONFIGURES:target",
+            "interface_node",
+            "lineage_metadata"
+          ]
+        },
+        {
+          "qualified_name": "__env__NO_PROXY",
+          "label": "EnvVar",
+          "name": "NO_PROXY",
+          "start_line": "0",
+          "end_line": "0",
+          "selection_reasons": [
+            "boundary_relationship:CONFIGURES:target",
+            "interface_node",
+            "lineage_metadata"
+          ]
+        },
+        {
+          "qualified_name": "__env__OLLAMA_HOST",
+          "label": "EnvVar",
+          "name": "OLLAMA_HOST",
+          "start_line": "0",
+          "end_line": "0",
+          "selection_reasons": [
+            "boundary_relationship:CONFIGURES:target",
+            "interface_node",
+            "lineage_metadata"
+          ]
+        },
+        {
+          "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.agent.query_rag_agent",
+          "label": "Function",
+          "name": "query_rag_agent",
+          "file_path": "agent.py",
+          "start_line": "6",
+          "end_line": "50",
+          "selection_reasons": [
+            "boundary_relationship:CONFIGURES:source"
+          ]
+        },
+        {
+          "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.producer.__file__",
+          "label": "File",
+          "name": "producer.py",
+          "file_path": "producer.py",
+          "start_line": "0",
+          "end_line": "0",
+          "selection_reasons": [
+            "boundary_relationship:EMITS:source"
+          ]
+        }
+      ]
+    },
+    "snippets": [
+      {
+        "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.agent",
+        "label": "SourceFile",
+        "name": "agent.py",
+        "file_path": "/Users/guttikonda/gitbased-DataLineage/GItbased-DataLineage/repo_local_clone/crypto-kaka-rag/agent.py",
+        "start_line": 1,
+        "end_line": 55,
+        "selection_reasons": [
+          "boundary_relationship:CONFIGURES:source",
+          "containing_module:Function",
+          "containing_module:Module",
+          "graph_neighbor:CALLS:depth_1",
+          "small_graph_source_module"
+        ],
+        "retrieval_method": "cbm_get_code_snippet",
+        "source": "# agent.py\nimport os\nimport chromadb\nfrom langchain_ollama import ChatOllama\n\ndef query_rag_agent(user_question):\n    if \"HTTP_PROXY\" in os.environ: del os.environ[\"HTTP_PROXY\"]\n    if \"HTTPS_PROXY\" in os.environ: del os.environ[\"HTTPS_PROXY\"]\n    if \"OLLAMA_HOST\" in os.environ: del os.environ[\"OLLAMA_HOST\"]\n    os.environ[\"NO_PROXY\"] = \"localhost\"\n    OLLAMA_BASE_URL = \"http://127.0.0.1:11434\"\n    \n    # Connect to the local vector storage folder updated by the processor\n    chroma_client = chromadb.PersistentClient(path=\"./chroma_db\")\n    collection = chroma_client.get_or_create_collection(name=\"market_insights\")\n    \n    # Query Chroma for the top 5 closest market updates\n    results = collection.query(\n        query_texts=[user_question],\n        n_results=5\n    )\n    \n    # Safe checks to ensure we actually retrieved historical matches\n    if not results or not results.get('documents') or not results['documents'][0]:\n        retrieved_context = \"No recent data streamed from Kafka yet.\"\n    else:\n        # Join the top returned documents for the single query\n        retrieved_context = \"\\n\".join(results['documents'][0])\n    \n    # Formulate system context prompt (using a unique variable name to prevent Typer library conflict)\n    rag_prompt = f\"\"\"You are a financial advisor assistant. Use the following real-time data snippets to answer the user question accurately.\n    \n    Context Data:\n    {retrieved_context}\n    \n    Question: {user_question}\n    Answer:\"\"\"\n    \n    print(\"\\n--- System Context Fed To Agent ---\")\n    print(retrieved_context)\n    print(\"-----------------------------------\\n\")\n    \n    # Connect directly to the active Ollama background engine\n    try:\n        llm = ChatOllama(model=\"llama3.1:latest\", base_url=OLLAMA_BASE_URL)\n        response = llm.invoke(rag_prompt)\n        # LangChain ChatOllama returns a dynamic object; extract .content for clean string text\n        print(f\"🤖 Agent Response:\\n{response.content}\\n\")\n    except Exception as e:\n        print(f\"❌ Failed to reach the local LLM engine: {e}\")\n\nif __name__ == \"__main__\":\n    question = input(\"Enter your question: \")\n    query_rag_agent(question)\n"
+      },
+      {
+        "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.processor",
+        "label": "SourceFile",
+        "name": "processor.py",
+        "file_path": "/Users/guttikonda/gitbased-DataLineage/GItbased-DataLineage/repo_local_clone/crypto-kaka-rag/processor.py",
+        "start_line": 1,
+        "end_line": 51,
+        "selection_reasons": [
+          "containing_module:Module",
+          "small_graph_source_module"
+        ],
+        "retrieval_method": "cbm_get_code_snippet",
+        "source": "# processor_pure.py\nimport json\nimport time\nfrom kafka import KafkaConsumer\nimport chromadb\n\nTOPIC_NAME = 'crypto-ticks'\n\nprint(\"Initializing pure Python Kafka Consumer...\")\ntry:\n    # Set up a pure Python Kafka client (No Java required)\n    consumer = KafkaConsumer(\n        TOPIC_NAME,\n        bootstrap_servers=['localhost:9092'],\n        auto_offset_reset='earliest',  # Listen to fresh data flowing from this point onward - earliest or latest\n        enable_auto_commit=True,\n        value_deserializer=lambda x: json.loads(x.decode('utf-8')) # Decode JSON bytes directly\n    )\n   # consumer.seek_to_beginning()\nexcept Exception as kafka_error:\n    print(f\"❌ Failed to connect to local Kafka Broker: {kafka_error}\")\n    print(\"Ensure you ran 'brew services start kafka' in a separate terminal window!\")\n    exit(1)\n\n# Connect to a local folder-based persistent Chroma Vector Database\nchroma_client = chromadb.PersistentClient(path=\"./chroma_db\")\ncollection = chroma_client.get_or_create_collection(name=\"market_insights\")\n\nprint(\"🚀 Pure Python Stream Processor is active! Listening for Kafka messages...\")\n\ntry:\n    for message in consumer:\n        row = message.value\n        print(f\"📥 Received data from Kafka: {row}\")\n        \n        # Structure raw integers into natural language paragraphs for RAG embeddings\n        doc_text = f\"Asset: {row['asset']} at timestamp: {row['timestamp']} is tracking at a price of ${row['price']:.2f}. The 24-hour exchange volume is ${row['volume_24h']:.2f} and the 24-hour value change rate is {row['change_24h']:.4f}%.\"\n        \n        # Create a unique database key combining timestamp and block index\n        unique_id = f\"{row['timestamp']}_{message.offset}\"\n        \n        # Insert raw context directly into Chroma Vector Database\n        collection.add(\n            documents=[doc_text],\n            metadatas=[{\"asset\": row['asset'], \"time\": row['timestamp']}],\n            ids=[unique_id]\n        )\n        print(f\"💾 Successfully indexed event {unique_id} into Chroma DB.\\n\")\n        \nexcept KeyboardInterrupt:\n    print(\"\\nStopping processor stream smoothly...\")"
+      },
+      {
+        "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.producer",
+        "label": "SourceFile",
+        "name": "producer.py",
+        "file_path": "/Users/guttikonda/gitbased-DataLineage/GItbased-DataLineage/repo_local_clone/crypto-kaka-rag/producer.py",
+        "start_line": 1,
+        "end_line": 63,
+        "selection_reasons": [
+          "containing_module:File",
+          "containing_module:Module",
+          "small_graph_source_module"
+        ],
+        "retrieval_method": "cbm_get_code_snippet",
+        "source": "# producer.py\nimport time\nimport json\nimport requests\nfrom kafka import KafkaProducer\n\nBOOTSTRAP_SERVERS = \"localhost:9092\"\nTOPIC_NAME = \"crypto-ticks\"\n# Initialize Kafka Producer\ntry:\n    producer = KafkaProducer(\n        bootstrap_servers=[BOOTSTRAP_SERVERS],\n        value_serializer=lambda v: json.dumps(v).encode('utf-8')\n    )\nexcept Exception as kafka_error:\n    print(f\"❌ Failed to connect to local Kafka Broker: {kafka_error}\")\n    print(\"Ensure you ran 'brew services start kafka' in a separate terminal!\")\n    exit(1)\n\nDEMO_API_KEY = \"<REDACTED>\"\n\nurl = \"https://api.coingecko.com/api/v3/simple/price\"\n\nparams = {\n    \"ids\": \"bitcoin\",\n    \"vs_currencies\": \"usd\",\n    \"include_24hr_vol\": \"true\",\n    \"include_24hr_change\": \"true\",\n}\n\nheaders = {\n    \"x-cg-demo-api-key\": DEMO_API_KEY\n}\n\n\nwhile True:\n    try:\n        # requests.get automatically appends the parameters securely to the URL\n        response = requests.get(url, params=params, headers=headers)\n        \n        if response.status_code == 200:\n            data = response.json()['bitcoin']\n            \n            payload = {\n                \"asset\": \"BTC\",\n                \"price\": float(data[\"usd\"]),\n                \"volume_24h\": float(data[\"usd_24h_vol\"]),\n                \"change_24h\": float(data[\"usd_24h_change\"]),\n                \"timestamp\": int(time.time())\n            }\n            \n            producer.send(TOPIC_NAME, payload)\n            print(f\"🚀 Sent to Kafka: {payload}\")\n        else:\n            print(f\"⚠️ API Error: Status {response.status_code}. Raw response: {response.text[:100]}\")\n            \n    except requests.exceptions.JSONDecodeError:\n        print(\"❌ Received non-JSON response from API endpoint.\")\n    except Exception as e:\n        print(f\"❌ Unexpected Error: {e}\")\n        \n    # 15 seconds keeps you safe under free demo tier rate limits\n    time.sleep(20)"
+      }
+    ],
+    "text_fallback": {
+      "enabled": false
+    },
+    "redactions_applied": true
+  }
+}
