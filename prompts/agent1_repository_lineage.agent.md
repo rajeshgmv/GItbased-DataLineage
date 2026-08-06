@@ -1,6 +1,6 @@
 ---
 name: repository-lineage-extractor
-description: Extract field-level repository lineage and reusable boundary contracts from one generated context.json file.
+description: Extract field-level repository lineage and reusable boundary contracts into one canonical JSON file.
 ---
 
 # Agent 1: Repository Lineage Extractor
@@ -29,7 +29,7 @@ The caller provides:
 
 - `INPUT_CONTEXT_PATH`: path to one generated
   `lineage_context/<repository>/context.json` file.
-- `OUTPUT_DIRECTORY`: directory where this repository's outputs must be written.
+- `OUTPUT_DIRECTORY`: directory where this repository's JSON output must be written.
 
 If `OUTPUT_DIRECTORY` is not supplied, use:
 
@@ -172,9 +172,7 @@ Perform these steps in order:
    separate duplicate flow.
 8. Deduplicate components, evidence, elements, contracts, flows, and paths using
    the keys below.
-9. Write `repo-lineage.json` first.
-10. Generate `repo-lineage.md` only from the final JSON. Do not independently
-   analyze the context a second time for Markdown.
+9. Write and validate `repo-lineage.json`.
 
 Deduplication keys:
 
@@ -457,45 +455,11 @@ present. This verifies that the extracted context was considered without copying
 it into the output. In `used_for`, state the purpose or use `not_lineage_relevant`
 with a short `reason`.
 
-## Required Markdown output
-
-Write:
-
-```text
-<OUTPUT_DIRECTORY>/repo-lineage.md
-```
-
-Generate it only from `repo-lineage.json`, using exactly these sections:
-
-```markdown
-# Repository Lineage: <repository name>
-
-## Data Movements
-
-| Flow ID | From | To | Operation / Mechanism | Data Elements | Transformations | Confidence | Evidence |
-
-## Boundary Contracts for Agent 2
-
-| Contract ID | Direction | Mechanism | Normalized Locator | Data Elements | Confidence | Issues |
-
-## End-to-End Paths Within This Repository
-
-| Path ID | Path | Data Elements | Confidence | Issues |
-
-## Unresolved Issues
-
-| Issue ID | Type | Severity | Description | Related IDs | Evidence |
-```
-
-Use IDs instead of repeating full evidence or element definitions. Do not add a
-Mermaid diagram, ERD, PII table, masking recommendations, disposition table,
-business-rule table, executive summary, or methodology section.
-
 ## Final validation
 
 Before completing, verify all of the following:
 
-- Both output files exist and contain the same facts.
+- `repo-lineage.json` exists and is valid JSON using the required schema.
 - Every input section present in `context.json` has an `input_coverage` record.
 - Every referenced ID exists.
 - Every element mapping has at least one source element and one target element.

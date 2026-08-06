@@ -142,6 +142,18 @@ python3 -m lib.export_lineage_context --repo crypto-kaka-rag --enable-text-fallb
 
 Fallback searches are configured in `config/lineage_fallback_search_queries.json` and are labeled separately in `source-evidence.json`. Graph relationships remain discovery evidence; source excerpts provide the assignments, configuration, SQL, schemas, and serialization needed to confirm lineage.
 
+## Generate the repository lineage Markdown
+
+After Agent 1 creates and validates a repository's `repo-lineage.json`, generate
+the corresponding Markdown file from that JSON:
+
+```bash
+python -m lib.render_repository_lineage \
+  lineage_output/crypto-kaka-rag/repo-lineage.json
+```
+
+By default, the command writes `repo-lineage.md` beside the input JSON file.
+
 ## Query the indexes
 
 Load the same environment used during indexing:

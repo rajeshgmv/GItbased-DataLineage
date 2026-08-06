@@ -1,0 +1,5235 @@
+{
+  "schema_version": "repository-lineage/1.0",
+  "repository": {
+    "name": "spring-petclinic-rest",
+    "origin_url": "https://github.com/spring-petclinic/spring-petclinic-rest.git",
+    "commit_sha": "698bd832eac0da48e72deb63ce7ab275d98a88fb",
+    "branch": "master",
+    "context_exported_at": "2026-08-06T05:18:28.662545+00:00"
+  },
+  "input_coverage": [
+    {
+      "section": "manifest",
+      "records_considered": 1,
+      "used_for": [
+        "repository_identity",
+        "provenance",
+        "active_index_coverage"
+      ]
+    },
+    {
+      "section": "graph_summary",
+      "records_considered": 1,
+      "used_for": [
+        "graph_completeness",
+        "candidate_selection_coverage"
+      ]
+    },
+    {
+      "section": "architecture",
+      "records_considered": 1,
+      "used_for": [
+        "runtime_languages",
+        "service_architecture"
+      ]
+    },
+    {
+      "section": "symbols",
+      "records_considered": 428,
+      "used_for": [
+        "controller_service_repository_candidates",
+        "source_locations"
+      ]
+    },
+    {
+      "section": "relationships",
+      "records_considered": 440,
+      "used_for": [
+        "execution_path_candidates",
+        "boundary_hints"
+      ]
+    },
+    {
+      "section": "artifacts",
+      "records_considered": 16,
+      "used_for": [
+        "database_configuration",
+        "database_schema",
+        "openapi_contract"
+      ]
+    },
+    {
+      "section": "interfaces",
+      "records_considered": 33,
+      "used_for": [
+        "http_boundary_candidates",
+        "route_locators"
+      ]
+    },
+    {
+      "section": "source_evidence",
+      "records_considered": 97,
+      "used_for": [
+        "field_mappings",
+        "operations",
+        "transformations",
+        "runtime_locators"
+      ]
+    }
+  ],
+  "components": [
+    {
+      "component_id": "CMP-001",
+      "name": "spring-petclinic-rest",
+      "kind": "service",
+      "repository": "spring-petclinic-rest",
+      "raw_locator": "http://localhost:9966/petclinic/api",
+      "normalized_locator": "http://localhost:9966/petclinic/api",
+      "evidence_ids": [
+        "EV-001",
+        "EV-004"
+      ]
+    },
+    {
+      "component_id": "CMP-002",
+      "name": "Petclinic REST API caller",
+      "kind": "external_api",
+      "raw_locator": "HTTP client of /petclinic/api",
+      "normalized_locator": "external-api://unknown-client/petclinic/api",
+      "evidence_ids": [
+        "EV-004",
+        "EV-005",
+        "EV-006",
+        "EV-007",
+        "EV-008",
+        "EV-009",
+        "EV-010"
+      ]
+    },
+    {
+      "component_id": "CMP-003",
+      "name": "Petclinic H2 database",
+      "kind": "database",
+      "raw_locator": "jdbc:h2:mem:petclinic;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE",
+      "normalized_locator": "jdbc:h2:mem:petclinic",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003"
+      ]
+    }
+  ],
+  "data_elements": [
+    {
+      "element_id": "EL-001",
+      "name": "id",
+      "element_path": "owner.id",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-011"
+      ]
+    },
+    {
+      "element_id": "EL-002",
+      "name": "id",
+      "element_path": "domain.owner.id",
+      "component_id": "CMP-001",
+      "container": "owner domain object",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-017",
+        "EV-018",
+        "EV-035"
+      ]
+    },
+    {
+      "element_id": "EL-003",
+      "name": "id",
+      "element_path": "owners.id",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-004",
+      "name": "firstName",
+      "element_path": "owner.firstName",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-011"
+      ]
+    },
+    {
+      "element_id": "EL-005",
+      "name": "firstName",
+      "element_path": "domain.owner.firstName",
+      "component_id": "CMP-001",
+      "container": "owner domain object",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-017",
+        "EV-018",
+        "EV-035"
+      ]
+    },
+    {
+      "element_id": "EL-006",
+      "name": "first_name",
+      "element_path": "owners.first_name",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-007",
+      "name": "lastName",
+      "element_path": "owner.lastName",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-011"
+      ]
+    },
+    {
+      "element_id": "EL-008",
+      "name": "lastName",
+      "element_path": "domain.owner.lastName",
+      "component_id": "CMP-001",
+      "container": "owner domain object",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-017",
+        "EV-018",
+        "EV-035"
+      ]
+    },
+    {
+      "element_id": "EL-009",
+      "name": "last_name",
+      "element_path": "owners.last_name",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-010",
+      "name": "address",
+      "element_path": "owner.address",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-011"
+      ]
+    },
+    {
+      "element_id": "EL-011",
+      "name": "address",
+      "element_path": "domain.owner.address",
+      "component_id": "CMP-001",
+      "container": "owner domain object",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-017",
+        "EV-018",
+        "EV-035"
+      ]
+    },
+    {
+      "element_id": "EL-012",
+      "name": "address",
+      "element_path": "owners.address",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-013",
+      "name": "city",
+      "element_path": "owner.city",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-011"
+      ]
+    },
+    {
+      "element_id": "EL-014",
+      "name": "city",
+      "element_path": "domain.owner.city",
+      "component_id": "CMP-001",
+      "container": "owner domain object",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-017",
+        "EV-018",
+        "EV-035"
+      ]
+    },
+    {
+      "element_id": "EL-015",
+      "name": "city",
+      "element_path": "owners.city",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-016",
+      "name": "telephone",
+      "element_path": "owner.telephone",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-011"
+      ]
+    },
+    {
+      "element_id": "EL-017",
+      "name": "telephone",
+      "element_path": "domain.owner.telephone",
+      "component_id": "CMP-001",
+      "container": "owner domain object",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-017",
+        "EV-018",
+        "EV-035"
+      ]
+    },
+    {
+      "element_id": "EL-018",
+      "name": "telephone",
+      "element_path": "owners.telephone",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-019",
+      "name": "id",
+      "element_path": "pet.id",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-012"
+      ]
+    },
+    {
+      "element_id": "EL-020",
+      "name": "id",
+      "element_path": "domain.pet.id",
+      "component_id": "CMP-001",
+      "container": "pet domain object",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-019",
+        "EV-036"
+      ]
+    },
+    {
+      "element_id": "EL-021",
+      "name": "id",
+      "element_path": "pets.id",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-022",
+      "name": "name",
+      "element_path": "pet.name",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-012"
+      ]
+    },
+    {
+      "element_id": "EL-023",
+      "name": "name",
+      "element_path": "domain.pet.name",
+      "component_id": "CMP-001",
+      "container": "pet domain object",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-019",
+        "EV-036"
+      ]
+    },
+    {
+      "element_id": "EL-024",
+      "name": "name",
+      "element_path": "pets.name",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-025",
+      "name": "birthDate",
+      "element_path": "pet.birthDate",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "date",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-012"
+      ]
+    },
+    {
+      "element_id": "EL-026",
+      "name": "birthDate",
+      "element_path": "domain.pet.birthDate",
+      "component_id": "CMP-001",
+      "container": "pet domain object",
+      "data_type": "date",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-019",
+        "EV-036"
+      ]
+    },
+    {
+      "element_id": "EL-027",
+      "name": "birth_date",
+      "element_path": "pets.birth_date",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "date",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-028",
+      "name": "id",
+      "element_path": "pet.type.id",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-012"
+      ]
+    },
+    {
+      "element_id": "EL-029",
+      "name": "id",
+      "element_path": "domain.pet.type.id",
+      "component_id": "CMP-001",
+      "container": "pet domain object",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-019",
+        "EV-036"
+      ]
+    },
+    {
+      "element_id": "EL-030",
+      "name": "type_id",
+      "element_path": "pets.type_id",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-031",
+      "name": "ownerId",
+      "element_path": "pet.ownerId",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-012"
+      ]
+    },
+    {
+      "element_id": "EL-032",
+      "name": "ownerId",
+      "element_path": "domain.pet.ownerId",
+      "component_id": "CMP-001",
+      "container": "pet domain object",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-019",
+        "EV-036"
+      ]
+    },
+    {
+      "element_id": "EL-033",
+      "name": "owner_id",
+      "element_path": "pets.owner_id",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-034",
+      "name": "id",
+      "element_path": "petType.id",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-013"
+      ]
+    },
+    {
+      "element_id": "EL-035",
+      "name": "id",
+      "element_path": "domain.petType.id",
+      "component_id": "CMP-001",
+      "container": "petType domain object",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-020",
+        "EV-037"
+      ]
+    },
+    {
+      "element_id": "EL-036",
+      "name": "id",
+      "element_path": "types.id",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-037",
+      "name": "name",
+      "element_path": "petType.name",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-013"
+      ]
+    },
+    {
+      "element_id": "EL-038",
+      "name": "name",
+      "element_path": "domain.petType.name",
+      "component_id": "CMP-001",
+      "container": "petType domain object",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-020",
+        "EV-037"
+      ]
+    },
+    {
+      "element_id": "EL-039",
+      "name": "name",
+      "element_path": "types.name",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-040",
+      "name": "id",
+      "element_path": "specialty.id",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-011"
+      ]
+    },
+    {
+      "element_id": "EL-041",
+      "name": "id",
+      "element_path": "domain.specialty.id",
+      "component_id": "CMP-001",
+      "container": "specialty domain object",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-021",
+        "EV-038"
+      ]
+    },
+    {
+      "element_id": "EL-042",
+      "name": "id",
+      "element_path": "specialties.id",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-043",
+      "name": "name",
+      "element_path": "specialty.name",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-011"
+      ]
+    },
+    {
+      "element_id": "EL-044",
+      "name": "name",
+      "element_path": "domain.specialty.name",
+      "component_id": "CMP-001",
+      "container": "specialty domain object",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-021",
+        "EV-038"
+      ]
+    },
+    {
+      "element_id": "EL-045",
+      "name": "name",
+      "element_path": "specialties.name",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-046",
+      "name": "id",
+      "element_path": "vet.id",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-014"
+      ]
+    },
+    {
+      "element_id": "EL-047",
+      "name": "id",
+      "element_path": "domain.vet.id",
+      "component_id": "CMP-001",
+      "container": "vet domain object",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-022",
+        "EV-039"
+      ]
+    },
+    {
+      "element_id": "EL-048",
+      "name": "id",
+      "element_path": "vets.id",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-049",
+      "name": "firstName",
+      "element_path": "vet.firstName",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-014"
+      ]
+    },
+    {
+      "element_id": "EL-050",
+      "name": "firstName",
+      "element_path": "domain.vet.firstName",
+      "component_id": "CMP-001",
+      "container": "vet domain object",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-022",
+        "EV-039"
+      ]
+    },
+    {
+      "element_id": "EL-051",
+      "name": "first_name",
+      "element_path": "vets.first_name",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-052",
+      "name": "lastName",
+      "element_path": "vet.lastName",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-014"
+      ]
+    },
+    {
+      "element_id": "EL-053",
+      "name": "lastName",
+      "element_path": "domain.vet.lastName",
+      "component_id": "CMP-001",
+      "container": "vet domain object",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-022",
+        "EV-039"
+      ]
+    },
+    {
+      "element_id": "EL-054",
+      "name": "last_name",
+      "element_path": "vets.last_name",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-055",
+      "name": "id",
+      "element_path": "vet.specialties[].id",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-014"
+      ]
+    },
+    {
+      "element_id": "EL-056",
+      "name": "id",
+      "element_path": "domain.vet.specialties[].id",
+      "component_id": "CMP-001",
+      "container": "vet domain object",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-022",
+        "EV-039"
+      ]
+    },
+    {
+      "element_id": "EL-057",
+      "name": "specialty_id",
+      "element_path": "vet_specialties.specialty_id",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-058",
+      "name": "name",
+      "element_path": "vet.specialties[].name",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-014"
+      ]
+    },
+    {
+      "element_id": "EL-059",
+      "name": "name",
+      "element_path": "domain.vet.specialties[].name",
+      "component_id": "CMP-001",
+      "container": "vet domain object",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-022",
+        "EV-039"
+      ]
+    },
+    {
+      "element_id": "EL-061",
+      "name": "id",
+      "element_path": "visit.id",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-015"
+      ]
+    },
+    {
+      "element_id": "EL-062",
+      "name": "id",
+      "element_path": "domain.visit.id",
+      "component_id": "CMP-001",
+      "container": "visit domain object",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-023",
+        "EV-040"
+      ]
+    },
+    {
+      "element_id": "EL-063",
+      "name": "id",
+      "element_path": "visits.id",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-064",
+      "name": "petId",
+      "element_path": "visit.petId",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-015"
+      ]
+    },
+    {
+      "element_id": "EL-065",
+      "name": "petId",
+      "element_path": "domain.visit.petId",
+      "component_id": "CMP-001",
+      "container": "visit domain object",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-023",
+        "EV-040"
+      ]
+    },
+    {
+      "element_id": "EL-066",
+      "name": "pet_id",
+      "element_path": "visits.pet_id",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-067",
+      "name": "date",
+      "element_path": "visit.date",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "date",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-015"
+      ]
+    },
+    {
+      "element_id": "EL-068",
+      "name": "date",
+      "element_path": "domain.visit.date",
+      "component_id": "CMP-001",
+      "container": "visit domain object",
+      "data_type": "date",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-023",
+        "EV-040"
+      ]
+    },
+    {
+      "element_id": "EL-069",
+      "name": "visit_date",
+      "element_path": "visits.visit_date",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "date",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-070",
+      "name": "description",
+      "element_path": "visit.description",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-015"
+      ]
+    },
+    {
+      "element_id": "EL-071",
+      "name": "description",
+      "element_path": "domain.visit.description",
+      "component_id": "CMP-001",
+      "container": "visit domain object",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-023",
+        "EV-040"
+      ]
+    },
+    {
+      "element_id": "EL-072",
+      "name": "description",
+      "element_path": "visits.description",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-073",
+      "name": "username",
+      "element_path": "user.username",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-016"
+      ]
+    },
+    {
+      "element_id": "EL-074",
+      "name": "username",
+      "element_path": "domain.user.username",
+      "component_id": "CMP-001",
+      "container": "user domain object",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-024",
+        "EV-025",
+        "EV-041"
+      ]
+    },
+    {
+      "element_id": "EL-075",
+      "name": "username",
+      "element_path": "users.username",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-076",
+      "name": "password",
+      "element_path": "user.password",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-016"
+      ]
+    },
+    {
+      "element_id": "EL-077",
+      "name": "password",
+      "element_path": "domain.user.password",
+      "component_id": "CMP-001",
+      "container": "user domain object",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-024",
+        "EV-025",
+        "EV-041"
+      ]
+    },
+    {
+      "element_id": "EL-078",
+      "name": "password",
+      "element_path": "users.password",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-079",
+      "name": "enabled",
+      "element_path": "user.enabled",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "boolean",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-016"
+      ]
+    },
+    {
+      "element_id": "EL-080",
+      "name": "enabled",
+      "element_path": "domain.user.enabled",
+      "component_id": "CMP-001",
+      "container": "user domain object",
+      "data_type": "boolean",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-024",
+        "EV-025",
+        "EV-041"
+      ]
+    },
+    {
+      "element_id": "EL-081",
+      "name": "enabled",
+      "element_path": "users.enabled",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "boolean",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-082",
+      "name": "name",
+      "element_path": "user.roles[].name",
+      "component_id": "CMP-002",
+      "container": "HTTP request or response",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-016"
+      ]
+    },
+    {
+      "element_id": "EL-083",
+      "name": "name",
+      "element_path": "domain.user.roles[].name",
+      "component_id": "CMP-001",
+      "container": "user domain object",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-024",
+        "EV-025",
+        "EV-041"
+      ]
+    },
+    {
+      "element_id": "EL-084",
+      "name": "role",
+      "element_path": "roles.role",
+      "component_id": "CMP-003",
+      "container": "H2 table row",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    }
+  ],
+  "boundary_contracts": [
+    {
+      "contract_id": "CTR-001",
+      "direction": "inbound",
+      "mechanism": "http",
+      "operation": "GET, POST",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-002",
+      "raw_locator": "http://localhost:9966/petclinic/api/owners",
+      "normalized_locator": "http://localhost:9966/petclinic/api/owners",
+      "data_element_ids": [
+        "EL-001",
+        "EL-004",
+        "EL-007",
+        "EL-010",
+        "EL-013",
+        "EL-016"
+      ],
+      "schema_signature": [
+        "owner.address:string",
+        "owner.city:string",
+        "owner.firstName:string",
+        "owner.id:integer",
+        "owner.lastName:string",
+        "owner.telephone:string"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-004",
+        "EV-026",
+        "EV-033"
+      ]
+    },
+    {
+      "contract_id": "CTR-002",
+      "direction": "inbound",
+      "mechanism": "http",
+      "operation": "GET, PUT, DELETE",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-002",
+      "raw_locator": "http://localhost:9966/petclinic/api/owners/{ownerId}",
+      "normalized_locator": "http://localhost:9966/petclinic/api/owners/{ownerId}",
+      "data_element_ids": [
+        "EL-001",
+        "EL-004",
+        "EL-007",
+        "EL-010",
+        "EL-013",
+        "EL-016"
+      ],
+      "schema_signature": [
+        "owner.address:string",
+        "owner.city:string",
+        "owner.firstName:string",
+        "owner.id:integer",
+        "owner.lastName:string",
+        "owner.telephone:string"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-004",
+        "EV-026",
+        "EV-033"
+      ]
+    },
+    {
+      "contract_id": "CTR-003",
+      "direction": "inbound",
+      "mechanism": "http",
+      "operation": "GET",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-002",
+      "raw_locator": "http://localhost:9966/petclinic/api/v2/owners",
+      "normalized_locator": "http://localhost:9966/petclinic/api/v2/owners",
+      "data_element_ids": [
+        "EL-001",
+        "EL-004",
+        "EL-007",
+        "EL-010",
+        "EL-013",
+        "EL-016"
+      ],
+      "schema_signature": [
+        "owner.address:string",
+        "owner.city:string",
+        "owner.firstName:string",
+        "owner.id:integer",
+        "owner.lastName:string",
+        "owner.telephone:string"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-004",
+        "EV-026",
+        "EV-033"
+      ]
+    },
+    {
+      "contract_id": "CTR-004",
+      "direction": "inbound",
+      "mechanism": "http",
+      "operation": "POST",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-002",
+      "raw_locator": "http://localhost:9966/petclinic/api/owners/{ownerId}/pets",
+      "normalized_locator": "http://localhost:9966/petclinic/api/owners/{ownerId}/pets",
+      "data_element_ids": [
+        "EL-019",
+        "EL-022",
+        "EL-025",
+        "EL-028",
+        "EL-031"
+      ],
+      "schema_signature": [
+        "pet.birthDate:date",
+        "pet.id:integer",
+        "pet.name:string",
+        "pet.ownerId:integer",
+        "pet.type.id:integer"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-004",
+        "EV-026",
+        "EV-027",
+        "EV-034"
+      ]
+    },
+    {
+      "contract_id": "CTR-005",
+      "direction": "inbound",
+      "mechanism": "http",
+      "operation": "GET, PUT",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-002",
+      "raw_locator": "http://localhost:9966/petclinic/api/owners/{ownerId}/pets/{petId}",
+      "normalized_locator": "http://localhost:9966/petclinic/api/owners/{ownerId}/pets/{petId}",
+      "data_element_ids": [
+        "EL-019",
+        "EL-022",
+        "EL-025",
+        "EL-028",
+        "EL-031"
+      ],
+      "schema_signature": [
+        "pet.birthDate:date",
+        "pet.id:integer",
+        "pet.name:string",
+        "pet.ownerId:integer",
+        "pet.type.id:integer"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-004",
+        "EV-026",
+        "EV-027",
+        "EV-034"
+      ]
+    },
+    {
+      "contract_id": "CTR-006",
+      "direction": "inbound",
+      "mechanism": "http",
+      "operation": "GET",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-002",
+      "raw_locator": "http://localhost:9966/petclinic/api/pets",
+      "normalized_locator": "http://localhost:9966/petclinic/api/pets",
+      "data_element_ids": [
+        "EL-019",
+        "EL-022",
+        "EL-025",
+        "EL-028",
+        "EL-031"
+      ],
+      "schema_signature": [
+        "pet.birthDate:date",
+        "pet.id:integer",
+        "pet.name:string",
+        "pet.ownerId:integer",
+        "pet.type.id:integer"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-006",
+        "EV-026",
+        "EV-027",
+        "EV-034"
+      ]
+    },
+    {
+      "contract_id": "CTR-007",
+      "direction": "inbound",
+      "mechanism": "http",
+      "operation": "GET, PUT, DELETE",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-002",
+      "raw_locator": "http://localhost:9966/petclinic/api/pets/{petId}",
+      "normalized_locator": "http://localhost:9966/petclinic/api/pets/{petId}",
+      "data_element_ids": [
+        "EL-019",
+        "EL-022",
+        "EL-025",
+        "EL-028",
+        "EL-031"
+      ],
+      "schema_signature": [
+        "pet.birthDate:date",
+        "pet.id:integer",
+        "pet.name:string",
+        "pet.ownerId:integer",
+        "pet.type.id:integer"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-006",
+        "EV-026",
+        "EV-027",
+        "EV-034"
+      ]
+    },
+    {
+      "contract_id": "CTR-008",
+      "direction": "inbound",
+      "mechanism": "http",
+      "operation": "GET",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-002",
+      "raw_locator": "http://localhost:9966/petclinic/api/v2/pets",
+      "normalized_locator": "http://localhost:9966/petclinic/api/v2/pets",
+      "data_element_ids": [
+        "EL-019",
+        "EL-022",
+        "EL-025",
+        "EL-028",
+        "EL-031"
+      ],
+      "schema_signature": [
+        "pet.birthDate:date",
+        "pet.id:integer",
+        "pet.name:string",
+        "pet.ownerId:integer",
+        "pet.type.id:integer"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-006",
+        "EV-026",
+        "EV-027",
+        "EV-034"
+      ]
+    },
+    {
+      "contract_id": "CTR-009",
+      "direction": "inbound",
+      "mechanism": "http",
+      "operation": "POST",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-002",
+      "raw_locator": "http://localhost:9966/petclinic/api/owners/{ownerId}/pets/{petId}/visits",
+      "normalized_locator": "http://localhost:9966/petclinic/api/owners/{ownerId}/pets/{petId}/visits",
+      "data_element_ids": [
+        "EL-061",
+        "EL-064",
+        "EL-067",
+        "EL-070"
+      ],
+      "schema_signature": [
+        "visit.date:date",
+        "visit.description:string",
+        "visit.id:integer",
+        "visit.petId:integer"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-004",
+        "EV-026",
+        "EV-031"
+      ]
+    },
+    {
+      "contract_id": "CTR-010",
+      "direction": "inbound",
+      "mechanism": "http",
+      "operation": "GET, POST",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-002",
+      "raw_locator": "http://localhost:9966/petclinic/api/visits",
+      "normalized_locator": "http://localhost:9966/petclinic/api/visits",
+      "data_element_ids": [
+        "EL-061",
+        "EL-064",
+        "EL-067",
+        "EL-070"
+      ],
+      "schema_signature": [
+        "visit.date:date",
+        "visit.description:string",
+        "visit.id:integer",
+        "visit.petId:integer"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-007",
+        "EV-026",
+        "EV-031"
+      ]
+    },
+    {
+      "contract_id": "CTR-011",
+      "direction": "inbound",
+      "mechanism": "http",
+      "operation": "GET, PUT, DELETE",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-002",
+      "raw_locator": "http://localhost:9966/petclinic/api/visits/{visitId}",
+      "normalized_locator": "http://localhost:9966/petclinic/api/visits/{visitId}",
+      "data_element_ids": [
+        "EL-061",
+        "EL-064",
+        "EL-067",
+        "EL-070"
+      ],
+      "schema_signature": [
+        "visit.date:date",
+        "visit.description:string",
+        "visit.id:integer",
+        "visit.petId:integer"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-007",
+        "EV-026",
+        "EV-031"
+      ]
+    },
+    {
+      "contract_id": "CTR-012",
+      "direction": "inbound",
+      "mechanism": "http",
+      "operation": "GET, POST",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-002",
+      "raw_locator": "http://localhost:9966/petclinic/api/pettypes",
+      "normalized_locator": "http://localhost:9966/petclinic/api/pettypes",
+      "data_element_ids": [
+        "EL-034",
+        "EL-037"
+      ],
+      "schema_signature": [
+        "petType.id:integer",
+        "petType.name:string"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-005",
+        "EV-028"
+      ]
+    },
+    {
+      "contract_id": "CTR-013",
+      "direction": "inbound",
+      "mechanism": "http",
+      "operation": "GET, PUT, DELETE",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-002",
+      "raw_locator": "http://localhost:9966/petclinic/api/pettypes/{petTypeId}",
+      "normalized_locator": "http://localhost:9966/petclinic/api/pettypes/{petTypeId}",
+      "data_element_ids": [
+        "EL-034",
+        "EL-037"
+      ],
+      "schema_signature": [
+        "petType.id:integer",
+        "petType.name:string"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-005",
+        "EV-028"
+      ]
+    },
+    {
+      "contract_id": "CTR-014",
+      "direction": "inbound",
+      "mechanism": "http",
+      "operation": "GET, POST",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-002",
+      "raw_locator": "http://localhost:9966/petclinic/api/specialties",
+      "normalized_locator": "http://localhost:9966/petclinic/api/specialties",
+      "data_element_ids": [
+        "EL-040",
+        "EL-043"
+      ],
+      "schema_signature": [
+        "specialty.id:integer",
+        "specialty.name:string"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-008",
+        "EV-029"
+      ]
+    },
+    {
+      "contract_id": "CTR-015",
+      "direction": "inbound",
+      "mechanism": "http",
+      "operation": "GET, PUT, DELETE",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-002",
+      "raw_locator": "http://localhost:9966/petclinic/api/specialties/{specialtyId}",
+      "normalized_locator": "http://localhost:9966/petclinic/api/specialties/{specialtyId}",
+      "data_element_ids": [
+        "EL-040",
+        "EL-043"
+      ],
+      "schema_signature": [
+        "specialty.id:integer",
+        "specialty.name:string"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-008",
+        "EV-029"
+      ]
+    },
+    {
+      "contract_id": "CTR-016",
+      "direction": "inbound",
+      "mechanism": "http",
+      "operation": "GET, POST",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-002",
+      "raw_locator": "http://localhost:9966/petclinic/api/vets",
+      "normalized_locator": "http://localhost:9966/petclinic/api/vets",
+      "data_element_ids": [
+        "EL-046",
+        "EL-049",
+        "EL-052",
+        "EL-055",
+        "EL-058"
+      ],
+      "schema_signature": [
+        "vet.firstName:string",
+        "vet.id:integer",
+        "vet.lastName:string",
+        "vet.specialties[].id:integer",
+        "vet.specialties[].name:string"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-009",
+        "EV-030"
+      ]
+    },
+    {
+      "contract_id": "CTR-017",
+      "direction": "inbound",
+      "mechanism": "http",
+      "operation": "GET, PUT, DELETE",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-002",
+      "raw_locator": "http://localhost:9966/petclinic/api/vets/{vetId}",
+      "normalized_locator": "http://localhost:9966/petclinic/api/vets/{vetId}",
+      "data_element_ids": [
+        "EL-046",
+        "EL-049",
+        "EL-052",
+        "EL-055",
+        "EL-058"
+      ],
+      "schema_signature": [
+        "vet.firstName:string",
+        "vet.id:integer",
+        "vet.lastName:string",
+        "vet.specialties[].id:integer",
+        "vet.specialties[].name:string"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-009",
+        "EV-030"
+      ]
+    },
+    {
+      "contract_id": "CTR-018",
+      "direction": "inbound",
+      "mechanism": "http",
+      "operation": "POST",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-002",
+      "raw_locator": "http://localhost:9966/petclinic/api/users",
+      "normalized_locator": "http://localhost:9966/petclinic/api/users",
+      "data_element_ids": [
+        "EL-073",
+        "EL-076",
+        "EL-079",
+        "EL-082"
+      ],
+      "schema_signature": [
+        "user.enabled:boolean",
+        "user.password:string",
+        "user.roles[].name:string",
+        "user.username:string"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-010",
+        "EV-032"
+      ]
+    },
+    {
+      "contract_id": "CTR-019",
+      "direction": "inbound",
+      "mechanism": "database",
+      "operation": "query",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-003",
+      "raw_locator": "jdbc:h2:mem:petclinic | table=owners",
+      "normalized_locator": "jdbc:h2:mem:petclinic/owners",
+      "data_element_ids": [
+        "EL-003",
+        "EL-006",
+        "EL-009",
+        "EL-012",
+        "EL-015",
+        "EL-018"
+      ],
+      "schema_signature": [
+        "owners.address:string",
+        "owners.city:string",
+        "owners.first_name:string",
+        "owners.id:integer",
+        "owners.last_name:string",
+        "owners.telephone:string"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-044"
+      ]
+    },
+    {
+      "contract_id": "CTR-020",
+      "direction": "outbound",
+      "mechanism": "database",
+      "operation": "save, delete",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-003",
+      "raw_locator": "jdbc:h2:mem:petclinic | table=owners",
+      "normalized_locator": "jdbc:h2:mem:petclinic/owners",
+      "data_element_ids": [
+        "EL-003",
+        "EL-006",
+        "EL-009",
+        "EL-012",
+        "EL-015",
+        "EL-018"
+      ],
+      "schema_signature": [
+        "owners.address:string",
+        "owners.city:string",
+        "owners.first_name:string",
+        "owners.id:integer",
+        "owners.last_name:string",
+        "owners.telephone:string"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-044"
+      ]
+    },
+    {
+      "contract_id": "CTR-021",
+      "direction": "inbound",
+      "mechanism": "database",
+      "operation": "query",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-003",
+      "raw_locator": "jdbc:h2:mem:petclinic | table=pets",
+      "normalized_locator": "jdbc:h2:mem:petclinic/pets",
+      "data_element_ids": [
+        "EL-021",
+        "EL-024",
+        "EL-027",
+        "EL-030",
+        "EL-033"
+      ],
+      "schema_signature": [
+        "pets.birth_date:date",
+        "pets.id:integer",
+        "pets.name:string",
+        "pets.owner_id:integer",
+        "pets.type_id:integer"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-045"
+      ]
+    },
+    {
+      "contract_id": "CTR-022",
+      "direction": "outbound",
+      "mechanism": "database",
+      "operation": "save, delete",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-003",
+      "raw_locator": "jdbc:h2:mem:petclinic | table=pets",
+      "normalized_locator": "jdbc:h2:mem:petclinic/pets",
+      "data_element_ids": [
+        "EL-021",
+        "EL-024",
+        "EL-027",
+        "EL-030",
+        "EL-033"
+      ],
+      "schema_signature": [
+        "pets.birth_date:date",
+        "pets.id:integer",
+        "pets.name:string",
+        "pets.owner_id:integer",
+        "pets.type_id:integer"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-045"
+      ]
+    },
+    {
+      "contract_id": "CTR-023",
+      "direction": "inbound",
+      "mechanism": "database",
+      "operation": "query",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-003",
+      "raw_locator": "jdbc:h2:mem:petclinic | table=types",
+      "normalized_locator": "jdbc:h2:mem:petclinic/types",
+      "data_element_ids": [
+        "EL-036",
+        "EL-039"
+      ],
+      "schema_signature": [
+        "types.id:integer",
+        "types.name:string"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-046"
+      ]
+    },
+    {
+      "contract_id": "CTR-024",
+      "direction": "outbound",
+      "mechanism": "database",
+      "operation": "save, delete",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-003",
+      "raw_locator": "jdbc:h2:mem:petclinic | table=types",
+      "normalized_locator": "jdbc:h2:mem:petclinic/types",
+      "data_element_ids": [
+        "EL-036",
+        "EL-039"
+      ],
+      "schema_signature": [
+        "types.id:integer",
+        "types.name:string"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-046"
+      ]
+    },
+    {
+      "contract_id": "CTR-025",
+      "direction": "inbound",
+      "mechanism": "database",
+      "operation": "query",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-003",
+      "raw_locator": "jdbc:h2:mem:petclinic | table=specialties",
+      "normalized_locator": "jdbc:h2:mem:petclinic/specialties",
+      "data_element_ids": [
+        "EL-042",
+        "EL-045"
+      ],
+      "schema_signature": [
+        "specialties.id:integer",
+        "specialties.name:string"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-047"
+      ]
+    },
+    {
+      "contract_id": "CTR-026",
+      "direction": "outbound",
+      "mechanism": "database",
+      "operation": "save, delete",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-003",
+      "raw_locator": "jdbc:h2:mem:petclinic | table=specialties",
+      "normalized_locator": "jdbc:h2:mem:petclinic/specialties",
+      "data_element_ids": [
+        "EL-042",
+        "EL-045"
+      ],
+      "schema_signature": [
+        "specialties.id:integer",
+        "specialties.name:string"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-047"
+      ]
+    },
+    {
+      "contract_id": "CTR-027",
+      "direction": "inbound",
+      "mechanism": "database",
+      "operation": "query",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-003",
+      "raw_locator": "jdbc:h2:mem:petclinic | table=vets",
+      "normalized_locator": "jdbc:h2:mem:petclinic/vets",
+      "data_element_ids": [
+        "EL-048",
+        "EL-051",
+        "EL-054",
+        "EL-057",
+        "EL-045"
+      ],
+      "schema_signature": [
+        "specialties.name:string",
+        "vet_specialties.specialty_id:integer",
+        "vets.first_name:string",
+        "vets.id:integer",
+        "vets.last_name:string"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-048"
+      ]
+    },
+    {
+      "contract_id": "CTR-028",
+      "direction": "outbound",
+      "mechanism": "database",
+      "operation": "save, delete",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-003",
+      "raw_locator": "jdbc:h2:mem:petclinic | table=vets",
+      "normalized_locator": "jdbc:h2:mem:petclinic/vets",
+      "data_element_ids": [
+        "EL-048",
+        "EL-051",
+        "EL-054",
+        "EL-057",
+        "EL-045"
+      ],
+      "schema_signature": [
+        "specialties.name:string",
+        "vet_specialties.specialty_id:integer",
+        "vets.first_name:string",
+        "vets.id:integer",
+        "vets.last_name:string"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-048"
+      ]
+    },
+    {
+      "contract_id": "CTR-029",
+      "direction": "inbound",
+      "mechanism": "database",
+      "operation": "query",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-003",
+      "raw_locator": "jdbc:h2:mem:petclinic | table=visits",
+      "normalized_locator": "jdbc:h2:mem:petclinic/visits",
+      "data_element_ids": [
+        "EL-063",
+        "EL-066",
+        "EL-069",
+        "EL-072"
+      ],
+      "schema_signature": [
+        "visits.description:string",
+        "visits.id:integer",
+        "visits.pet_id:integer",
+        "visits.visit_date:date"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-049"
+      ]
+    },
+    {
+      "contract_id": "CTR-030",
+      "direction": "outbound",
+      "mechanism": "database",
+      "operation": "save, delete",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-003",
+      "raw_locator": "jdbc:h2:mem:petclinic | table=visits",
+      "normalized_locator": "jdbc:h2:mem:petclinic/visits",
+      "data_element_ids": [
+        "EL-063",
+        "EL-066",
+        "EL-069",
+        "EL-072"
+      ],
+      "schema_signature": [
+        "visits.description:string",
+        "visits.id:integer",
+        "visits.pet_id:integer",
+        "visits.visit_date:date"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-049"
+      ]
+    },
+    {
+      "contract_id": "CTR-031",
+      "direction": "outbound",
+      "mechanism": "database",
+      "operation": "save",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-003",
+      "raw_locator": "jdbc:h2:mem:petclinic | table=users,roles",
+      "normalized_locator": "jdbc:h2:mem:petclinic/users+roles",
+      "data_element_ids": [
+        "EL-075",
+        "EL-078",
+        "EL-081",
+        "EL-084"
+      ],
+      "schema_signature": [
+        "roles.role:string",
+        "users.enabled:boolean",
+        "users.password:string",
+        "users.username:string"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-043",
+        "EV-050"
+      ]
+    }
+  ],
+  "lineage_flows": [
+    {
+      "flow_id": "FL-001",
+      "flow_type": "database_to_service",
+      "source_component_id": "CMP-003",
+      "target_component_id": "CMP-001",
+      "operation": "query owners",
+      "mechanism": "Spring Data JPA over JDBC",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-003"
+          ],
+          "target_element_id": "EL-002",
+          "transformation_type": "none",
+          "expression": "owners.id -> domain.owner.id",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-044",
+            "EV-017",
+            "EV-018",
+            "EV-035",
+            "EV-026",
+            "EV-033",
+            "EV-011"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-006"
+          ],
+          "target_element_id": "EL-005",
+          "transformation_type": "rename",
+          "expression": "owners.first_name -> domain.owner.firstName",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-044",
+            "EV-017",
+            "EV-018",
+            "EV-035",
+            "EV-026",
+            "EV-033",
+            "EV-011"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-009"
+          ],
+          "target_element_id": "EL-008",
+          "transformation_type": "rename",
+          "expression": "owners.last_name -> domain.owner.lastName",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-044",
+            "EV-017",
+            "EV-018",
+            "EV-035",
+            "EV-026",
+            "EV-033",
+            "EV-011"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-012"
+          ],
+          "target_element_id": "EL-011",
+          "transformation_type": "none",
+          "expression": "owners.address -> domain.owner.address",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-044",
+            "EV-017",
+            "EV-018",
+            "EV-035",
+            "EV-026",
+            "EV-033",
+            "EV-011"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-015"
+          ],
+          "target_element_id": "EL-014",
+          "transformation_type": "none",
+          "expression": "owners.city -> domain.owner.city",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-044",
+            "EV-017",
+            "EV-018",
+            "EV-035",
+            "EV-026",
+            "EV-033",
+            "EV-011"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-018"
+          ],
+          "target_element_id": "EL-017",
+          "transformation_type": "none",
+          "expression": "owners.telephone -> domain.owner.telephone",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-044",
+            "EV-017",
+            "EV-018",
+            "EV-035",
+            "EV-026",
+            "EV-033",
+            "EV-011"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-044",
+        "EV-017",
+        "EV-018",
+        "EV-035",
+        "EV-026",
+        "EV-033",
+        "EV-011"
+      ]
+    },
+    {
+      "flow_id": "FL-002",
+      "flow_type": "service_to_external_api",
+      "source_component_id": "CMP-001",
+      "target_component_id": "CMP-002",
+      "operation": "return owner JSON response",
+      "mechanism": "HTTP JSON",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-002"
+          ],
+          "target_element_id": "EL-001",
+          "transformation_type": "serialize",
+          "expression": "domain.owner.id -> owner.id",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-044",
+            "EV-017",
+            "EV-018",
+            "EV-035",
+            "EV-026",
+            "EV-033",
+            "EV-011"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-005"
+          ],
+          "target_element_id": "EL-004",
+          "transformation_type": "serialize",
+          "expression": "domain.owner.firstName -> owner.firstName",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-044",
+            "EV-017",
+            "EV-018",
+            "EV-035",
+            "EV-026",
+            "EV-033",
+            "EV-011"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-008"
+          ],
+          "target_element_id": "EL-007",
+          "transformation_type": "serialize",
+          "expression": "domain.owner.lastName -> owner.lastName",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-044",
+            "EV-017",
+            "EV-018",
+            "EV-035",
+            "EV-026",
+            "EV-033",
+            "EV-011"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-011"
+          ],
+          "target_element_id": "EL-010",
+          "transformation_type": "serialize",
+          "expression": "domain.owner.address -> owner.address",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-044",
+            "EV-017",
+            "EV-018",
+            "EV-035",
+            "EV-026",
+            "EV-033",
+            "EV-011"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-014"
+          ],
+          "target_element_id": "EL-013",
+          "transformation_type": "serialize",
+          "expression": "domain.owner.city -> owner.city",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-044",
+            "EV-017",
+            "EV-018",
+            "EV-035",
+            "EV-026",
+            "EV-033",
+            "EV-011"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-017"
+          ],
+          "target_element_id": "EL-016",
+          "transformation_type": "serialize",
+          "expression": "domain.owner.telephone -> owner.telephone",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-044",
+            "EV-017",
+            "EV-018",
+            "EV-035",
+            "EV-026",
+            "EV-033",
+            "EV-011"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-044",
+        "EV-017",
+        "EV-018",
+        "EV-035",
+        "EV-026",
+        "EV-033",
+        "EV-011"
+      ]
+    },
+    {
+      "flow_id": "FL-003",
+      "flow_type": "external_api_to_service",
+      "source_component_id": "CMP-002",
+      "target_component_id": "CMP-001",
+      "operation": "receive owner JSON request",
+      "mechanism": "HTTP JSON",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-004"
+          ],
+          "target_element_id": "EL-005",
+          "transformation_type": "deserialize",
+          "expression": "owner.firstName -> domain.owner.firstName",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-044",
+            "EV-017",
+            "EV-018",
+            "EV-035",
+            "EV-026",
+            "EV-033",
+            "EV-011"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-007"
+          ],
+          "target_element_id": "EL-008",
+          "transformation_type": "deserialize",
+          "expression": "owner.lastName -> domain.owner.lastName",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-044",
+            "EV-017",
+            "EV-018",
+            "EV-035",
+            "EV-026",
+            "EV-033",
+            "EV-011"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-010"
+          ],
+          "target_element_id": "EL-011",
+          "transformation_type": "deserialize",
+          "expression": "owner.address -> domain.owner.address",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-044",
+            "EV-017",
+            "EV-018",
+            "EV-035",
+            "EV-026",
+            "EV-033",
+            "EV-011"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-013"
+          ],
+          "target_element_id": "EL-014",
+          "transformation_type": "deserialize",
+          "expression": "owner.city -> domain.owner.city",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-044",
+            "EV-017",
+            "EV-018",
+            "EV-035",
+            "EV-026",
+            "EV-033",
+            "EV-011"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-016"
+          ],
+          "target_element_id": "EL-017",
+          "transformation_type": "deserialize",
+          "expression": "owner.telephone -> domain.owner.telephone",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-044",
+            "EV-017",
+            "EV-018",
+            "EV-035",
+            "EV-026",
+            "EV-033",
+            "EV-011"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-044",
+        "EV-017",
+        "EV-018",
+        "EV-035",
+        "EV-026",
+        "EV-033",
+        "EV-011"
+      ]
+    },
+    {
+      "flow_id": "FL-004",
+      "flow_type": "service_to_database",
+      "source_component_id": "CMP-001",
+      "target_component_id": "CMP-003",
+      "operation": "save owners",
+      "mechanism": "Spring Data JPA over JDBC",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-005"
+          ],
+          "target_element_id": "EL-006",
+          "transformation_type": "rename",
+          "expression": "domain.owner.firstName -> owners.first_name",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-044",
+            "EV-017",
+            "EV-018",
+            "EV-035",
+            "EV-026",
+            "EV-033",
+            "EV-011"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-008"
+          ],
+          "target_element_id": "EL-009",
+          "transformation_type": "rename",
+          "expression": "domain.owner.lastName -> owners.last_name",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-044",
+            "EV-017",
+            "EV-018",
+            "EV-035",
+            "EV-026",
+            "EV-033",
+            "EV-011"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-011"
+          ],
+          "target_element_id": "EL-012",
+          "transformation_type": "none",
+          "expression": "domain.owner.address -> owners.address",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-044",
+            "EV-017",
+            "EV-018",
+            "EV-035",
+            "EV-026",
+            "EV-033",
+            "EV-011"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-014"
+          ],
+          "target_element_id": "EL-015",
+          "transformation_type": "none",
+          "expression": "domain.owner.city -> owners.city",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-044",
+            "EV-017",
+            "EV-018",
+            "EV-035",
+            "EV-026",
+            "EV-033",
+            "EV-011"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-017"
+          ],
+          "target_element_id": "EL-018",
+          "transformation_type": "none",
+          "expression": "domain.owner.telephone -> owners.telephone",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-044",
+            "EV-017",
+            "EV-018",
+            "EV-035",
+            "EV-026",
+            "EV-033",
+            "EV-011"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-044",
+        "EV-017",
+        "EV-018",
+        "EV-035",
+        "EV-026",
+        "EV-033",
+        "EV-011"
+      ]
+    },
+    {
+      "flow_id": "FL-005",
+      "flow_type": "database_to_service",
+      "source_component_id": "CMP-003",
+      "target_component_id": "CMP-001",
+      "operation": "query pets",
+      "mechanism": "Spring Data JPA over JDBC",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-021"
+          ],
+          "target_element_id": "EL-020",
+          "transformation_type": "none",
+          "expression": "pets.id -> domain.pet.id",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-045",
+            "EV-019",
+            "EV-036",
+            "EV-026",
+            "EV-027",
+            "EV-034",
+            "EV-012"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-024"
+          ],
+          "target_element_id": "EL-023",
+          "transformation_type": "none",
+          "expression": "pets.name -> domain.pet.name",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-045",
+            "EV-019",
+            "EV-036",
+            "EV-026",
+            "EV-027",
+            "EV-034",
+            "EV-012"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-027"
+          ],
+          "target_element_id": "EL-026",
+          "transformation_type": "rename",
+          "expression": "pets.birth_date -> domain.pet.birthDate",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-045",
+            "EV-019",
+            "EV-036",
+            "EV-026",
+            "EV-027",
+            "EV-034",
+            "EV-012"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-030"
+          ],
+          "target_element_id": "EL-029",
+          "transformation_type": "rename",
+          "expression": "pets.type_id -> domain.pet.type.id",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-045",
+            "EV-019",
+            "EV-036",
+            "EV-026",
+            "EV-027",
+            "EV-034",
+            "EV-012"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-033"
+          ],
+          "target_element_id": "EL-032",
+          "transformation_type": "rename",
+          "expression": "pets.owner_id -> domain.pet.ownerId",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-045",
+            "EV-019",
+            "EV-036",
+            "EV-026",
+            "EV-027",
+            "EV-034",
+            "EV-012"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-045",
+        "EV-019",
+        "EV-036",
+        "EV-026",
+        "EV-027",
+        "EV-034",
+        "EV-012"
+      ]
+    },
+    {
+      "flow_id": "FL-006",
+      "flow_type": "service_to_external_api",
+      "source_component_id": "CMP-001",
+      "target_component_id": "CMP-002",
+      "operation": "return pet JSON response",
+      "mechanism": "HTTP JSON",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-020"
+          ],
+          "target_element_id": "EL-019",
+          "transformation_type": "serialize",
+          "expression": "domain.pet.id -> pet.id",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-045",
+            "EV-019",
+            "EV-036",
+            "EV-026",
+            "EV-027",
+            "EV-034",
+            "EV-012"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-023"
+          ],
+          "target_element_id": "EL-022",
+          "transformation_type": "serialize",
+          "expression": "domain.pet.name -> pet.name",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-045",
+            "EV-019",
+            "EV-036",
+            "EV-026",
+            "EV-027",
+            "EV-034",
+            "EV-012"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-026"
+          ],
+          "target_element_id": "EL-025",
+          "transformation_type": "serialize",
+          "expression": "domain.pet.birthDate -> pet.birthDate",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-045",
+            "EV-019",
+            "EV-036",
+            "EV-026",
+            "EV-027",
+            "EV-034",
+            "EV-012"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-029"
+          ],
+          "target_element_id": "EL-028",
+          "transformation_type": "serialize",
+          "expression": "domain.pet.type.id -> pet.type.id",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-045",
+            "EV-019",
+            "EV-036",
+            "EV-026",
+            "EV-027",
+            "EV-034",
+            "EV-012"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-032"
+          ],
+          "target_element_id": "EL-031",
+          "transformation_type": "serialize",
+          "expression": "domain.pet.ownerId -> pet.ownerId",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-045",
+            "EV-019",
+            "EV-036",
+            "EV-026",
+            "EV-027",
+            "EV-034",
+            "EV-012"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-045",
+        "EV-019",
+        "EV-036",
+        "EV-026",
+        "EV-027",
+        "EV-034",
+        "EV-012"
+      ]
+    },
+    {
+      "flow_id": "FL-007",
+      "flow_type": "external_api_to_service",
+      "source_component_id": "CMP-002",
+      "target_component_id": "CMP-001",
+      "operation": "receive pet JSON request",
+      "mechanism": "HTTP JSON",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-022"
+          ],
+          "target_element_id": "EL-023",
+          "transformation_type": "deserialize",
+          "expression": "pet.name -> domain.pet.name",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-045",
+            "EV-019",
+            "EV-036",
+            "EV-026",
+            "EV-027",
+            "EV-034",
+            "EV-012"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-025"
+          ],
+          "target_element_id": "EL-026",
+          "transformation_type": "deserialize",
+          "expression": "pet.birthDate -> domain.pet.birthDate",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-045",
+            "EV-019",
+            "EV-036",
+            "EV-026",
+            "EV-027",
+            "EV-034",
+            "EV-012"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-028"
+          ],
+          "target_element_id": "EL-029",
+          "transformation_type": "deserialize",
+          "expression": "pet.type.id -> domain.pet.type.id",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-045",
+            "EV-019",
+            "EV-036",
+            "EV-026",
+            "EV-027",
+            "EV-034",
+            "EV-012"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-031"
+          ],
+          "target_element_id": "EL-032",
+          "transformation_type": "deserialize",
+          "expression": "pet.ownerId -> domain.pet.ownerId",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-045",
+            "EV-019",
+            "EV-036",
+            "EV-026",
+            "EV-027",
+            "EV-034",
+            "EV-012"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-045",
+        "EV-019",
+        "EV-036",
+        "EV-026",
+        "EV-027",
+        "EV-034",
+        "EV-012"
+      ]
+    },
+    {
+      "flow_id": "FL-008",
+      "flow_type": "service_to_database",
+      "source_component_id": "CMP-001",
+      "target_component_id": "CMP-003",
+      "operation": "save pets",
+      "mechanism": "Spring Data JPA over JDBC",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-023"
+          ],
+          "target_element_id": "EL-024",
+          "transformation_type": "none",
+          "expression": "domain.pet.name -> pets.name",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-045",
+            "EV-019",
+            "EV-036",
+            "EV-026",
+            "EV-027",
+            "EV-034",
+            "EV-012"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-026"
+          ],
+          "target_element_id": "EL-027",
+          "transformation_type": "rename",
+          "expression": "domain.pet.birthDate -> pets.birth_date",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-045",
+            "EV-019",
+            "EV-036",
+            "EV-026",
+            "EV-027",
+            "EV-034",
+            "EV-012"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-029"
+          ],
+          "target_element_id": "EL-030",
+          "transformation_type": "rename",
+          "expression": "domain.pet.type.id -> pets.type_id",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-045",
+            "EV-019",
+            "EV-036",
+            "EV-026",
+            "EV-027",
+            "EV-034",
+            "EV-012"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-032"
+          ],
+          "target_element_id": "EL-033",
+          "transformation_type": "rename",
+          "expression": "domain.pet.ownerId -> pets.owner_id",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-045",
+            "EV-019",
+            "EV-036",
+            "EV-026",
+            "EV-027",
+            "EV-034",
+            "EV-012"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-045",
+        "EV-019",
+        "EV-036",
+        "EV-026",
+        "EV-027",
+        "EV-034",
+        "EV-012"
+      ]
+    },
+    {
+      "flow_id": "FL-009",
+      "flow_type": "database_to_service",
+      "source_component_id": "CMP-003",
+      "target_component_id": "CMP-001",
+      "operation": "query types",
+      "mechanism": "Spring Data JPA over JDBC",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-036"
+          ],
+          "target_element_id": "EL-035",
+          "transformation_type": "none",
+          "expression": "types.id -> domain.petType.id",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-046",
+            "EV-020",
+            "EV-037",
+            "EV-028",
+            "EV-013"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-039"
+          ],
+          "target_element_id": "EL-038",
+          "transformation_type": "none",
+          "expression": "types.name -> domain.petType.name",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-046",
+            "EV-020",
+            "EV-037",
+            "EV-028",
+            "EV-013"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-046",
+        "EV-020",
+        "EV-037",
+        "EV-028",
+        "EV-013"
+      ]
+    },
+    {
+      "flow_id": "FL-010",
+      "flow_type": "service_to_external_api",
+      "source_component_id": "CMP-001",
+      "target_component_id": "CMP-002",
+      "operation": "return petType JSON response",
+      "mechanism": "HTTP JSON",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-035"
+          ],
+          "target_element_id": "EL-034",
+          "transformation_type": "serialize",
+          "expression": "domain.petType.id -> petType.id",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-046",
+            "EV-020",
+            "EV-037",
+            "EV-028",
+            "EV-013"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-038"
+          ],
+          "target_element_id": "EL-037",
+          "transformation_type": "serialize",
+          "expression": "domain.petType.name -> petType.name",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-046",
+            "EV-020",
+            "EV-037",
+            "EV-028",
+            "EV-013"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-046",
+        "EV-020",
+        "EV-037",
+        "EV-028",
+        "EV-013"
+      ]
+    },
+    {
+      "flow_id": "FL-011",
+      "flow_type": "external_api_to_service",
+      "source_component_id": "CMP-002",
+      "target_component_id": "CMP-001",
+      "operation": "receive petType JSON request",
+      "mechanism": "HTTP JSON",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-037"
+          ],
+          "target_element_id": "EL-038",
+          "transformation_type": "deserialize",
+          "expression": "petType.name -> domain.petType.name",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-046",
+            "EV-020",
+            "EV-037",
+            "EV-028",
+            "EV-013"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-046",
+        "EV-020",
+        "EV-037",
+        "EV-028",
+        "EV-013"
+      ]
+    },
+    {
+      "flow_id": "FL-012",
+      "flow_type": "service_to_database",
+      "source_component_id": "CMP-001",
+      "target_component_id": "CMP-003",
+      "operation": "save types",
+      "mechanism": "Spring Data JPA over JDBC",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-038"
+          ],
+          "target_element_id": "EL-039",
+          "transformation_type": "none",
+          "expression": "domain.petType.name -> types.name",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-046",
+            "EV-020",
+            "EV-037",
+            "EV-028",
+            "EV-013"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-046",
+        "EV-020",
+        "EV-037",
+        "EV-028",
+        "EV-013"
+      ]
+    },
+    {
+      "flow_id": "FL-013",
+      "flow_type": "database_to_service",
+      "source_component_id": "CMP-003",
+      "target_component_id": "CMP-001",
+      "operation": "query specialties",
+      "mechanism": "Spring Data JPA over JDBC",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-042"
+          ],
+          "target_element_id": "EL-041",
+          "transformation_type": "none",
+          "expression": "specialties.id -> domain.specialty.id",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-047",
+            "EV-021",
+            "EV-038",
+            "EV-029",
+            "EV-011"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-045"
+          ],
+          "target_element_id": "EL-044",
+          "transformation_type": "none",
+          "expression": "specialties.name -> domain.specialty.name",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-047",
+            "EV-021",
+            "EV-038",
+            "EV-029",
+            "EV-011"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-047",
+        "EV-021",
+        "EV-038",
+        "EV-029",
+        "EV-011"
+      ]
+    },
+    {
+      "flow_id": "FL-014",
+      "flow_type": "service_to_external_api",
+      "source_component_id": "CMP-001",
+      "target_component_id": "CMP-002",
+      "operation": "return specialty JSON response",
+      "mechanism": "HTTP JSON",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-041"
+          ],
+          "target_element_id": "EL-040",
+          "transformation_type": "serialize",
+          "expression": "domain.specialty.id -> specialty.id",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-047",
+            "EV-021",
+            "EV-038",
+            "EV-029",
+            "EV-011"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-044"
+          ],
+          "target_element_id": "EL-043",
+          "transformation_type": "serialize",
+          "expression": "domain.specialty.name -> specialty.name",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-047",
+            "EV-021",
+            "EV-038",
+            "EV-029",
+            "EV-011"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-047",
+        "EV-021",
+        "EV-038",
+        "EV-029",
+        "EV-011"
+      ]
+    },
+    {
+      "flow_id": "FL-015",
+      "flow_type": "external_api_to_service",
+      "source_component_id": "CMP-002",
+      "target_component_id": "CMP-001",
+      "operation": "receive specialty JSON request",
+      "mechanism": "HTTP JSON",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-043"
+          ],
+          "target_element_id": "EL-044",
+          "transformation_type": "deserialize",
+          "expression": "specialty.name -> domain.specialty.name",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-047",
+            "EV-021",
+            "EV-038",
+            "EV-029",
+            "EV-011"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-047",
+        "EV-021",
+        "EV-038",
+        "EV-029",
+        "EV-011"
+      ]
+    },
+    {
+      "flow_id": "FL-016",
+      "flow_type": "service_to_database",
+      "source_component_id": "CMP-001",
+      "target_component_id": "CMP-003",
+      "operation": "save specialties",
+      "mechanism": "Spring Data JPA over JDBC",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-044"
+          ],
+          "target_element_id": "EL-045",
+          "transformation_type": "none",
+          "expression": "domain.specialty.name -> specialties.name",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-047",
+            "EV-021",
+            "EV-038",
+            "EV-029",
+            "EV-011"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-047",
+        "EV-021",
+        "EV-038",
+        "EV-029",
+        "EV-011"
+      ]
+    },
+    {
+      "flow_id": "FL-017",
+      "flow_type": "database_to_service",
+      "source_component_id": "CMP-003",
+      "target_component_id": "CMP-001",
+      "operation": "query vets",
+      "mechanism": "Spring Data JPA over JDBC",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-048"
+          ],
+          "target_element_id": "EL-047",
+          "transformation_type": "none",
+          "expression": "vets.id -> domain.vet.id",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-048",
+            "EV-022",
+            "EV-039",
+            "EV-030",
+            "EV-014"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-051"
+          ],
+          "target_element_id": "EL-050",
+          "transformation_type": "rename",
+          "expression": "vets.first_name -> domain.vet.firstName",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-048",
+            "EV-022",
+            "EV-039",
+            "EV-030",
+            "EV-014"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-054"
+          ],
+          "target_element_id": "EL-053",
+          "transformation_type": "rename",
+          "expression": "vets.last_name -> domain.vet.lastName",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-048",
+            "EV-022",
+            "EV-039",
+            "EV-030",
+            "EV-014"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-057"
+          ],
+          "target_element_id": "EL-056",
+          "transformation_type": "rename",
+          "expression": "vet_specialties.specialty_id -> domain.vet.specialties[].id",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-048",
+            "EV-022",
+            "EV-039",
+            "EV-030",
+            "EV-014"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-045"
+          ],
+          "target_element_id": "EL-059",
+          "transformation_type": "rename",
+          "expression": "specialties.name -> domain.vet.specialties[].name",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-048",
+            "EV-022",
+            "EV-039",
+            "EV-030",
+            "EV-014"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-048",
+        "EV-022",
+        "EV-039",
+        "EV-030",
+        "EV-014"
+      ]
+    },
+    {
+      "flow_id": "FL-018",
+      "flow_type": "service_to_external_api",
+      "source_component_id": "CMP-001",
+      "target_component_id": "CMP-002",
+      "operation": "return vet JSON response",
+      "mechanism": "HTTP JSON",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-047"
+          ],
+          "target_element_id": "EL-046",
+          "transformation_type": "serialize",
+          "expression": "domain.vet.id -> vet.id",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-048",
+            "EV-022",
+            "EV-039",
+            "EV-030",
+            "EV-014"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-050"
+          ],
+          "target_element_id": "EL-049",
+          "transformation_type": "serialize",
+          "expression": "domain.vet.firstName -> vet.firstName",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-048",
+            "EV-022",
+            "EV-039",
+            "EV-030",
+            "EV-014"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-053"
+          ],
+          "target_element_id": "EL-052",
+          "transformation_type": "serialize",
+          "expression": "domain.vet.lastName -> vet.lastName",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-048",
+            "EV-022",
+            "EV-039",
+            "EV-030",
+            "EV-014"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-056"
+          ],
+          "target_element_id": "EL-055",
+          "transformation_type": "serialize",
+          "expression": "domain.vet.specialties[].id -> vet.specialties[].id",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-048",
+            "EV-022",
+            "EV-039",
+            "EV-030",
+            "EV-014"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-059"
+          ],
+          "target_element_id": "EL-058",
+          "transformation_type": "serialize",
+          "expression": "domain.vet.specialties[].name -> vet.specialties[].name",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-048",
+            "EV-022",
+            "EV-039",
+            "EV-030",
+            "EV-014"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-048",
+        "EV-022",
+        "EV-039",
+        "EV-030",
+        "EV-014"
+      ]
+    },
+    {
+      "flow_id": "FL-019",
+      "flow_type": "external_api_to_service",
+      "source_component_id": "CMP-002",
+      "target_component_id": "CMP-001",
+      "operation": "receive vet JSON request",
+      "mechanism": "HTTP JSON",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-049"
+          ],
+          "target_element_id": "EL-050",
+          "transformation_type": "deserialize",
+          "expression": "vet.firstName -> domain.vet.firstName",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-048",
+            "EV-022",
+            "EV-039",
+            "EV-030",
+            "EV-014"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-052"
+          ],
+          "target_element_id": "EL-053",
+          "transformation_type": "deserialize",
+          "expression": "vet.lastName -> domain.vet.lastName",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-048",
+            "EV-022",
+            "EV-039",
+            "EV-030",
+            "EV-014"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-055"
+          ],
+          "target_element_id": "EL-056",
+          "transformation_type": "deserialize",
+          "expression": "vet.specialties[].id -> domain.vet.specialties[].id",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-048",
+            "EV-022",
+            "EV-039",
+            "EV-030",
+            "EV-014"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-058"
+          ],
+          "target_element_id": "EL-059",
+          "transformation_type": "deserialize",
+          "expression": "vet.specialties[].name -> domain.vet.specialties[].name",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-048",
+            "EV-022",
+            "EV-039",
+            "EV-030",
+            "EV-014"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-048",
+        "EV-022",
+        "EV-039",
+        "EV-030",
+        "EV-014"
+      ]
+    },
+    {
+      "flow_id": "FL-020",
+      "flow_type": "service_to_database",
+      "source_component_id": "CMP-001",
+      "target_component_id": "CMP-003",
+      "operation": "save vets",
+      "mechanism": "Spring Data JPA over JDBC",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-050"
+          ],
+          "target_element_id": "EL-051",
+          "transformation_type": "rename",
+          "expression": "domain.vet.firstName -> vets.first_name",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-048",
+            "EV-022",
+            "EV-039",
+            "EV-030",
+            "EV-014"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-053"
+          ],
+          "target_element_id": "EL-054",
+          "transformation_type": "rename",
+          "expression": "domain.vet.lastName -> vets.last_name",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-048",
+            "EV-022",
+            "EV-039",
+            "EV-030",
+            "EV-014"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-056"
+          ],
+          "target_element_id": "EL-057",
+          "transformation_type": "rename",
+          "expression": "domain.vet.specialties[].id -> vet_specialties.specialty_id",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-048",
+            "EV-022",
+            "EV-039",
+            "EV-030",
+            "EV-014"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-059"
+          ],
+          "target_element_id": "EL-045",
+          "transformation_type": "rename",
+          "expression": "domain.vet.specialties[].name -> specialties.name",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-048",
+            "EV-022",
+            "EV-039",
+            "EV-030",
+            "EV-014"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-048",
+        "EV-022",
+        "EV-039",
+        "EV-030",
+        "EV-014"
+      ]
+    },
+    {
+      "flow_id": "FL-021",
+      "flow_type": "database_to_service",
+      "source_component_id": "CMP-003",
+      "target_component_id": "CMP-001",
+      "operation": "query visits",
+      "mechanism": "Spring Data JPA over JDBC",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-063"
+          ],
+          "target_element_id": "EL-062",
+          "transformation_type": "none",
+          "expression": "visits.id -> domain.visit.id",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-049",
+            "EV-023",
+            "EV-040",
+            "EV-026",
+            "EV-031",
+            "EV-015"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-066"
+          ],
+          "target_element_id": "EL-065",
+          "transformation_type": "rename",
+          "expression": "visits.pet_id -> domain.visit.petId",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-049",
+            "EV-023",
+            "EV-040",
+            "EV-026",
+            "EV-031",
+            "EV-015"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-069"
+          ],
+          "target_element_id": "EL-068",
+          "transformation_type": "rename",
+          "expression": "visits.visit_date -> domain.visit.date",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-049",
+            "EV-023",
+            "EV-040",
+            "EV-026",
+            "EV-031",
+            "EV-015"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-072"
+          ],
+          "target_element_id": "EL-071",
+          "transformation_type": "none",
+          "expression": "visits.description -> domain.visit.description",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-049",
+            "EV-023",
+            "EV-040",
+            "EV-026",
+            "EV-031",
+            "EV-015"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-049",
+        "EV-023",
+        "EV-040",
+        "EV-026",
+        "EV-031",
+        "EV-015"
+      ]
+    },
+    {
+      "flow_id": "FL-022",
+      "flow_type": "service_to_external_api",
+      "source_component_id": "CMP-001",
+      "target_component_id": "CMP-002",
+      "operation": "return visit JSON response",
+      "mechanism": "HTTP JSON",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-062"
+          ],
+          "target_element_id": "EL-061",
+          "transformation_type": "serialize",
+          "expression": "domain.visit.id -> visit.id",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-049",
+            "EV-023",
+            "EV-040",
+            "EV-026",
+            "EV-031",
+            "EV-015"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-065"
+          ],
+          "target_element_id": "EL-064",
+          "transformation_type": "serialize",
+          "expression": "domain.visit.petId -> visit.petId",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-049",
+            "EV-023",
+            "EV-040",
+            "EV-026",
+            "EV-031",
+            "EV-015"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-068"
+          ],
+          "target_element_id": "EL-067",
+          "transformation_type": "serialize",
+          "expression": "domain.visit.date -> visit.date",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-049",
+            "EV-023",
+            "EV-040",
+            "EV-026",
+            "EV-031",
+            "EV-015"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-071"
+          ],
+          "target_element_id": "EL-070",
+          "transformation_type": "serialize",
+          "expression": "domain.visit.description -> visit.description",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-049",
+            "EV-023",
+            "EV-040",
+            "EV-026",
+            "EV-031",
+            "EV-015"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-049",
+        "EV-023",
+        "EV-040",
+        "EV-026",
+        "EV-031",
+        "EV-015"
+      ]
+    },
+    {
+      "flow_id": "FL-023",
+      "flow_type": "external_api_to_service",
+      "source_component_id": "CMP-002",
+      "target_component_id": "CMP-001",
+      "operation": "receive visit JSON request",
+      "mechanism": "HTTP JSON",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-064"
+          ],
+          "target_element_id": "EL-065",
+          "transformation_type": "deserialize",
+          "expression": "visit.petId -> domain.visit.petId",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-049",
+            "EV-023",
+            "EV-040",
+            "EV-026",
+            "EV-031",
+            "EV-015"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-067"
+          ],
+          "target_element_id": "EL-068",
+          "transformation_type": "deserialize",
+          "expression": "visit.date -> domain.visit.date",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-049",
+            "EV-023",
+            "EV-040",
+            "EV-026",
+            "EV-031",
+            "EV-015"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-070"
+          ],
+          "target_element_id": "EL-071",
+          "transformation_type": "deserialize",
+          "expression": "visit.description -> domain.visit.description",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-049",
+            "EV-023",
+            "EV-040",
+            "EV-026",
+            "EV-031",
+            "EV-015"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-049",
+        "EV-023",
+        "EV-040",
+        "EV-026",
+        "EV-031",
+        "EV-015"
+      ]
+    },
+    {
+      "flow_id": "FL-024",
+      "flow_type": "service_to_database",
+      "source_component_id": "CMP-001",
+      "target_component_id": "CMP-003",
+      "operation": "save visits",
+      "mechanism": "Spring Data JPA over JDBC",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-065"
+          ],
+          "target_element_id": "EL-066",
+          "transformation_type": "rename",
+          "expression": "domain.visit.petId -> visits.pet_id",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-049",
+            "EV-023",
+            "EV-040",
+            "EV-026",
+            "EV-031",
+            "EV-015"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-068"
+          ],
+          "target_element_id": "EL-069",
+          "transformation_type": "rename",
+          "expression": "domain.visit.date -> visits.visit_date",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-049",
+            "EV-023",
+            "EV-040",
+            "EV-026",
+            "EV-031",
+            "EV-015"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-071"
+          ],
+          "target_element_id": "EL-072",
+          "transformation_type": "none",
+          "expression": "domain.visit.description -> visits.description",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-042",
+            "EV-049",
+            "EV-023",
+            "EV-040",
+            "EV-026",
+            "EV-031",
+            "EV-015"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-042",
+        "EV-049",
+        "EV-023",
+        "EV-040",
+        "EV-026",
+        "EV-031",
+        "EV-015"
+      ]
+    },
+    {
+      "flow_id": "FL-025",
+      "flow_type": "external_api_to_service",
+      "source_component_id": "CMP-002",
+      "target_component_id": "CMP-001",
+      "operation": "receive user JSON request",
+      "mechanism": "HTTP JSON",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-073"
+          ],
+          "target_element_id": "EL-074",
+          "transformation_type": "deserialize",
+          "expression": "user.username -> domain.user.username",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-043",
+            "EV-050",
+            "EV-024",
+            "EV-025",
+            "EV-041",
+            "EV-032",
+            "EV-016"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-076"
+          ],
+          "target_element_id": "EL-077",
+          "transformation_type": "deserialize",
+          "expression": "user.password -> domain.user.password",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-043",
+            "EV-050",
+            "EV-024",
+            "EV-025",
+            "EV-041",
+            "EV-032",
+            "EV-016"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-079"
+          ],
+          "target_element_id": "EL-080",
+          "transformation_type": "deserialize",
+          "expression": "user.enabled -> domain.user.enabled",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-043",
+            "EV-050",
+            "EV-024",
+            "EV-025",
+            "EV-041",
+            "EV-032",
+            "EV-016"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-082"
+          ],
+          "target_element_id": "EL-083",
+          "transformation_type": "deserialize",
+          "expression": "user.roles[].name -> domain.user.roles[].name",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-043",
+            "EV-050",
+            "EV-024",
+            "EV-025",
+            "EV-041",
+            "EV-032",
+            "EV-016"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-043",
+        "EV-050",
+        "EV-024",
+        "EV-025",
+        "EV-041",
+        "EV-032",
+        "EV-016"
+      ]
+    },
+    {
+      "flow_id": "FL-026",
+      "flow_type": "service_to_database",
+      "source_component_id": "CMP-001",
+      "target_component_id": "CMP-003",
+      "operation": "save users and roles",
+      "mechanism": "Spring Data JPA over JDBC",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-074"
+          ],
+          "target_element_id": "EL-075",
+          "transformation_type": "none",
+          "expression": "domain.user.username -> users.username",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-043",
+            "EV-050",
+            "EV-024",
+            "EV-025",
+            "EV-041",
+            "EV-032",
+            "EV-016"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-077"
+          ],
+          "target_element_id": "EL-078",
+          "transformation_type": "none",
+          "expression": "domain.user.password -> users.password",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-043",
+            "EV-050",
+            "EV-024",
+            "EV-025",
+            "EV-041",
+            "EV-032",
+            "EV-016"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-080"
+          ],
+          "target_element_id": "EL-081",
+          "transformation_type": "none",
+          "expression": "domain.user.enabled -> users.enabled",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-043",
+            "EV-050",
+            "EV-024",
+            "EV-025",
+            "EV-041",
+            "EV-032",
+            "EV-016"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-083"
+          ],
+          "target_element_id": "EL-084",
+          "transformation_type": "enrich",
+          "expression": "prefix role name with ROLE_ when absent, then map domain.user.roles[].name -> roles.role",
+          "evidence_ids": [
+            "EV-001",
+            "EV-002",
+            "EV-003",
+            "EV-043",
+            "EV-050",
+            "EV-024",
+            "EV-025",
+            "EV-041",
+            "EV-032",
+            "EV-016"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-043",
+        "EV-050",
+        "EV-024",
+        "EV-025",
+        "EV-041",
+        "EV-032",
+        "EV-016"
+      ]
+    }
+  ],
+  "end_to_end_paths": [
+    {
+      "path_id": "PATH-001",
+      "name": "owners query to HTTP response",
+      "flow_ids": [
+        "FL-001",
+        "FL-002"
+      ],
+      "source_component_id": "CMP-003",
+      "target_component_id": "CMP-002",
+      "data_element_ids": [
+        "EL-003",
+        "EL-006",
+        "EL-009",
+        "EL-012",
+        "EL-015",
+        "EL-018",
+        "EL-002",
+        "EL-005",
+        "EL-008",
+        "EL-011",
+        "EL-014",
+        "EL-017",
+        "EL-001",
+        "EL-004",
+        "EL-007",
+        "EL-010",
+        "EL-013",
+        "EL-016"
+      ],
+      "confidence": "confirmed",
+      "issue_ids": []
+    },
+    {
+      "path_id": "PATH-002",
+      "name": "HTTP request to owners persistence",
+      "flow_ids": [
+        "FL-003",
+        "FL-004"
+      ],
+      "source_component_id": "CMP-002",
+      "target_component_id": "CMP-003",
+      "data_element_ids": [
+        "EL-004",
+        "EL-007",
+        "EL-010",
+        "EL-013",
+        "EL-016",
+        "EL-005",
+        "EL-008",
+        "EL-011",
+        "EL-014",
+        "EL-017",
+        "EL-006",
+        "EL-009",
+        "EL-012",
+        "EL-015",
+        "EL-018"
+      ],
+      "confidence": "confirmed",
+      "issue_ids": []
+    },
+    {
+      "path_id": "PATH-003",
+      "name": "pets query to HTTP response",
+      "flow_ids": [
+        "FL-005",
+        "FL-006"
+      ],
+      "source_component_id": "CMP-003",
+      "target_component_id": "CMP-002",
+      "data_element_ids": [
+        "EL-021",
+        "EL-024",
+        "EL-027",
+        "EL-030",
+        "EL-033",
+        "EL-020",
+        "EL-023",
+        "EL-026",
+        "EL-029",
+        "EL-032",
+        "EL-019",
+        "EL-022",
+        "EL-025",
+        "EL-028",
+        "EL-031"
+      ],
+      "confidence": "confirmed",
+      "issue_ids": []
+    },
+    {
+      "path_id": "PATH-004",
+      "name": "HTTP request to pets persistence",
+      "flow_ids": [
+        "FL-007",
+        "FL-008"
+      ],
+      "source_component_id": "CMP-002",
+      "target_component_id": "CMP-003",
+      "data_element_ids": [
+        "EL-022",
+        "EL-025",
+        "EL-028",
+        "EL-031",
+        "EL-023",
+        "EL-026",
+        "EL-029",
+        "EL-032",
+        "EL-024",
+        "EL-027",
+        "EL-030",
+        "EL-033"
+      ],
+      "confidence": "confirmed",
+      "issue_ids": []
+    },
+    {
+      "path_id": "PATH-005",
+      "name": "types query to HTTP response",
+      "flow_ids": [
+        "FL-009",
+        "FL-010"
+      ],
+      "source_component_id": "CMP-003",
+      "target_component_id": "CMP-002",
+      "data_element_ids": [
+        "EL-036",
+        "EL-039",
+        "EL-035",
+        "EL-038",
+        "EL-034",
+        "EL-037"
+      ],
+      "confidence": "confirmed",
+      "issue_ids": []
+    },
+    {
+      "path_id": "PATH-006",
+      "name": "HTTP request to types persistence",
+      "flow_ids": [
+        "FL-011",
+        "FL-012"
+      ],
+      "source_component_id": "CMP-002",
+      "target_component_id": "CMP-003",
+      "data_element_ids": [
+        "EL-037",
+        "EL-038",
+        "EL-039"
+      ],
+      "confidence": "confirmed",
+      "issue_ids": []
+    },
+    {
+      "path_id": "PATH-007",
+      "name": "specialties query to HTTP response",
+      "flow_ids": [
+        "FL-013",
+        "FL-014"
+      ],
+      "source_component_id": "CMP-003",
+      "target_component_id": "CMP-002",
+      "data_element_ids": [
+        "EL-042",
+        "EL-045",
+        "EL-041",
+        "EL-044",
+        "EL-040",
+        "EL-043"
+      ],
+      "confidence": "confirmed",
+      "issue_ids": []
+    },
+    {
+      "path_id": "PATH-008",
+      "name": "HTTP request to specialties persistence",
+      "flow_ids": [
+        "FL-015",
+        "FL-016"
+      ],
+      "source_component_id": "CMP-002",
+      "target_component_id": "CMP-003",
+      "data_element_ids": [
+        "EL-043",
+        "EL-044",
+        "EL-045"
+      ],
+      "confidence": "confirmed",
+      "issue_ids": []
+    },
+    {
+      "path_id": "PATH-009",
+      "name": "vets query to HTTP response",
+      "flow_ids": [
+        "FL-017",
+        "FL-018"
+      ],
+      "source_component_id": "CMP-003",
+      "target_component_id": "CMP-002",
+      "data_element_ids": [
+        "EL-048",
+        "EL-051",
+        "EL-054",
+        "EL-057",
+        "EL-045",
+        "EL-047",
+        "EL-050",
+        "EL-053",
+        "EL-056",
+        "EL-059",
+        "EL-046",
+        "EL-049",
+        "EL-052",
+        "EL-055",
+        "EL-058"
+      ],
+      "confidence": "confirmed",
+      "issue_ids": []
+    },
+    {
+      "path_id": "PATH-010",
+      "name": "HTTP request to vets persistence",
+      "flow_ids": [
+        "FL-019",
+        "FL-020"
+      ],
+      "source_component_id": "CMP-002",
+      "target_component_id": "CMP-003",
+      "data_element_ids": [
+        "EL-049",
+        "EL-052",
+        "EL-055",
+        "EL-058",
+        "EL-050",
+        "EL-053",
+        "EL-056",
+        "EL-059",
+        "EL-051",
+        "EL-054",
+        "EL-057",
+        "EL-045"
+      ],
+      "confidence": "confirmed",
+      "issue_ids": []
+    },
+    {
+      "path_id": "PATH-011",
+      "name": "visits query to HTTP response",
+      "flow_ids": [
+        "FL-021",
+        "FL-022"
+      ],
+      "source_component_id": "CMP-003",
+      "target_component_id": "CMP-002",
+      "data_element_ids": [
+        "EL-063",
+        "EL-066",
+        "EL-069",
+        "EL-072",
+        "EL-062",
+        "EL-065",
+        "EL-068",
+        "EL-071",
+        "EL-061",
+        "EL-064",
+        "EL-067",
+        "EL-070"
+      ],
+      "confidence": "confirmed",
+      "issue_ids": []
+    },
+    {
+      "path_id": "PATH-012",
+      "name": "HTTP request to visits persistence",
+      "flow_ids": [
+        "FL-023",
+        "FL-024"
+      ],
+      "source_component_id": "CMP-002",
+      "target_component_id": "CMP-003",
+      "data_element_ids": [
+        "EL-064",
+        "EL-067",
+        "EL-070",
+        "EL-065",
+        "EL-068",
+        "EL-071",
+        "EL-066",
+        "EL-069",
+        "EL-072"
+      ],
+      "confidence": "confirmed",
+      "issue_ids": []
+    },
+    {
+      "path_id": "PATH-013",
+      "name": "HTTP request to users persistence",
+      "flow_ids": [
+        "FL-025",
+        "FL-026"
+      ],
+      "source_component_id": "CMP-002",
+      "target_component_id": "CMP-003",
+      "data_element_ids": [
+        "EL-073",
+        "EL-076",
+        "EL-079",
+        "EL-082",
+        "EL-074",
+        "EL-077",
+        "EL-080",
+        "EL-083",
+        "EL-075",
+        "EL-078",
+        "EL-081",
+        "EL-084"
+      ],
+      "confidence": "confirmed",
+      "issue_ids": []
+    }
+  ],
+  "issues": [],
+  "evidence": [
+    {
+      "evidence_id": "EV-001",
+      "file_path": "src/main/resources/application.properties",
+      "start_line": 20,
+      "end_line": 32,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.application",
+      "evidence_type": "configuration",
+      "excerpt": "spring.profiles.active=h2,spring-data-jpa\nspring.sql.init.schema-locations=classpath*:db/${spring.sql.init.platform}/schema.sql\nspring.sql.init.data-locations=classpath*:db/${spring.sql.init.platform}/data.sql"
+    },
+    {
+      "evidence_id": "EV-002",
+      "file_path": "src/main/resources/application-h2.properties",
+      "start_line": 2,
+      "end_line": 11,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.application-h2",
+      "evidence_type": "configuration",
+      "excerpt": "spring.sql.init.platform=h2\nspring.datasource.url=jdbc:h2:mem:petclinic;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE\nspring.jpa.hibernate.ddl-auto=update"
+    },
+    {
+      "evidence_id": "EV-003",
+      "file_path": "src/main/resources/db/h2/schema.sql",
+      "start_line": 1,
+      "end_line": 74,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.db.h2.schema",
+      "evidence_type": "schema"
+    },
+    {
+      "evidence_id": "EV-004",
+      "file_path": "src/main/resources/openapi.yml",
+      "start_line": 65,
+      "end_line": 585,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.openapi",
+      "evidence_type": "schema"
+    },
+    {
+      "evidence_id": "EV-005",
+      "file_path": "src/main/resources/openapi.yml",
+      "start_line": 586,
+      "end_line": 837,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.openapi",
+      "evidence_type": "schema"
+    },
+    {
+      "evidence_id": "EV-006",
+      "file_path": "src/main/resources/openapi.yml",
+      "start_line": 838,
+      "end_line": 1092,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.openapi",
+      "evidence_type": "schema"
+    },
+    {
+      "evidence_id": "EV-007",
+      "file_path": "src/main/resources/openapi.yml",
+      "start_line": 1093,
+      "end_line": 1343,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.openapi",
+      "evidence_type": "schema"
+    },
+    {
+      "evidence_id": "EV-008",
+      "file_path": "src/main/resources/openapi.yml",
+      "start_line": 1344,
+      "end_line": 1594,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.openapi",
+      "evidence_type": "schema"
+    },
+    {
+      "evidence_id": "EV-009",
+      "file_path": "src/main/resources/openapi.yml",
+      "start_line": 1595,
+      "end_line": 1846,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.openapi",
+      "evidence_type": "schema"
+    },
+    {
+      "evidence_id": "EV-010",
+      "file_path": "src/main/resources/openapi.yml",
+      "start_line": 1847,
+      "end_line": 1899,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.openapi",
+      "evidence_type": "schema"
+    },
+    {
+      "evidence_id": "EV-011",
+      "file_path": "src/main/resources/openapi.yml",
+      "start_line": 1968,
+      "end_line": 2063,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.openapi",
+      "evidence_type": "schema"
+    },
+    {
+      "evidence_id": "EV-012",
+      "file_path": "src/main/resources/openapi.yml",
+      "start_line": 2154,
+      "end_line": 2211,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.openapi",
+      "evidence_type": "schema"
+    },
+    {
+      "evidence_id": "EV-013",
+      "file_path": "src/main/resources/openapi.yml",
+      "start_line": 2308,
+      "end_line": 2337,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.openapi",
+      "evidence_type": "schema"
+    },
+    {
+      "evidence_id": "EV-014",
+      "file_path": "src/main/resources/openapi.yml",
+      "start_line": 2212,
+      "end_line": 2262,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.openapi",
+      "evidence_type": "schema"
+    },
+    {
+      "evidence_id": "EV-015",
+      "file_path": "src/main/resources/openapi.yml",
+      "start_line": 2263,
+      "end_line": 2307,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.openapi",
+      "evidence_type": "schema"
+    },
+    {
+      "evidence_id": "EV-016",
+      "file_path": "src/main/resources/openapi.yml",
+      "start_line": 2338,
+      "end_line": 2383,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.resources.openapi",
+      "evidence_type": "schema"
+    },
+    {
+      "evidence_id": "EV-017",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/model/Owner.java",
+      "start_line": 35,
+      "end_line": 58,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.model.Owner.Owner",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-018",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/model/Person.java",
+      "start_line": 31,
+      "end_line": 40,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.model.Person.Person",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-019",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/model/Pet.java",
+      "start_line": 30,
+      "end_line": 49,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.model.Pet.Pet",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-020",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/model/PetType.java",
+      "start_line": 24,
+      "end_line": 29,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.model.PetType.PetType",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-021",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/model/Specialty.java",
+      "start_line": 25,
+      "end_line": 30,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.model.Specialty.Specialty",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-022",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/model/Vet.java",
+      "start_line": 33,
+      "end_line": 42,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.model.Vet.Vet",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-023",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/model/Visit.java",
+      "start_line": 30,
+      "end_line": 55,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.model.Visit.Visit",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-024",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/model/User.java",
+      "start_line": 16,
+      "end_line": 34,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.model.User.User",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-025",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/model/Role.java",
+      "start_line": 12,
+      "end_line": 23,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.model.Role.Role",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-026",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/rest/controller/v1/OwnerRestControllerV1.java",
+      "start_line": 73,
+      "end_line": 197,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.rest.controller.v1.OwnerRestControllerV1.OwnerRestControllerV1",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-027",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/rest/controller/v1/PetRestControllerV1.java",
+      "start_line": 48,
+      "end_line": 95,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.rest.controller.v1.PetRestControllerV1.PetRestControllerV1",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-028",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/rest/controller/v1/PetTypeRestControllerV1.java",
+      "start_line": 49,
+      "end_line": 102,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.rest.controller.v1.PetTypeRestControllerV1.PetTypeRestControllerV1",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-029",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/rest/controller/v1/SpecialtyRestControllerV1.java",
+      "start_line": 50,
+      "end_line": 105,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.rest.controller.v1.SpecialtyRestControllerV1.SpecialtyRestControllerV1",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-030",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/rest/controller/v1/VetRestControllerV1.java",
+      "start_line": 54,
+      "end_line": 119,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.rest.controller.v1.VetRestControllerV1.VetRestControllerV1",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-031",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/rest/controller/v1/VisitRestControllerV1.java",
+      "start_line": 51,
+      "end_line": 108,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.rest.controller.v1.VisitRestControllerV1.VisitRestControllerV1",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-032",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/rest/controller/v1/UserRestControllerV1.java",
+      "start_line": 38,
+      "end_line": 51,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.rest.controller.v1.UserRestControllerV1.UserRestControllerV1",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-033",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/rest/controller/v2/OwnerRestControllerV2.java",
+      "start_line": 27,
+      "end_line": 39,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.rest.controller.v2.OwnerRestControllerV2.OwnerRestControllerV2",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-034",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/rest/controller/v2/PetRestControllerV2.java",
+      "start_line": 27,
+      "end_line": 39,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.rest.controller.v2.PetRestControllerV2.PetRestControllerV2",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-035",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/mapper/OwnerMapper.java",
+      "start_line": 19,
+      "end_line": 41,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.mapper.OwnerMapper.OwnerMapper",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-036",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/mapper/PetMapper.java",
+      "start_line": 20,
+      "end_line": 51,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.mapper.PetMapper.PetMapper",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-037",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/mapper/PetTypeMapper.java",
+      "start_line": 14,
+      "end_line": 26,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.mapper.PetTypeMapper.PetTypeMapper",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-038",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/mapper/SpecialtyMapper.java",
+      "start_line": 12,
+      "end_line": 21,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.mapper.SpecialtyMapper.SpecialtyMapper",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-039",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/mapper/VetMapper.java",
+      "start_line": 14,
+      "end_line": 23,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.mapper.VetMapper.VetMapper",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-040",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/mapper/VisitMapper.java",
+      "start_line": 14,
+      "end_line": 27,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.mapper.VisitMapper.VisitMapper",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-041",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/mapper/UserMapper.java",
+      "start_line": 15,
+      "end_line": 31,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.mapper.UserMapper.UserMapper",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-042",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/service/ClinicServiceImpl.java",
+      "start_line": 64,
+      "end_line": 254,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.service.ClinicServiceImpl.ClinicServiceImpl",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-043",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/service/UserServiceImpl.java",
+      "start_line": 16,
+      "end_line": 35,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.service.UserServiceImpl.UserServiceImpl.saveUser",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-044",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/repository/OwnerRepository.java",
+      "start_line": 37,
+      "end_line": 87,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.repository.OwnerRepository.OwnerRepository",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-045",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/repository/PetRepository.java",
+      "start_line": 39,
+      "end_line": 82,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.repository.PetRepository.PetRepository",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-046",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/repository/PetTypeRepository.java",
+      "start_line": 27,
+      "end_line": 40,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.repository.PetTypeRepository.PetTypeRepository",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-047",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/repository/SpecialtyRepository.java",
+      "start_line": 29,
+      "end_line": 42,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.repository.SpecialtyRepository.SpecialtyRepository",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-048",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/repository/VetRepository.java",
+      "start_line": 37,
+      "end_line": 48,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.repository.VetRepository.VetRepository",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-049",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/repository/VisitRepository.java",
+      "start_line": 35,
+      "end_line": 52,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.repository.VisitRepository.VisitRepository",
+      "evidence_type": "source"
+    },
+    {
+      "evidence_id": "EV-050",
+      "file_path": "src/main/java/org/springframework/samples/petclinic/repository/UserRepository.java",
+      "start_line": 5,
+      "end_line": 9,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest.src.main.java.org.springframework.samples.petclinic.repository.UserRepository.UserRepository",
+      "evidence_type": "source"
+    }
+  ]
+}
