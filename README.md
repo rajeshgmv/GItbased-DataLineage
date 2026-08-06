@@ -1,13 +1,21 @@
 # CBM-MCP Multi-Agent Codebase Lineage
 
-This project uses Codebase Memory (CBM) through its MCP-based graph layer to
-detect data lineage across multiple code repositories. It processes repository
-inputs, builds a graph index for each codebase, and creates a compact, cleaned
-lineage context from the MCP layer for downstream AI agents.
+This project presents a multi-agent data-lineage solution for discovering how
+data is created, transformed, persisted, and exchanged across independent
+applications. It brings repository acquisition, code intelligence,
+evidence preparation, repository-level analysis, and cross-application
+correlation together in one reproducible workflow.
 
-Agent 1 produces canonical lineage for each repository. Agent 2 then matches
-compatible runtime boundaries across those repository outputs and produces the
-final cross-boundary lineage report.
+At its foundation, the solution uses Codebase Memory through the CBM-MCP layer
+to convert each codebase into a queryable graph of components, relationships,
+and supporting source evidence. That graph is processed and refined into a
+compact, cleaned lineage context designed specifically for reliable AI-agent
+analysis.
+
+Agent 1 turns the curated context into canonical lineage for each repository.
+Agent 2 then joins compatible runtime boundaries across those repository
+outputs, producing an evidence-backed view of application-to-application data
+movement and the final cross-boundary lineage report.
 
 ## Lineage workflow
 
