@@ -1,6 +1,34 @@
-# Git-Based Data Lineage Indexer
+# CBM-MCP Multi-Agent Codebase Lineage
 
-This project clones or updates the Git repositories listed in `git_repo_list.csv`, then indexes them separately with Codebase Memory (CBM). The active SQLite graph indexes are kept inside this project under `.cbm-cache/`. after indexing is completed, context is created and fed into multi-AI agents to create lineage based on the context created.
+This project presents a multi-agent data-lineage solution for discovering how
+data is created, transformed, persisted, and exchanged across independent
+applications. It brings repository acquisition, code intelligence,
+evidence preparation, repository-level analysis, and cross-application
+correlation together in one reproducible workflow.
+
+At its foundation, the solution uses Codebase Memory through the CBM-MCP layer
+to convert each codebase into a queryable graph of components, relationships,
+and supporting source evidence. That graph is processed and refined into a
+compact, cleaned lineage context designed specifically for reliable AI-agent
+analysis.
+
+Agent 1 turns the curated context into canonical lineage for each repository.
+Agent 2 then joins compatible runtime boundaries across those repository
+outputs, producing an evidence-backed view of application-to-application data
+movement and the final cross-boundary lineage report.
+
+
+## Lineage workflow
+
+```mermaid
+flowchart LR
+  A["Repository inputs"] --> B["Repository clone or update"]
+  B --> C["CBM graph creation"]
+  C --> D["Create and clean context"]
+  D --> E["Agent 1<br/>Repository lineage"]
+  E --> F["Agent 2<br/>Cross-repository lineage"]
+  F --> G["Final output<br/>Cross-boundary lineage"]
+```
 
 ## Prerequisites
 
@@ -80,7 +108,23 @@ The scripts maintain these status values:
 | `ContextStatus` | empty | The current indexed repository still needs a lineage context export |
 | `ContextStatus` | `Contexted` | All lineage context files were written successfully for the current index |
 
-## Clone or update repositories
+## Run the preparation workflow
+
+Run all three preparation phases—repository clone or update, CBM graph
+creation, and lineage-context creation—with:
+
+```bash
+python3 main.py
+```
+
+The indexing phase starts only if cloning completes without errors. The context
+phase then exports every indexed repository whose `ContextStatus` is empty or
+whose `CloneStatus` is `cloned again`. Run Agent 1 and Agent 2 after these three
+phases complete.
+
+## Run preparation steps separately
+
+### Step 1: Clone or update repositories
 
 With the virtual environment active, run:
 
@@ -92,7 +136,7 @@ For an existing clone, the script fetches `origin` and compares the local commit
 
 Every new clone or successful remote update resets `IndexStatus` to `YetToStart` and clears `ContextStatus`. If indexing was already pending, a remote update keeps `CloneStatus` as `cloned`; there is still only one pending initial index. If the earlier version was already indexed, a remote update changes `CloneStatus` to `cloned again`. If a repository is already current, its existing statuses are preserved. Failures are reported after every CSV entry has been attempted.
 
-## Index repositories
+### Step 2: Create the CBM graph indexes
 
 After cloning finishes successfully, run indexing separately:
 
@@ -102,17 +146,7 @@ python3 -m lib.index_repos
 
 Only rows with a ready `CloneStatus`, an `IndexStatus` of `YetToStart`, and a valid local Git checkout are indexed. Successful indexing changes `IndexStatus` to `Indexed` and clears `ContextStatus`; unchanged rows already marked `Indexed` are skipped. CBM 0.8.1 derives each project name from its absolute repository path, and the active graph index is stored in `.cbm-cache/`.
 
-## Run the complete workflow
-
-To clone or update all repositories first and then index pending repositories, run:
-
-```bash
-python3 main.py
-```
-
-The indexing phase starts only if the cloning phase completes without errors. Phase 3 then exports every indexed repository whose `ContextStatus` is empty or whose `CloneStatus` is `cloned again`.
-
-## Export one repository for lineage analysis
+### Step 3: Create and clean the lineage context
 
 After a repository has `IndexStatus=Indexed`, export its graph and graph-selected source evidence:
 
@@ -142,13 +176,43 @@ python3 -m lib.export_lineage_context --repo crypto-kaka-rag --enable-text-fallb
 
 Fallback searches are configured in `config/lineage_fallback_search_queries.json` and are labeled separately in `source-evidence.json`. Graph relationships remain discovery evidence; source excerpts provide the assignments, configuration, SQL, schemas, and serialization needed to confirm lineage.
 
-## Generate the repository lineage Markdown
+## Agent 1: Repository lineage
+
+Run Agent 1 once for each repository after its context has been created. Pass
+`prompts/agent1_repository_lineage.agent.md` as the agent or system prompt and
+provide the repository-specific paths in the task message:
+
+```text
+Use lineage_context/<repository-name>/context.json as the only lineage-context input.
+Write the output to lineage_output/<repository-name>/repo-lineage.json.
+Follow only the supplied agent instructions and do not read other files.
+```
+
+Agent 1 validates its result and produces the canonical `repo-lineage.json`
+used by the next stage.
+
+## Agent 2: Cross-repository lineage
+
+Run Agent 2 after Agent 1 has produced `repo-lineage.json` for every intended
+repository. Pass `prompts/agent2_cross_repository_lineage.agent.md` as the agent
+or system prompt and provide the input and output locations in the task message:
+
+```text
+Use lineage_output/ as the input directory.
+Write the output to lineage_output/cross-boundary-lineage.md.
+Follow only the supplied agent instructions and do not read other files.
+```
+
+Agent 2 validates the direct application-to-application matches and produces
+the final cross-boundary lineage report.
+
+## Optional: Render Agent 1 output as Markdown
 
 After Agent 1 creates and validates a repository's `repo-lineage.json`, generate
 the corresponding Markdown file from that JSON:
 
 ```bash
-python -m lib.render_repository_lineage \
+python3 lib/render_repository_lineage.py \
   lineage_output/crypto-kaka-rag/repo-lineage.json
 ```
 
@@ -186,45 +250,27 @@ CBM 0.8.1 accepts each tool's arguments as one JSON object, as shown above. The 
 .cbm-cache/       Active CBM SQLite indexes and logs
 .venv/            Python virtual environment and installed CBM wrapper
 repo_local_clone/ Cloned source repositories
+lineage_context/  Cleaned per-repository inputs for Agent 1
+lineage_output/   Agent 1 JSON outputs and the Agent 2 final report
 ```
 
 These directories can be regenerated and normally should not be committed to Git.
-<<<<<<< Updated upstream
-=======
 
-## Agent1 prompt
-```
-@agent1_repository_lineage.agent.md run the lineage using context from input file:  GItbased-DataLineage/lineage_context/"repo-name-here"/context.json
+## Multi Agent pipeline creation
 
-and write the output into lineage_output/"repo-name-here"/repo-lineage.json
+Future work can automate both agents with any suitable AI model or runtime by
+passing each `.agent.md` file as the agent prompt and the exact authorized
+inputs, context, and output location in the task message. An orchestrator can
+run Agent 1 for every repository and start Agent 2 only after all repository
+outputs pass validation.
 
-do not perform any tasks other than rules mentioned in the agent. Do not read files other than those mentioned in agent. 
+The agents already perform self-validation. The automated pipeline can add
+independent deterministic checks and an evaluator agent that:
 
-```
+- compares each Agent 1 context with its `repo-lineage.json`;
+- compares the Agent 2 repository inputs with `cross-boundary-lineage.md`; and
+- reports unsupported mappings, missing connections, and incorrect confidence.
 
-## Agent2 prompt
-```
-@agent2_cross_repository_lineage.agent.md input directory: GItbased-DataLineage/lineage_output
+## Solution Expansion
 
-and write the output into file: GItbased-DataLineage/lineage_output/cross-boundary-lineage.md
-
-do not perform any tasks other than rules mentioned in the agent. Do not read files other than those mentioned in agent. 
-```
-## Multi Agent pipeline
-
-## Automating both lineage agents
-
-Both Agent 1 and Agent 2 can be automated with any suitable AI model or runtime.
-Pass the selected `.agent.md` contents as the agent or system prompt, then pass
-the exact authorized inputs, task context, and output path in the user message.
-If only file paths are supplied, the runtime must provide controlled file access.
-
-
-## Agent eval and Evaluator agent
-
-Current agnets does self-validation. Agent eval and Evaluator agent can be created validate the data independently. 
-read Agent 1’s context and repo-lineage.json
-read Agent 2’s repository JSON inputs and final Markdown
-evaluate whether evidence supports the claimed lineage
-identify unsupported mappings, missing connections, or incorrect confidence levels
-
+This solution can be expanded to support other type of repositories such as ETL/ELT pipelines, Batch and file-processing jobs, Analytics and BI repositories, Machine-learning, pipelines, RAG and AI applications
