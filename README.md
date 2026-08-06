@@ -189,3 +189,43 @@ repo_local_clone/ Cloned source repositories
 ```
 
 These directories can be regenerated and normally should not be committed to Git.
+<<<<<<< Updated upstream
+=======
+
+## Agent1 prompt
+```
+@agent1_repository_lineage.agent.md run the lineage using context from input file:  GItbased-DataLineage/lineage_context/"repo-name-here"/context.json
+
+and write the output into lineage_output/"repo-name-here"/repo-lineage.json
+
+do not perform any tasks other than rules mentioned in the agent. Do not read files other than those mentioned in agent. 
+
+```
+
+## Agent2 prompt
+```
+@agent2_cross_repository_lineage.agent.md input directory: GItbased-DataLineage/lineage_output
+
+and write the output into file: GItbased-DataLineage/lineage_output/cross-boundary-lineage.md
+
+do not perform any tasks other than rules mentioned in the agent. Do not read files other than those mentioned in agent. 
+```
+## Multi Agent pipeline
+
+## Automating both lineage agents
+
+Both Agent 1 and Agent 2 can be automated with any suitable AI model or runtime.
+Pass the selected `.agent.md` contents as the agent or system prompt, then pass
+the exact authorized inputs, task context, and output path in the user message.
+If only file paths are supplied, the runtime must provide controlled file access.
+
+
+## Agent eval and Evaluator agent
+```
+Current agnets does self-validation. Agent eval and Evaluator agent can be created validate the data independently. 
+read Agent 1’s context and repo-lineage.json
+read Agent 2’s repository JSON inputs and final Markdown
+evaluate whether evidence supports the claimed lineage
+identify unsupported mappings, missing connections, or incorrect confidence levels
+```
+>>>>>>> Stashed changes
