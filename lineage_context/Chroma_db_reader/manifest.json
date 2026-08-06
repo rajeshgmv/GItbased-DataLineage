@@ -1,6 +1,6 @@
 {
   "lineage_context_schema_version": "1.2",
-  "exported_at": "2026-08-06T05:22:03.179354+00:00",
+  "exported_at": "2026-08-06T16:12:10.015334+00:00",
   "repository": {
     "name": "Chroma_db_reader",
     "configured_url": "https://github.com/rajeshgmv/Chroma_db_reader.git",
@@ -23,15 +23,15 @@
     "index_status": {
       "project": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader",
       "nodes": 44,
-      "edges": 41,
+      "edges": 40,
       "status": "ready"
     },
     "graph_export_coverage": {
       "complete": true,
       "expected_nodes": 44,
       "exported_nodes": 44,
-      "expected_relationships": 41,
-      "exported_relationships": 41,
+      "expected_relationships": 40,
+      "exported_relationships": 40,
       "query_limit": 100000
     }
   },

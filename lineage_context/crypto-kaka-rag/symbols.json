@@ -45,8 +45,7 @@
     "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.producer.__file__",
     "file_path": "producer.py",
     "start_line": "0",
-    "end_line": "0",
-    "extension": ".py"
+    "end_line": "0"
   },
   {
     "label": "Function",

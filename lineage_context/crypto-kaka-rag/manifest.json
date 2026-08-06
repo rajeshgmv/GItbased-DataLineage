@@ -1,6 +1,6 @@
 {
   "lineage_context_schema_version": "1.2",
-  "exported_at": "2026-08-06T05:22:04.129177+00:00",
+  "exported_at": "2026-08-06T16:12:10.490729+00:00",
   "repository": {
     "name": "crypto-kaka-rag",
     "configured_url": "https://github.com/rajeshgmv/crypto-kaka-rag.git",
@@ -23,15 +23,15 @@
     "index_status": {
       "project": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag",
       "nodes": 42,
-      "edges": 82,
+      "edges": 77,
       "status": "ready"
     },
     "graph_export_coverage": {
       "complete": true,
       "expected_nodes": 42,
       "exported_nodes": 42,
-      "expected_relationships": 82,
-      "exported_relationships": 82,
+      "expected_relationships": 77,
+      "exported_relationships": 77,
       "query_limit": 100000
     }
   },

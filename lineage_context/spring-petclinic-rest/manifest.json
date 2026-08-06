@@ -1,6 +1,6 @@
 {
   "lineage_context_schema_version": "1.2",
-  "exported_at": "2026-08-06T05:18:28.662545+00:00",
+  "exported_at": "2026-08-06T16:12:08.917347+00:00",
   "repository": {
     "name": "spring-petclinic-rest",
     "configured_url": "https://github.com/spring-petclinic/spring-petclinic-rest.git",
@@ -22,16 +22,16 @@
     "root_path": "/Users/guttikonda/gitbased-DataLineage/GItbased-DataLineage/repo_local_clone/spring-petclinic-rest",
     "index_status": {
       "project": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest",
-      "nodes": 1697,
-      "edges": 6776,
+      "nodes": 1694,
+      "edges": 6743,
       "status": "ready"
     },
     "graph_export_coverage": {
       "complete": true,
-      "expected_nodes": 1697,
-      "exported_nodes": 1697,
-      "expected_relationships": 6776,
-      "exported_relationships": 6776,
+      "expected_nodes": 1694,
+      "exported_nodes": 1694,
+      "expected_relationships": 6743,
+      "exported_relationships": 6743,
       "query_limit": 100000
     }
   },
@@ -39,8 +39,8 @@
     "test_files_excluded": true,
     "module_records_excluded": true,
     "empty_attributes_excluded": true,
-    "selected_symbols": 428,
-    "selected_relationships": 440,
+    "selected_symbols": 425,
+    "selected_relationships": 437,
     "lineage_artifacts": 16,
     "source_snippets": 97
   },

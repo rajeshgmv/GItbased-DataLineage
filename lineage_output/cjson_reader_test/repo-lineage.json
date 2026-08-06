@@ -1,0 +1,500 @@
+{
+  "schema_version": "repository-lineage/1.0",
+  "repository": {
+    "name": "json_reader_test",
+    "origin_url": "https://github.com/rajeshgmv/json_reader_test.git",
+    "commit_sha": "4322c23ab2a7ce61fc9eb522b7eeb078c3b88f2b",
+    "branch": "main",
+    "context_exported_at": "2026-08-06T16:12:09.571845+00:00"
+  },
+  "input_coverage": [
+    {
+      "section": "manifest",
+      "records_considered": 1,
+      "used_for": [
+        "repository_identity",
+        "provenance",
+        "export_coverage",
+        "known_limitations"
+      ]
+    },
+    {
+      "section": "graph_summary",
+      "records_considered": 1,
+      "used_for": [
+        "graph_coverage_validation",
+        "candidate_inventory"
+      ]
+    },
+    {
+      "section": "architecture",
+      "records_considered": 1,
+      "used_for": [
+        "runtime_language",
+        "entry_point",
+        "component_classification"
+      ]
+    },
+    {
+      "section": "symbols",
+      "records_considered": 3,
+      "used_for": [
+        "execution_path",
+        "source_ranges",
+        "function_signatures"
+      ]
+    },
+    {
+      "section": "relationships",
+      "records_considered": 3,
+      "used_for": [
+        "candidate_execution_path"
+      ]
+    },
+    {
+      "section": "artifacts",
+      "records_considered": 1,
+      "used_for": [
+        "not_lineage_relevant"
+      ],
+      "reason": "The repository-relative CSV artifact is not proven to be the absolute output path used by the executable source."
+    },
+    {
+      "section": "source_evidence",
+      "records_considered": 1,
+      "used_for": [
+        "file_operations",
+        "absolute_resource_locators",
+        "record_fields",
+        "filters",
+        "field_mappings",
+        "transformations",
+        "serialization"
+      ]
+    }
+  ],
+  "components": [
+    {
+      "component_id": "CMP-001",
+      "name": "JSON-to-CSV converter",
+      "kind": "batch_job",
+      "repository": "json_reader_test",
+      "raw_locator": "src/json_to_csv.py#main",
+      "normalized_locator": "python:src/json_to_csv.py#main",
+      "evidence_ids": [
+        "EV-003",
+        "EV-008",
+        "EV-009",
+        "EV-010",
+        "EV-011"
+      ]
+    },
+    {
+      "component_id": "CMP-002",
+      "name": "Chroma JSON export",
+      "kind": "file",
+      "raw_locator": "/Users/guttikonda/Desktop/training docs/chroma_db_reader/chroma-export.json",
+      "normalized_locator": "file:///Users/guttikonda/Desktop/training%20docs/chroma_db_reader/chroma-export.json",
+      "evidence_ids": [
+        "EV-001",
+        "EV-008",
+        "EV-011"
+      ]
+    },
+    {
+      "component_id": "CMP-003",
+      "name": "BTC prices CSV",
+      "kind": "file",
+      "raw_locator": "/Users/guttikonda/Desktop/training docs/json_reader/output/btc_prices.csv",
+      "normalized_locator": "file:///Users/guttikonda/Desktop/training%20docs/json_reader/output/btc_prices.csv",
+      "evidence_ids": [
+        "EV-001",
+        "EV-010",
+        "EV-011"
+      ]
+    }
+  ],
+  "data_elements": [
+    {
+      "element_id": "EL-001",
+      "name": "asset",
+      "element_path": "records[].metadata.asset",
+      "component_id": "CMP-002",
+      "container": "JSON record",
+      "data_type": "unknown",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-004",
+        "EV-005"
+      ]
+    },
+    {
+      "element_id": "EL-002",
+      "name": "time",
+      "element_path": "records[].metadata.time",
+      "component_id": "CMP-002",
+      "container": "JSON record",
+      "data_type": "unknown",
+      "aliases": [
+        "timestamp"
+      ],
+      "evidence_ids": [
+        "EV-005"
+      ]
+    },
+    {
+      "element_id": "EL-003",
+      "name": "document",
+      "element_path": "records[].document",
+      "component_id": "CMP-002",
+      "container": "JSON record",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-006",
+        "EV-007"
+      ]
+    },
+    {
+      "element_id": "EL-004",
+      "name": "timestamp",
+      "element_path": "rows[].timestamp",
+      "component_id": "CMP-001",
+      "container": "converted row",
+      "data_type": "unknown",
+      "aliases": [
+        "records[].metadata.time"
+      ],
+      "evidence_ids": [
+        "EV-005",
+        "EV-007",
+        "EV-009"
+      ]
+    },
+    {
+      "element_id": "EL-005",
+      "name": "btc_price",
+      "element_path": "rows[].btc_price",
+      "component_id": "CMP-001",
+      "container": "converted row",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-002",
+        "EV-006",
+        "EV-007",
+        "EV-009"
+      ]
+    },
+    {
+      "element_id": "EL-006",
+      "name": "timestamp",
+      "element_path": "csv.timestamp",
+      "component_id": "CMP-003",
+      "container": "CSV record",
+      "data_type": "string",
+      "aliases": [
+        "records[].metadata.time"
+      ],
+      "evidence_ids": [
+        "EV-007",
+        "EV-010"
+      ]
+    },
+    {
+      "element_id": "EL-007",
+      "name": "btc_price",
+      "element_path": "csv.btc_price",
+      "component_id": "CMP-003",
+      "container": "CSV record",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-002",
+        "EV-007",
+        "EV-010"
+      ]
+    }
+  ],
+  "boundary_contracts": [
+    {
+      "contract_id": "CTR-001",
+      "direction": "inbound",
+      "mechanism": "file",
+      "operation": "read",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-002",
+      "raw_locator": "/Users/guttikonda/Desktop/training docs/chroma_db_reader/chroma-export.json",
+      "normalized_locator": "file:///Users/guttikonda/Desktop/training%20docs/chroma_db_reader/chroma-export.json",
+      "data_element_ids": [
+        "EL-001",
+        "EL-002",
+        "EL-003"
+      ],
+      "schema_signature": [
+        "records[].document:string",
+        "records[].metadata.asset:unknown",
+        "records[].metadata.time:unknown"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-004",
+        "EV-005",
+        "EV-006",
+        "EV-007",
+        "EV-008",
+        "EV-011"
+      ],
+      "issue_ids": []
+    },
+    {
+      "contract_id": "CTR-002",
+      "direction": "outbound",
+      "mechanism": "file",
+      "operation": "write",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-003",
+      "raw_locator": "/Users/guttikonda/Desktop/training docs/json_reader/output/btc_prices.csv",
+      "normalized_locator": "file:///Users/guttikonda/Desktop/training%20docs/json_reader/output/btc_prices.csv",
+      "data_element_ids": [
+        "EL-006",
+        "EL-007"
+      ],
+      "schema_signature": [
+        "csv.btc_price:string",
+        "csv.timestamp:string"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-007",
+        "EV-009",
+        "EV-010",
+        "EV-011"
+      ],
+      "issue_ids": []
+    }
+  ],
+  "lineage_flows": [
+    {
+      "flow_id": "FL-001",
+      "flow_type": "file_to_service",
+      "source_component_id": "CMP-002",
+      "target_component_id": "CMP-001",
+      "operation": "read JSON array and extract BTC timestamp and price rows",
+      "mechanism": "UTF-8 JSON file read",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-001",
+            "EL-002"
+          ],
+          "target_element_id": "EL-004",
+          "transformation_type": "filter",
+          "expression": "retain metadata.time only when str(metadata.asset).upper() == 'BTC'",
+          "evidence_ids": [
+            "EV-005",
+            "EV-007"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-001",
+            "EL-003"
+          ],
+          "target_element_id": "EL-005",
+          "transformation_type": "parse",
+          "expression": "for BTC records, PRICE_PATTERN.search(document).group(1)",
+          "evidence_ids": [
+            "EV-002",
+            "EV-005",
+            "EV-006",
+            "EV-007"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-002",
+        "EV-004",
+        "EV-005",
+        "EV-006",
+        "EV-007",
+        "EV-008",
+        "EV-009"
+      ],
+      "issue_ids": []
+    },
+    {
+      "flow_id": "FL-002",
+      "flow_type": "service_to_file",
+      "source_component_id": "CMP-001",
+      "target_component_id": "CMP-003",
+      "operation": "write timestamp and BTC price rows to CSV",
+      "mechanism": "UTF-8 CSV file write",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-004"
+          ],
+          "target_element_id": "EL-006",
+          "transformation_type": "serialize",
+          "expression": "csv.writer writes rows[].timestamp under header 'timestamp'",
+          "evidence_ids": [
+            "EV-007",
+            "EV-009",
+            "EV-010"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-005"
+          ],
+          "target_element_id": "EL-007",
+          "transformation_type": "serialize",
+          "expression": "csv.writer writes rows[].btc_price under header 'btc_price'",
+          "evidence_ids": [
+            "EV-007",
+            "EV-009",
+            "EV-010"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001",
+        "EV-007",
+        "EV-009",
+        "EV-010",
+        "EV-011"
+      ],
+      "issue_ids": []
+    }
+  ],
+  "end_to_end_paths": [
+    {
+      "path_id": "PATH-001",
+      "name": "Chroma JSON export to BTC prices CSV",
+      "flow_ids": [
+        "FL-001",
+        "FL-002"
+      ],
+      "source_component_id": "CMP-002",
+      "target_component_id": "CMP-003",
+      "data_element_ids": [
+        "EL-001",
+        "EL-002",
+        "EL-003",
+        "EL-004",
+        "EL-005",
+        "EL-006",
+        "EL-007"
+      ],
+      "confidence": "confirmed",
+      "issue_ids": []
+    }
+  ],
+  "issues": [],
+  "evidence": [
+    {
+      "evidence_id": "EV-001",
+      "file_path": "src/json_to_csv.py",
+      "start_line": 15,
+      "end_line": 20,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-json_reader_test.src.json_to_csv",
+      "evidence_type": "configuration",
+      "excerpt": "INPUT_JSON_PATH = Path(\"/Users/guttikonda/Desktop/training docs/chroma_db_reader/chroma-export.json\")\nOUTPUT_CSV_PATH = Path(\"/Users/guttikonda/Desktop/training docs/json_reader/output/btc_prices.csv\")"
+    },
+    {
+      "evidence_id": "EV-002",
+      "file_path": "src/json_to_csv.py",
+      "start_line": 22,
+      "end_line": 25,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-json_reader_test.src.json_to_csv",
+      "evidence_type": "source",
+      "excerpt": "PRICE_PATTERN = re.compile(\n    r\"\\bprice\\s+of\\s+\\$([0-9]+(?:\\.[0-9]+)?)\",\n    re.IGNORECASE"
+    },
+    {
+      "evidence_id": "EV-003",
+      "file_path": "src/json_to_csv.py",
+      "start_line": 28,
+      "end_line": 28,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-json_reader_test.src.json_to_csv.extract_btc_rows",
+      "evidence_type": "source",
+      "excerpt": "def extract_btc_rows(records: Iterable[Any]) -> Iterator[tuple[Any, str]]:"
+    },
+    {
+      "evidence_id": "EV-004",
+      "file_path": "src/json_to_csv.py",
+      "start_line": 30,
+      "end_line": 36,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-json_reader_test.src.json_to_csv.extract_btc_rows",
+      "evidence_type": "source",
+      "excerpt": "for index, record in enumerate(records):\nmetadata = record.get(\"metadata\")\nif not isinstance(metadata, dict):"
+    },
+    {
+      "evidence_id": "EV-005",
+      "file_path": "src/json_to_csv.py",
+      "start_line": 38,
+      "end_line": 43,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-json_reader_test.src.json_to_csv.extract_btc_rows",
+      "evidence_type": "source",
+      "excerpt": "if str(metadata.get(\"asset\", \"\")).upper() != \"BTC\":\n    continue\ntimestamp = metadata.get(\"time\")"
+    },
+    {
+      "evidence_id": "EV-006",
+      "file_path": "src/json_to_csv.py",
+      "start_line": 45,
+      "end_line": 50,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-json_reader_test.src.json_to_csv.extract_btc_rows",
+      "evidence_type": "source",
+      "excerpt": "document = record.get(\"document\")\nif not isinstance(document, str):\nprice_match = PRICE_PATTERN.search(document)"
+    },
+    {
+      "evidence_id": "EV-007",
+      "file_path": "src/json_to_csv.py",
+      "start_line": 49,
+      "end_line": 53,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-json_reader_test.src.json_to_csv.extract_btc_rows",
+      "evidence_type": "source",
+      "excerpt": "price_match = PRICE_PATTERN.search(document)\nif price_match is None:\nyield timestamp, price_match.group(1)"
+    },
+    {
+      "evidence_id": "EV-008",
+      "file_path": "src/json_to_csv.py",
+      "start_line": 56,
+      "end_line": 59,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-json_reader_test.src.json_to_csv.convert_json_to_csv",
+      "evidence_type": "source",
+      "excerpt": "def convert_json_to_csv(input_path: Path, output_path: Path) -> int:\nwith input_path.open(encoding=\"utf-8\") as input_file:\n    records = json.load(input_file)"
+    },
+    {
+      "evidence_id": "EV-009",
+      "file_path": "src/json_to_csv.py",
+      "start_line": 61,
+      "end_line": 65,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-json_reader_test.src.json_to_csv.convert_json_to_csv",
+      "evidence_type": "source",
+      "excerpt": "if not isinstance(records, list):\nrows = list(extract_btc_rows(records))\noutput_path.parent.mkdir(parents=True, exist_ok=True)"
+    },
+    {
+      "evidence_id": "EV-010",
+      "file_path": "src/json_to_csv.py",
+      "start_line": 67,
+      "end_line": 70,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-json_reader_test.src.json_to_csv.convert_json_to_csv",
+      "evidence_type": "source",
+      "excerpt": "with output_path.open(\"w\", encoding=\"utf-8\", newline=\"\") as output_file:\nwriter.writerow((\"timestamp\", \"btc_price\"))\nwriter.writerows(rows)"
+    },
+    {
+      "evidence_id": "EV-011",
+      "file_path": "src/json_to_csv.py",
+      "start_line": 75,
+      "end_line": 77,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-json_reader_test.src.json_to_csv.main",
+      "evidence_type": "source",
+      "excerpt": "def main() -> int:\ntry:\n    row_count = convert_json_to_csv(INPUT_JSON_PATH, OUTPUT_CSV_PATH)"
+    }
+  ]
+}

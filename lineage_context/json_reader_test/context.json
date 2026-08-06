@@ -1,7 +1,7 @@
 {
   "manifest": {
     "lineage_context_schema_version": "1.2",
-    "exported_at": "2026-08-06T05:18:29.054924+00:00",
+    "exported_at": "2026-08-06T16:12:09.571845+00:00",
     "repository": {
       "name": "json_reader_test",
       "configured_url": "https://github.com/rajeshgmv/json_reader_test.git",
@@ -24,15 +24,15 @@
       "index_status": {
         "project": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-json_reader_test",
         "nodes": 24,
-        "edges": 38,
+        "edges": 35,
         "status": "ready"
       },
       "graph_export_coverage": {
         "complete": true,
         "expected_nodes": 24,
         "exported_nodes": 24,
-        "expected_relationships": 38,
-        "exported_relationships": 38,
+        "expected_relationships": 35,
+        "exported_relationships": 35,
         "query_limit": 100000
       }
     },
@@ -69,8 +69,8 @@
       "complete": true,
       "expected_nodes": 24,
       "exported_nodes": 24,
-      "expected_relationships": 38,
-      "exported_relationships": 38,
+      "expected_relationships": 35,
+      "exported_relationships": 35,
       "query_limit": 100000
     },
     "selected_node_labels": [

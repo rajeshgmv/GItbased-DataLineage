@@ -4,8 +4,8 @@
     "complete": true,
     "expected_nodes": 42,
     "exported_nodes": 42,
-    "expected_relationships": 82,
-    "exported_relationships": 82,
+    "expected_relationships": 77,
+    "exported_relationships": 77,
     "query_limit": 100000
   },
   "selected_node_labels": [

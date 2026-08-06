@@ -2,10 +2,10 @@
   "project": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest",
   "raw_graph_coverage": {
     "complete": true,
-    "expected_nodes": 1697,
-    "exported_nodes": 1697,
-    "expected_relationships": 6776,
-    "exported_relationships": 6776,
+    "expected_nodes": 1694,
+    "exported_nodes": 1694,
+    "expected_relationships": 6743,
+    "exported_relationships": 6743,
     "query_limit": 100000
   },
   "selected_node_labels": [
@@ -35,7 +35,7 @@
     },
     {
       "label": "Route",
-      "count": 22
+      "count": 19
     },
     {
       "label": "Variable",
@@ -49,7 +49,7 @@
     },
     {
       "type": "HANDLES",
-      "count": 4
+      "count": 1
     },
     {
       "type": "HTTP_CALLS",

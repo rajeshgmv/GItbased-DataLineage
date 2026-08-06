@@ -4,7 +4,7 @@ This project clones or updates the Git repositories listed in `git_repo_list.csv
 
 ## Prerequisites
 
-- Python 3.8 or newer
+- Python 3.10 or newer
 - Git
 - Internet access for installing CBM and cloning repositories
 
@@ -189,3 +189,23 @@ repo_local_clone/ Cloned source repositories
 ```
 
 These directories can be regenerated and normally should not be committed to Git.
+
+
+## Agent1 prompt
+```
+@agent1_repository_lineage.agent.md run the lineage using context from input file:  GItbased-DataLineage/lineage_context/"repo-name-here"/context.json
+
+and write the output into lineage_output/"repo-name-here"/repo-lineage.json
+
+do not perform any tasks other than rules mentioned in the agent. Do not read files other than those mentioned in agent. 
+
+```
+
+## Agent2 prompt
+```
+@agent2_cross_repository_lineage.agent.md inout directory: GItbased-DataLineage/lineage_output
+
+and write the output into file: GItbased-DataLineage/lineage_output/cross-boundary-lineage.md
+
+do not perform any tasks other than rules mentioned in the agent. Do not read files other than those mentioned in agent. 
+```

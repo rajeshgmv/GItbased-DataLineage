@@ -5,33 +5,53 @@
     "origin_url": "https://github.com/rajeshgmv/Chroma_db_reader.git",
     "commit_sha": "c1b1404118a7080af3a397aba1cdfd800f39feb3",
     "branch": "main",
-    "context_exported_at": "2026-08-06T05:22:03.179354+00:00"
+    "context_exported_at": "2026-08-06T16:12:10.015334+00:00"
   },
   "input_coverage": [
     {
       "section": "manifest",
       "records_considered": 1,
-      "used_for": ["repository_identity", "provenance", "context_completeness"]
+      "used_for": [
+        "repository_identity",
+        "provenance",
+        "export_coverage",
+        "known_limitations"
+      ]
     },
     {
       "section": "graph_summary",
       "records_considered": 1,
-      "used_for": ["graph_coverage", "artifact_coverage"]
+      "used_for": [
+        "graph_coverage_validation",
+        "artifact_inventory"
+      ]
     },
     {
       "section": "architecture",
       "records_considered": 1,
-      "used_for": ["runtime_language"]
+      "used_for": [
+        "runtime_language",
+        "component_classification"
+      ]
     },
     {
       "section": "artifacts",
       "records_considered": 1,
-      "used_for": ["entry_point_configuration"]
+      "used_for": [
+        "runtime_entry_point",
+        "component_identity"
+      ]
     },
     {
       "section": "source_evidence",
       "records_considered": 2,
-      "used_for": ["database_locator", "sql_read", "field_mappings", "json_serialization", "file_write"]
+      "used_for": [
+        "boundary_operations",
+        "resource_locators",
+        "field_mappings",
+        "transformations",
+        "serialization"
+      ]
     }
   ],
   "components": [
@@ -41,24 +61,35 @@
       "kind": "batch_job",
       "repository": "Chroma_db_reader",
       "raw_locator": "com.example.chromareader.ChromaDbExporter",
-      "normalized_locator": "job://chroma_db_reader/chroma-db-exporter",
-      "evidence_ids": ["EV-001", "EV-004", "EV-005"]
+      "normalized_locator": "java:com.example.chromareader.ChromaDbExporter",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002"
+      ]
     },
     {
       "component_id": "CMP-002",
-      "name": "Chroma SQLite database",
+      "name": "Chroma SQLite input",
       "kind": "database",
-      "raw_locator": "/Users/guttikonda/Desktop/training docs/crypto-kafka-rag-project/crypto_chroma_db/chroma.sqlite3",
-      "normalized_locator": "sqlite:////users/guttikonda/desktop/training docs/crypto-kafka-rag-project/crypto_chroma_db/chroma.sqlite3",
-      "evidence_ids": ["EV-001", "EV-002", "EV-004", "EV-005"]
+      "raw_locator": "/Users/guttikonda/Desktop/training docs/crypto-kafka-rag-project/crypto_chroma_db",
+      "normalized_locator": "sqlite:///Users/guttikonda/Desktop/training%20docs/crypto-kafka-rag-project/crypto_chroma_db",
+      "evidence_ids": [
+        "EV-003",
+        "EV-016",
+        "EV-017"
+      ]
     },
     {
       "component_id": "CMP-003",
       "name": "Chroma JSON export",
       "kind": "file",
       "raw_locator": "chroma-export.json",
-      "normalized_locator": "file://repo/chroma_db_reader/chroma-export.json",
-      "evidence_ids": ["EV-001", "EV-003", "EV-004", "EV-005"]
+      "normalized_locator": "file://{working_directory}/chroma-export.json",
+      "evidence_ids": [
+        "EV-003",
+        "EV-016",
+        "EV-018"
+      ]
     }
   ],
   "data_elements": [
@@ -69,148 +100,307 @@
       "component_id": "CMP-002",
       "container": "table collections",
       "data_type": "unknown",
-      "aliases": ["collection_name"],
-      "evidence_ids": ["EV-002"]
+      "aliases": [
+        "collection_name"
+      ],
+      "evidence_ids": [
+        "EV-004",
+        "EV-013"
+      ]
     },
     {
       "element_id": "EL-002",
+      "name": "id",
+      "element_path": "embeddings.id",
+      "component_id": "CMP-002",
+      "container": "table embeddings",
+      "data_type": "unknown",
+      "aliases": [
+        "row_id"
+      ],
+      "evidence_ids": [
+        "EV-004",
+        "EV-012",
+        "EV-015"
+      ]
+    },
+    {
+      "element_id": "EL-003",
       "name": "embedding_id",
       "element_path": "embeddings.embedding_id",
       "component_id": "CMP-002",
       "container": "table embeddings",
       "data_type": "unknown",
-      "aliases": [],
-      "evidence_ids": ["EV-002"]
+      "aliases": [
+        "id"
+      ],
+      "evidence_ids": [
+        "EV-004",
+        "EV-014"
+      ]
     },
     {
-      "element_id": "EL-003",
+      "element_id": "EL-004",
       "name": "key",
       "element_path": "embedding_metadata.key",
       "component_id": "CMP-002",
       "container": "table embedding_metadata",
-      "data_type": "string",
+      "data_type": "unknown",
       "aliases": [],
-      "evidence_ids": ["EV-002"]
+      "evidence_ids": [
+        "EV-005",
+        "EV-006",
+        "EV-009"
+      ]
     },
     {
-      "element_id": "EL-004",
+      "element_id": "EL-005",
       "name": "string_value",
       "element_path": "embedding_metadata.string_value",
       "component_id": "CMP-002",
       "container": "table embedding_metadata",
-      "data_type": "string",
-      "aliases": [],
-      "evidence_ids": ["EV-002"]
+      "data_type": "unknown",
+      "aliases": [
+        "document"
+      ],
+      "evidence_ids": [
+        "EV-005",
+        "EV-007"
+      ]
     },
     {
-      "element_id": "EL-005",
+      "element_id": "EL-006",
       "name": "int_value",
       "element_path": "embedding_metadata.int_value",
       "component_id": "CMP-002",
       "container": "table embedding_metadata",
-      "data_type": "integer",
+      "data_type": "unknown",
       "aliases": [],
-      "evidence_ids": ["EV-002"]
+      "evidence_ids": [
+        "EV-007"
+      ]
     },
     {
-      "element_id": "EL-006",
+      "element_id": "EL-007",
       "name": "float_value",
       "element_path": "embedding_metadata.float_value",
       "component_id": "CMP-002",
       "container": "table embedding_metadata",
-      "data_type": "number",
+      "data_type": "unknown",
       "aliases": [],
-      "evidence_ids": ["EV-002"]
+      "evidence_ids": [
+        "EV-007"
+      ]
     },
     {
-      "element_id": "EL-007",
+      "element_id": "EL-008",
       "name": "bool_value",
       "element_path": "embedding_metadata.bool_value",
       "component_id": "CMP-002",
       "container": "table embedding_metadata",
-      "data_type": "boolean",
-      "aliases": [],
-      "evidence_ids": ["EV-002"]
-    },
-    {
-      "element_id": "EL-008",
-      "name": "collection_name",
-      "element_path": "records.collection_name",
-      "component_id": "CMP-001",
-      "container": "query result",
       "data_type": "unknown",
-      "aliases": ["name"],
-      "evidence_ids": ["EV-002", "EV-003"]
+      "aliases": [],
+      "evidence_ids": [
+        "EV-008"
+      ]
     },
     {
       "element_id": "EL-009",
-      "name": "embedding_id",
-      "element_path": "records.embedding_id",
-      "component_id": "CMP-001",
-      "container": "query result",
+      "name": "id",
+      "element_path": "collections.id",
+      "component_id": "CMP-002",
+      "container": "table collections",
       "data_type": "unknown",
       "aliases": [],
-      "evidence_ids": ["EV-002", "EV-003"]
+      "evidence_ids": [
+        "EV-010"
+      ]
     },
     {
       "element_id": "EL-010",
-      "name": "document",
-      "element_path": "records.document",
-      "component_id": "CMP-001",
-      "container": "query result",
-      "data_type": "string",
-      "aliases": ["chroma:document"],
-      "evidence_ids": ["EV-002", "EV-003"]
+      "name": "collection",
+      "element_path": "segments.collection",
+      "component_id": "CMP-002",
+      "container": "table segments",
+      "data_type": "unknown",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-010"
+      ]
     },
     {
       "element_id": "EL-011",
-      "name": "metadata",
-      "element_path": "records.metadata",
-      "component_id": "CMP-001",
-      "container": "query result",
-      "data_type": "object",
+      "name": "scope",
+      "element_path": "segments.scope",
+      "component_id": "CMP-002",
+      "container": "table segments",
+      "data_type": "unknown",
       "aliases": [],
-      "evidence_ids": ["EV-002", "EV-003"]
+      "evidence_ids": [
+        "EV-011"
+      ]
     },
     {
       "element_id": "EL-012",
-      "name": "collection",
-      "element_path": "records[].collection",
-      "component_id": "CMP-003",
-      "container": "file record",
+      "name": "id",
+      "element_path": "segments.id",
+      "component_id": "CMP-002",
+      "container": "table segments",
       "data_type": "unknown",
-      "aliases": ["collection_name"],
-      "evidence_ids": ["EV-003"]
+      "aliases": [],
+      "evidence_ids": [
+        "EV-011"
+      ]
     },
     {
       "element_id": "EL-013",
-      "name": "id",
-      "element_path": "records[].id",
-      "component_id": "CMP-003",
-      "container": "file record",
+      "name": "segment_id",
+      "element_path": "embeddings.segment_id",
+      "component_id": "CMP-002",
+      "container": "table embeddings",
       "data_type": "unknown",
-      "aliases": ["embedding_id"],
-      "evidence_ids": ["EV-003"]
+      "aliases": [],
+      "evidence_ids": [
+        "EV-011"
+      ]
     },
     {
       "element_id": "EL-014",
-      "name": "document",
-      "element_path": "records[].document",
-      "component_id": "CMP-003",
-      "container": "file record",
-      "data_type": "string",
+      "name": "id",
+      "element_path": "embedding_metadata.id",
+      "component_id": "CMP-002",
+      "container": "table embedding_metadata",
+      "data_type": "unknown",
       "aliases": [],
-      "evidence_ids": ["EV-003"]
+      "evidence_ids": [
+        "EV-011"
+      ]
     },
     {
       "element_id": "EL-015",
+      "name": "collection",
+      "element_path": "payload.records[].collection",
+      "component_id": "CMP-001",
+      "container": "payload",
+      "data_type": "unknown",
+      "aliases": [
+        "collection_name",
+        "collections.name"
+      ],
+      "evidence_ids": [
+        "EV-013"
+      ]
+    },
+    {
+      "element_id": "EL-016",
+      "name": "id",
+      "element_path": "payload.records[].id",
+      "component_id": "CMP-001",
+      "container": "payload",
+      "data_type": "unknown",
+      "aliases": [
+        "embedding_id",
+        "embeddings.embedding_id"
+      ],
+      "evidence_ids": [
+        "EV-014"
+      ]
+    },
+    {
+      "element_id": "EL-017",
+      "name": "document",
+      "element_path": "payload.records[].document",
+      "component_id": "CMP-001",
+      "container": "payload",
+      "data_type": "unknown",
+      "aliases": [
+        "embedding_metadata.string_value"
+      ],
+      "evidence_ids": [
+        "EV-005",
+        "EV-014"
+      ]
+    },
+    {
+      "element_id": "EL-018",
+      "name": "metadata",
+      "element_path": "payload.records[].metadata",
+      "component_id": "CMP-001",
+      "container": "payload",
+      "data_type": "object",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-006",
+        "EV-007",
+        "EV-008",
+        "EV-009",
+        "EV-014"
+      ]
+    },
+    {
+      "element_id": "EL-019",
+      "name": "collection",
+      "element_path": "records[].collection",
+      "component_id": "CMP-003",
+      "container": "JSON file",
+      "data_type": "unknown",
+      "aliases": [
+        "collection_name",
+        "collections.name"
+      ],
+      "evidence_ids": [
+        "EV-013",
+        "EV-018"
+      ]
+    },
+    {
+      "element_id": "EL-020",
+      "name": "id",
+      "element_path": "records[].id",
+      "component_id": "CMP-003",
+      "container": "JSON file",
+      "data_type": "unknown",
+      "aliases": [
+        "embedding_id",
+        "embeddings.embedding_id"
+      ],
+      "evidence_ids": [
+        "EV-014",
+        "EV-018"
+      ]
+    },
+    {
+      "element_id": "EL-021",
+      "name": "document",
+      "element_path": "records[].document",
+      "component_id": "CMP-003",
+      "container": "JSON file",
+      "data_type": "unknown",
+      "aliases": [
+        "embedding_metadata.string_value"
+      ],
+      "evidence_ids": [
+        "EV-005",
+        "EV-014",
+        "EV-018"
+      ]
+    },
+    {
+      "element_id": "EL-022",
       "name": "metadata",
       "element_path": "records[].metadata",
       "component_id": "CMP-003",
-      "container": "file record",
+      "container": "JSON file",
       "data_type": "object",
       "aliases": [],
-      "evidence_ids": ["EV-003"]
+      "evidence_ids": [
+        "EV-006",
+        "EV-007",
+        "EV-008",
+        "EV-009",
+        "EV-014",
+        "EV-018"
+      ]
     }
   ],
   "boundary_contracts": [
@@ -218,24 +408,63 @@
       "contract_id": "CTR-001",
       "direction": "inbound",
       "mechanism": "database",
-      "operation": "read",
+      "operation": "query",
       "local_component_id": "CMP-001",
       "remote_component_id": "CMP-002",
-      "raw_locator": "/Users/guttikonda/Desktop/training docs/crypto-kafka-rag-project/crypto_chroma_db/chroma.sqlite3",
-      "normalized_locator": "sqlite:////users/guttikonda/desktop/training docs/crypto-kafka-rag-project/crypto_chroma_db/chroma.sqlite3",
-      "data_element_ids": ["EL-001", "EL-002", "EL-003", "EL-004", "EL-005", "EL-006", "EL-007"],
+      "raw_locator": "/Users/guttikonda/Desktop/training docs/crypto-kafka-rag-project/crypto_chroma_db",
+      "normalized_locator": "sqlite:///Users/guttikonda/Desktop/training%20docs/crypto-kafka-rag-project/crypto_chroma_db",
+      "data_element_ids": [
+        "EL-001",
+        "EL-002",
+        "EL-003",
+        "EL-004",
+        "EL-005",
+        "EL-006",
+        "EL-007",
+        "EL-008",
+        "EL-009",
+        "EL-010",
+        "EL-011",
+        "EL-012",
+        "EL-013",
+        "EL-014"
+      ],
       "schema_signature": [
+        "collections.id:unknown",
         "collections.name:unknown",
-        "embedding_metadata.bool_value:boolean",
-        "embedding_metadata.float_value:number",
-        "embedding_metadata.int_value:integer",
-        "embedding_metadata.key:string",
-        "embedding_metadata.string_value:string",
-        "embeddings.embedding_id:unknown"
+        "embedding_metadata.bool_value:unknown",
+        "embedding_metadata.float_value:unknown",
+        "embedding_metadata.id:unknown",
+        "embedding_metadata.int_value:unknown",
+        "embedding_metadata.key:unknown",
+        "embedding_metadata.string_value:unknown",
+        "embeddings.embedding_id:unknown",
+        "embeddings.id:unknown",
+        "embeddings.segment_id:unknown",
+        "segments.collection:unknown",
+        "segments.id:unknown",
+        "segments.scope:unknown"
       ],
       "confidence": "partial",
-      "evidence_ids": ["EV-001", "EV-002", "EV-004", "EV-005"],
-      "issue_ids": ["ISS-001"]
+      "evidence_ids": [
+        "EV-003",
+        "EV-004",
+        "EV-005",
+        "EV-006",
+        "EV-007",
+        "EV-008",
+        "EV-009",
+        "EV-010",
+        "EV-011",
+        "EV-012",
+        "EV-015",
+        "EV-016",
+        "EV-017"
+      ],
+      "issue_ids": [
+        "ISS-001",
+        "ISS-003"
+      ]
     },
     {
       "contract_id": "CTR-002",
@@ -245,17 +474,31 @@
       "local_component_id": "CMP-001",
       "remote_component_id": "CMP-003",
       "raw_locator": "chroma-export.json",
-      "normalized_locator": "file://repo/chroma_db_reader/chroma-export.json",
-      "data_element_ids": ["EL-012", "EL-013", "EL-014", "EL-015"],
+      "normalized_locator": "file://{working_directory}/chroma-export.json",
+      "data_element_ids": [
+        "EL-019",
+        "EL-020",
+        "EL-021",
+        "EL-022"
+      ],
       "schema_signature": [
         "records[].collection:unknown",
-        "records[].document:string",
+        "records[].document:unknown",
         "records[].id:unknown",
         "records[].metadata:object"
       ],
       "confidence": "partial",
-      "evidence_ids": ["EV-001", "EV-003", "EV-004", "EV-005"],
-      "issue_ids": ["ISS-001"]
+      "evidence_ids": [
+        "EV-003",
+        "EV-013",
+        "EV-014",
+        "EV-016",
+        "EV-018"
+      ],
+      "issue_ids": [
+        "ISS-002",
+        "ISS-003"
+      ]
     }
   ],
   "lineage_flows": [
@@ -264,109 +507,270 @@
       "flow_type": "database_to_service",
       "source_component_id": "CMP-002",
       "target_component_id": "CMP-001",
-      "operation": "read and aggregate Chroma records",
-      "mechanism": "sqlite3 read-only SQL",
+      "operation": "read Chroma records and aggregate them into JSON records",
+      "mechanism": "SQLite CLI read-only query",
       "element_mappings": [
         {
-          "source_element_ids": ["EL-001"],
-          "target_element_id": "EL-008",
+          "source_element_ids": [
+            "EL-001"
+          ],
+          "target_element_id": "EL-015",
           "transformation_type": "rename",
-          "expression": "c.name AS collection_name",
-          "evidence_ids": ["EV-002"]
+          "expression": "c.name AS collection_name -> json key 'collection'",
+          "evidence_ids": [
+            "EV-004",
+            "EV-013"
+          ]
         },
         {
-          "source_element_ids": ["EL-002"],
-          "target_element_id": "EL-009",
-          "transformation_type": "none",
-          "expression": "e.embedding_id",
-          "evidence_ids": ["EV-002"]
+          "source_element_ids": [
+            "EL-003"
+          ],
+          "target_element_id": "EL-016",
+          "transformation_type": "rename",
+          "expression": "e.embedding_id -> json key 'id'",
+          "evidence_ids": [
+            "EV-004",
+            "EV-014"
+          ]
         },
         {
-          "source_element_ids": ["EL-003", "EL-004"],
-          "target_element_id": "EL-010",
+          "source_element_ids": [
+            "EL-004",
+            "EL-005"
+          ],
+          "target_element_id": "EL-017",
           "transformation_type": "aggregate",
           "expression": "MAX(CASE WHEN em.key = 'chroma:document' THEN em.string_value END)",
-          "evidence_ids": ["EV-002"]
+          "evidence_ids": [
+            "EV-005"
+          ]
         },
         {
-          "source_element_ids": ["EL-003", "EL-004", "EL-005", "EL-006", "EL-007"],
-          "target_element_id": "EL-011",
+          "source_element_ids": [
+            "EL-004",
+            "EL-005",
+            "EL-006",
+            "EL-007",
+            "EL-008"
+          ],
+          "target_element_id": "EL-018",
           "transformation_type": "aggregate",
           "expression": "json_group_object(em.key, first non-null typed value) FILTER (WHERE em.key NOT LIKE 'chroma:%')",
-          "evidence_ids": ["EV-002"]
+          "evidence_ids": [
+            "EV-006",
+            "EV-007",
+            "EV-008",
+            "EV-009"
+          ]
         }
       ],
       "confidence": "partial",
-      "evidence_ids": ["EV-001", "EV-002", "EV-004", "EV-005"],
-      "issue_ids": ["ISS-001"]
+      "evidence_ids": [
+        "EV-004",
+        "EV-005",
+        "EV-006",
+        "EV-007",
+        "EV-008",
+        "EV-009",
+        "EV-010",
+        "EV-011",
+        "EV-012",
+        "EV-013",
+        "EV-014",
+        "EV-015",
+        "EV-016",
+        "EV-017"
+      ],
+      "issue_ids": [
+        "ISS-001",
+        "ISS-003"
+      ]
     },
     {
       "flow_id": "FL-002",
       "flow_type": "service_to_file",
       "source_component_id": "CMP-001",
       "target_component_id": "CMP-003",
-      "operation": "write JSON export",
-      "mechanism": "SQLite JSON functions redirected to file",
+      "operation": "write aggregated JSON array to chroma-export.json",
+      "mechanism": "process standard-output redirection",
       "element_mappings": [
         {
-          "source_element_ids": ["EL-008"],
-          "target_element_id": "EL-012",
+          "source_element_ids": [
+            "EL-015"
+          ],
+          "target_element_id": "EL-019",
           "transformation_type": "serialize",
-          "expression": "json_object('collection', collection_name)",
-          "evidence_ids": ["EV-003", "EV-005"]
+          "expression": "json_object key 'collection' emitted to redirected output",
+          "evidence_ids": [
+            "EV-013",
+            "EV-018"
+          ]
         },
         {
-          "source_element_ids": ["EL-009"],
-          "target_element_id": "EL-013",
+          "source_element_ids": [
+            "EL-016"
+          ],
+          "target_element_id": "EL-020",
           "transformation_type": "serialize",
-          "expression": "json_object('id', embedding_id)",
-          "evidence_ids": ["EV-003", "EV-005"]
+          "expression": "json_object key 'id' emitted to redirected output",
+          "evidence_ids": [
+            "EV-014",
+            "EV-018"
+          ]
         },
         {
-          "source_element_ids": ["EL-010"],
-          "target_element_id": "EL-014",
+          "source_element_ids": [
+            "EL-017"
+          ],
+          "target_element_id": "EL-021",
           "transformation_type": "serialize",
-          "expression": "json_object('document', document)",
-          "evidence_ids": ["EV-003", "EV-005"]
+          "expression": "json_object key 'document' emitted to redirected output",
+          "evidence_ids": [
+            "EV-014",
+            "EV-018"
+          ]
         },
         {
-          "source_element_ids": ["EL-011"],
-          "target_element_id": "EL-015",
+          "source_element_ids": [
+            "EL-018"
+          ],
+          "target_element_id": "EL-022",
           "transformation_type": "serialize",
-          "expression": "json_object('metadata', json(COALESCE(metadata, '{}')))",
-          "evidence_ids": ["EV-003", "EV-005"]
+          "expression": "json(COALESCE(metadata, '{}')) emitted as json_object key 'metadata'",
+          "evidence_ids": [
+            "EV-014",
+            "EV-018"
+          ]
         }
       ],
       "confidence": "partial",
-      "evidence_ids": ["EV-001", "EV-003", "EV-004", "EV-005"],
-      "issue_ids": ["ISS-001"]
+      "evidence_ids": [
+        "EV-013",
+        "EV-014",
+        "EV-016",
+        "EV-018"
+      ],
+      "issue_ids": [
+        "ISS-002",
+        "ISS-003"
+      ]
     }
   ],
   "end_to_end_paths": [
     {
       "path_id": "PATH-001",
       "name": "Chroma SQLite database to JSON export",
-      "flow_ids": ["FL-001", "FL-002"],
+      "flow_ids": [
+        "FL-001",
+        "FL-002"
+      ],
       "source_component_id": "CMP-002",
       "target_component_id": "CMP-003",
-      "data_element_ids": ["EL-001", "EL-002", "EL-003", "EL-004", "EL-005", "EL-006", "EL-007", "EL-012", "EL-013", "EL-014", "EL-015"],
+      "data_element_ids": [
+        "EL-001",
+        "EL-003",
+        "EL-004",
+        "EL-005",
+        "EL-006",
+        "EL-007",
+        "EL-008",
+        "EL-015",
+        "EL-016",
+        "EL-017",
+        "EL-018",
+        "EL-019",
+        "EL-020",
+        "EL-021",
+        "EL-022"
+      ],
       "confidence": "partial",
-      "issue_ids": ["ISS-001"]
+      "issue_ids": [
+        "ISS-001",
+        "ISS-002",
+        "ISS-003"
+      ]
     }
   ],
   "issues": [
     {
       "issue_id": "ISS-001",
-      "type": "incomplete_mapping",
+      "type": "missing_endpoint",
       "severity": "medium",
-      "description": "Metadata keys are selected dynamically from embedding_metadata and keys beginning with chroma: are excluded, so the exact exported metadata field names and per-key types cannot be enumerated from this context.",
-      "related_ids": ["CTR-001", "CTR-002", "FL-001", "FL-002", "PATH-001"],
-      "evidence_ids": ["EV-002", "EV-003"]
+      "description": "The input constant is an absolute path, but runtime file-system state determines whether it is used directly as the SQLite file or resolved as a directory containing chroma.sqlite3; the context does not prove which locator is active.",
+      "related_ids": [
+        "CMP-002",
+        "CTR-001",
+        "FL-001",
+        "PATH-001"
+      ],
+      "evidence_ids": [
+        "EV-003",
+        "EV-016"
+      ]
+    },
+    {
+      "issue_id": "ISS-002",
+      "type": "missing_endpoint",
+      "severity": "medium",
+      "description": "The output filename is proven, but its absolute location depends on the process working directory, which is not present in the context.",
+      "related_ids": [
+        "CMP-003",
+        "CTR-002",
+        "FL-002",
+        "PATH-001"
+      ],
+      "evidence_ids": [
+        "EV-003",
+        "EV-016",
+        "EV-018"
+      ]
+    },
+    {
+      "issue_id": "ISS-003",
+      "type": "missing_schema",
+      "severity": "low",
+      "description": "The context contains the SQL column names and exact JSON mappings but no SQLite DDL or declared field types, so source column types and the scalar output types remain unknown.",
+      "related_ids": [
+        "CTR-001",
+        "CTR-002",
+        "FL-001",
+        "FL-002",
+        "PATH-001"
+      ],
+      "evidence_ids": [
+        "EV-004",
+        "EV-005",
+        "EV-006",
+        "EV-007",
+        "EV-008",
+        "EV-009",
+        "EV-010",
+        "EV-011"
+      ]
     }
   ],
   "evidence": [
     {
       "evidence_id": "EV-001",
+      "file_path": "pom.xml",
+      "start_line": 29,
+      "end_line": 31,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader.pom",
+      "evidence_type": "configuration",
+      "excerpt": "<manifest>\n    <mainClass>com.example.chromareader.ChromaDbExporter</mainClass>\n</manifest>"
+    },
+    {
+      "evidence_id": "EV-002",
+      "file_path": "src/main/java/com/example/chromareader/ChromaDbExporter.java",
+      "start_line": 7,
+      "end_line": 7,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader.src.main.java.com.example.chromareader.ChromaDbExporter",
+      "evidence_type": "source",
+      "excerpt": "public final class ChromaDbExporter {"
+    },
+    {
+      "evidence_id": "EV-003",
       "file_path": "src/main/java/com/example/chromareader/ChromaDbExporter.java",
       "start_line": 10,
       "end_line": 12,
@@ -375,37 +779,139 @@
       "excerpt": "private static final String CHROMA_DB_DIRECTORY =\n        \"/Users/guttikonda/Desktop/training docs/crypto-kafka-rag-project/crypto_chroma_db\";\nprivate static final String OUTPUT_JSON_FILE = \"chroma-export.json\";"
     },
     {
-      "evidence_id": "EV-002",
-      "file_path": "src/main/java/com/example/chromareader/ChromaDbExporter.java",
-      "start_line": 14,
-      "end_line": 41,
-      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader.src.main.java.com.example.chromareader.ChromaDbExporter",
-      "evidence_type": "sql"
-    },
-    {
-      "evidence_id": "EV-003",
-      "file_path": "src/main/java/com/example/chromareader/ChromaDbExporter.java",
-      "start_line": 43,
-      "end_line": 53,
-      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader.src.main.java.com.example.chromareader.ChromaDbExporter",
-      "evidence_type": "sql"
-    },
-    {
       "evidence_id": "EV-004",
       "file_path": "src/main/java/com/example/chromareader/ChromaDbExporter.java",
-      "start_line": 59,
+      "start_line": 17,
+      "end_line": 19,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader.src.main.java.com.example.chromareader.ChromaDbExporter",
+      "evidence_type": "sql",
+      "excerpt": "c.name AS collection_name,\ne.id AS row_id,\ne.embedding_id,"
+    },
+    {
+      "evidence_id": "EV-005",
+      "file_path": "src/main/java/com/example/chromareader/ChromaDbExporter.java",
+      "start_line": 20,
+      "end_line": 22,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader.src.main.java.com.example.chromareader.ChromaDbExporter",
+      "evidence_type": "sql",
+      "excerpt": "MAX(CASE\n    WHEN em.key = 'chroma:document' THEN em.string_value\nEND) AS document,"
+    },
+    {
+      "evidence_id": "EV-006",
+      "file_path": "src/main/java/com/example/chromareader/ChromaDbExporter.java",
+      "start_line": 23,
+      "end_line": 25,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader.src.main.java.com.example.chromareader.ChromaDbExporter",
+      "evidence_type": "sql",
+      "excerpt": "json_group_object(\n    em.key,\n    CASE"
+    },
+    {
+      "evidence_id": "EV-007",
+      "file_path": "src/main/java/com/example/chromareader/ChromaDbExporter.java",
+      "start_line": 26,
+      "end_line": 28,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader.src.main.java.com.example.chromareader.ChromaDbExporter",
+      "evidence_type": "sql",
+      "excerpt": "WHEN em.string_value IS NOT NULL THEN em.string_value\nWHEN em.int_value IS NOT NULL THEN em.int_value\nWHEN em.float_value IS NOT NULL THEN em.float_value"
+    },
+    {
+      "evidence_id": "EV-008",
+      "file_path": "src/main/java/com/example/chromareader/ChromaDbExporter.java",
+      "start_line": 29,
+      "end_line": 31,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader.src.main.java.com.example.chromareader.ChromaDbExporter",
+      "evidence_type": "sql",
+      "excerpt": "WHEN em.bool_value IS NOT NULL THEN json(\n    CASE WHEN em.bool_value = 1 THEN 'true' ELSE 'false' END\n)"
+    },
+    {
+      "evidence_id": "EV-009",
+      "file_path": "src/main/java/com/example/chromareader/ChromaDbExporter.java",
+      "start_line": 32,
+      "end_line": 34,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader.src.main.java.com.example.chromareader.ChromaDbExporter",
+      "evidence_type": "sql",
+      "excerpt": "ELSE NULL\nEND\n) FILTER (WHERE em.key NOT LIKE 'chroma:%') AS metadata"
+    },
+    {
+      "evidence_id": "EV-010",
+      "file_path": "src/main/java/com/example/chromareader/ChromaDbExporter.java",
+      "start_line": 35,
+      "end_line": 37,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader.src.main.java.com.example.chromareader.ChromaDbExporter",
+      "evidence_type": "sql",
+      "excerpt": "FROM collections c\nJOIN segments s\n    ON s.collection = c.id"
+    },
+    {
+      "evidence_id": "EV-011",
+      "file_path": "src/main/java/com/example/chromareader/ChromaDbExporter.java",
+      "start_line": 38,
+      "end_line": 40,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader.src.main.java.com.example.chromareader.ChromaDbExporter",
+      "evidence_type": "sql",
+      "excerpt": "AND s.scope = 'METADATA'\nJOIN embeddings e ON e.segment_id = s.id\nLEFT JOIN embedding_metadata em ON em.id = e.id"
+    },
+    {
+      "evidence_id": "EV-012",
+      "file_path": "src/main/java/com/example/chromareader/ChromaDbExporter.java",
+      "start_line": 41,
+      "end_line": 41,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader.src.main.java.com.example.chromareader.ChromaDbExporter",
+      "evidence_type": "sql",
+      "excerpt": "GROUP BY c.name, e.id, e.embedding_id"
+    },
+    {
+      "evidence_id": "EV-013",
+      "file_path": "src/main/java/com/example/chromareader/ChromaDbExporter.java",
+      "start_line": 43,
+      "end_line": 45,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader.src.main.java.com.example.chromareader.ChromaDbExporter",
+      "evidence_type": "sql",
+      "excerpt": "SELECT json_group_array(\n    json_object(\n        'collection', collection_name,"
+    },
+    {
+      "evidence_id": "EV-014",
+      "file_path": "src/main/java/com/example/chromareader/ChromaDbExporter.java",
+      "start_line": 46,
+      "end_line": 48,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader.src.main.java.com.example.chromareader.ChromaDbExporter",
+      "evidence_type": "sql",
+      "excerpt": "'id', embedding_id,\n'document', document,\n'metadata', json(COALESCE(metadata, '{}'))"
+    },
+    {
+      "evidence_id": "EV-015",
+      "file_path": "src/main/java/com/example/chromareader/ChromaDbExporter.java",
+      "start_line": 51,
+      "end_line": 52,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader.src.main.java.com.example.chromareader.ChromaDbExporter",
+      "evidence_type": "sql",
+      "excerpt": "FROM (\n    SELECT * FROM records ORDER BY collection_name, row_id"
+    },
+    {
+      "evidence_id": "EV-016",
+      "file_path": "src/main/java/com/example/chromareader/ChromaDbExporter.java",
+      "start_line": 60,
       "end_line": 62,
       "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader.src.main.java.com.example.chromareader.ChromaDbExporter",
       "evidence_type": "source",
       "excerpt": "Path input = Path.of(CHROMA_DB_DIRECTORY).toAbsolutePath().normalize();\nPath database = Files.isDirectory(input) ? input.resolve(\"chroma.sqlite3\") : input;\nPath output = Path.of(OUTPUT_JSON_FILE).toAbsolutePath().normalize();"
     },
     {
-      "evidence_id": "EV-005",
+      "evidence_id": "EV-017",
       "file_path": "src/main/java/com/example/chromareader/ChromaDbExporter.java",
-      "start_line": 77,
+      "start_line": 80,
+      "end_line": 84,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader.src.main.java.com.example.chromareader.ChromaDbExporter",
+      "evidence_type": "source",
+      "excerpt": "\"sqlite3\",\n\"-readonly\",\ndatabase.toString(),"
+    },
+    {
+      "evidence_id": "EV-018",
+      "file_path": "src/main/java/com/example/chromareader/ChromaDbExporter.java",
+      "start_line": 86,
       "end_line": 88,
       "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader.src.main.java.com.example.chromareader.ChromaDbExporter",
-      "evidence_type": "source"
+      "evidence_type": "source",
+      "excerpt": ".redirectOutput(output.toFile())\n.redirectError(ProcessBuilder.Redirect.INHERIT)\n.start();"
     }
   ]
 }
