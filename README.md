@@ -34,7 +34,13 @@ Verify the installation:
 
 ## Path configuration
 
-All project paths are configured in `.env`:
+Copy the committed example to create your local path configuration:
+
+```bash
+cp .env.example .env
+```
+
+All project paths are configured in the local `.env` file:
 
 | Variable | Purpose |
 |---|---|
@@ -46,7 +52,10 @@ All project paths are configured in `.env`:
 | `CBM_ALLOWED_ROOT` | Restricts CBM indexing to the local clone directory |
 | `LINEAGE_CONTEXT_DIR` | Generated per-repository evidence packages for Agent 1 |
 
-The included `.env` contains absolute paths for this checkout. Update those values if the project directory is moved. Values already exported in the shell take precedence over values in `.env`.
+The committed `.env.example` uses paths relative to the project root. The local
+`.env` file is ignored by Git, so it can be changed to absolute or machine-specific
+paths without committing them. Values already exported in the shell take
+precedence over values in `.env`.
 
 CBM permits only one active canonical cache root for an account at a time. Stop any running CBM daemon or active CBM commands before changing `CBM_CACHE_DIR`.
 
