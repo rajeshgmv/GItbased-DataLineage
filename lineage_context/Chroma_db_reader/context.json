@@ -1,0 +1,152 @@
+{
+  "manifest": {
+    "lineage_context_schema_version": "1.2",
+    "exported_at": "2026-08-06T05:22:03.179354+00:00",
+    "repository": {
+      "name": "Chroma_db_reader",
+      "configured_url": "https://github.com/rajeshgmv/Chroma_db_reader.git",
+      "origin_url": "https://github.com/rajeshgmv/Chroma_db_reader.git",
+      "branch": "main",
+      "commit_sha": "c1b1404118a7080af3a397aba1cdfd800f39feb3",
+      "commit_timestamp": "2026-08-06T00:21:01-05:00",
+      "root_path": "/Users/guttikonda/gitbased-DataLineage/GItbased-DataLineage/repo_local_clone/Chroma_db_reader",
+      "working_tree_clean": true
+    },
+    "csv_status": {
+      "CloneStatus": "cloned",
+      "IndexStatus": "Indexed",
+      "ContextStatus": "Contexted"
+    },
+    "codebase_memory": {
+      "version": "codebase-memory-mcp 0.8.1",
+      "project": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader",
+      "root_path": "/Users/guttikonda/gitbased-DataLineage/GItbased-DataLineage/repo_local_clone/Chroma_db_reader",
+      "index_status": {
+        "project": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader",
+        "nodes": 44,
+        "edges": 41,
+        "status": "ready"
+      },
+      "graph_export_coverage": {
+        "complete": true,
+        "expected_nodes": 44,
+        "exported_nodes": 44,
+        "expected_relationships": 41,
+        "exported_relationships": 41,
+        "query_limit": 100000
+      }
+    },
+    "agent_context_scope": {
+      "test_files_excluded": true,
+      "module_records_excluded": true,
+      "empty_attributes_excluded": true,
+      "selected_symbols": 0,
+      "selected_relationships": 0,
+      "lineage_artifacts": 1,
+      "source_snippets": 2
+    },
+    "limitations": [
+      "Graph relationships are discovery evidence, not proof of field movement.",
+      "Confirmed lineage requires source evidence such as assignments, SQL, schemas, mappings, serialization, or configuration.",
+      "Source excerpts are selected from CBM graph metadata and retrieved by qualified name.",
+      "Optional text search is a fallback for graph coverage gaps and is disabled unless --enable-text-fallback is supplied.",
+      "The current Git commit is recorded, but CBM 0.8.1 does not expose the indexed commit SHA directly."
+    ],
+    "files": {
+      "graph_summary": "graph-schema.json",
+      "architecture": "architecture.json",
+      "symbols": "symbols.json",
+      "relationships": "relationships.json",
+      "artifacts": "artifacts.json",
+      "interfaces": "interfaces.json",
+      "source_evidence": "source-evidence.json",
+      "combined_context": "context.json"
+    }
+  },
+  "graph_summary": {
+    "project": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader",
+    "raw_graph_coverage": {
+      "complete": true,
+      "expected_nodes": 44,
+      "exported_nodes": 44,
+      "expected_relationships": 41,
+      "exported_relationships": 41,
+      "query_limit": 100000
+    },
+    "selected_artifact_types": [
+      {
+        "type": "configuration_file",
+        "count": 1
+      }
+    ]
+  },
+  "architecture": {
+    "project": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader",
+    "languages": [
+      "Java"
+    ]
+  },
+  "artifacts": [
+    {
+      "artifact_type": "configuration_file",
+      "name": "pom.xml",
+      "file_path": "pom.xml",
+      "format": "xml",
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader.pom",
+      "start_line": "1",
+      "end_line": "38"
+    }
+  ],
+  "source_evidence": {
+    "discovery_mode": "graph_first",
+    "selection": {
+      "rules": [
+        "select interface nodes and nodes carrying entry-point, route, semantic decorator-tag, transport, or environment metadata",
+        "exclude test, generated, dependency, and CI symbols from Agent 1 context",
+        "select both endpoints of direct boundary relationships; require a resource endpoint for CONFIGURES, READS, and WRITES",
+        "expand up to two graph hops across code and data relationships",
+        "select configuration and schema modules by indexed file extension",
+        "for graphs with at most 100 nodes, include all non-documentation source modules",
+        "retrieve one containing module per selected file when available",
+        "record data-file modules as artifacts without embedding their contents"
+      ],
+      "candidate_count": 0,
+      "source_file_count": 2
+    },
+    "snippets": [
+      {
+        "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader.pom",
+        "label": "SourceFile",
+        "name": "pom.xml",
+        "file_path": "/Users/guttikonda/gitbased-DataLineage/GItbased-DataLineage/repo_local_clone/Chroma_db_reader/pom.xml",
+        "start_line": 1,
+        "end_line": 38,
+        "selection_reasons": [
+          "configuration_or_schema_module",
+          "containing_module:Module",
+          "small_graph_source_module"
+        ],
+        "retrieval_method": "cbm_get_code_snippet",
+        "source": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\">\n    <modelVersion>4.0.0</modelVersion>\n\n    <groupId>com.example</groupId>\n    <artifactId>chroma-db-reader</artifactId>\n    <version>1.0.0</version>\n\n    <properties>\n        <maven.compiler.release>17</maven.compiler.release>\n        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\n    </properties>\n\n    <build>\n        <plugins>\n            <plugin>\n                <groupId>org.apache.maven.plugins</groupId>\n                <artifactId>maven-compiler-plugin</artifactId>\n                <version>3.13.0</version>\n            </plugin>\n            <plugin>\n                <groupId>org.apache.maven.plugins</groupId>\n                <artifactId>maven-jar-plugin</artifactId>\n                <version>3.4.2</version>\n                <configuration>\n                    <archive>\n                        <manifest>\n                            <mainClass>com.example.chromareader.ChromaDbExporter</mainClass>\n                        </manifest>\n                    </archive>\n                </configuration>\n            </plugin>\n        </plugins>\n    </build>\n</project>\n"
+      },
+      {
+        "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-Chroma_db_reader.src.main.java.com.example.chromareader.ChromaDbExporter",
+        "label": "SourceFile",
+        "name": "src/main/java/com/example/chromareader/ChromaDbExporter.java",
+        "file_path": "/Users/guttikonda/gitbased-DataLineage/GItbased-DataLineage/repo_local_clone/Chroma_db_reader/src/main/java/com/example/chromareader/ChromaDbExporter.java",
+        "start_line": 1,
+        "end_line": 103,
+        "selection_reasons": [
+          "containing_module:Module",
+          "small_graph_source_module"
+        ],
+        "retrieval_method": "cbm_get_code_snippet",
+        "source": "package com.example.chromareader;\n\nimport java.io.IOException;\nimport java.nio.file.Files;\nimport java.nio.file.Path;\n\npublic final class ChromaDbExporter {\n\n    // Change these two values when you want to use another database or output file.\n    private static final String CHROMA_DB_DIRECTORY =\n            \"/Users/guttikonda/Desktop/training docs/crypto-kafka-rag-project/crypto_chroma_db\";\n    private static final String OUTPUT_JSON_FILE = \"chroma-export.json\";\n\n    private static final String EXPORT_SQL = \"\"\"\n            WITH records AS (\n                SELECT\n                    c.name AS collection_name,\n                    e.id AS row_id,\n                    e.embedding_id,\n                    MAX(CASE\n                        WHEN em.key = 'chroma:document' THEN em.string_value\n                    END) AS document,\n                    json_group_object(\n                        em.key,\n                        CASE\n                            WHEN em.string_value IS NOT NULL THEN em.string_value\n                            WHEN em.int_value IS NOT NULL THEN em.int_value\n                            WHEN em.float_value IS NOT NULL THEN em.float_value\n                            WHEN em.bool_value IS NOT NULL THEN json(\n                                CASE WHEN em.bool_value = 1 THEN 'true' ELSE 'false' END\n                            )\n                            ELSE NULL\n                        END\n                    ) FILTER (WHERE em.key NOT LIKE 'chroma:%') AS metadata\n                FROM collections c\n                JOIN segments s\n                    ON s.collection = c.id\n                   AND s.scope = 'METADATA'\n                JOIN embeddings e ON e.segment_id = s.id\n                LEFT JOIN embedding_metadata em ON em.id = e.id\n                GROUP BY c.name, e.id, e.embedding_id\n            )\n            SELECT json_group_array(\n                json_object(\n                    'collection', collection_name,\n                    'id', embedding_id,\n                    'document', document,\n                    'metadata', json(COALESCE(metadata, '{}'))\n                )\n            )\n            FROM (\n                SELECT * FROM records ORDER BY collection_name, row_id\n            );\n            \"\"\";\n\n    private ChromaDbExporter() {\n    }\n\n    public static void main(String[] args) throws Exception {\n        Path input = Path.of(CHROMA_DB_DIRECTORY).toAbsolutePath().normalize();\n        Path database = Files.isDirectory(input) ? input.resolve(\"chroma.sqlite3\") : input;\n        Path output = Path.of(OUTPUT_JSON_FILE).toAbsolutePath().normalize();\n\n        if (!Files.isRegularFile(database)) {\n            throw new IllegalArgumentException(\"Chroma database not found: \" + database);\n        }\n\n        Path outputParent = output.getParent();\n        if (outputParent != null) {\n            Files.createDirectories(outputParent);\n        }\n\n        export(database, output);\n        System.out.println(\"Export complete: \" + output);\n    }\n\n    private static void export(Path database, Path output) throws Exception {\n        Process process;\n        try {\n            process = new ProcessBuilder(\n                    \"sqlite3\",\n                    \"-readonly\",\n                    database.toString(),\n                    EXPORT_SQL\n            )\n                    .redirectOutput(output.toFile())\n                    .redirectError(ProcessBuilder.Redirect.INHERIT)\n                    .start();\n        } catch (IOException error) {\n            throw new IllegalStateException(\n                    \"Could not start sqlite3. Install the sqlite3 command-line tool and try again.\",\n                    error\n            );\n        }\n\n        int exitCode = process.waitFor();\n        if (exitCode != 0) {\n            Files.deleteIfExists(output);\n            throw new IllegalStateException(\"sqlite3 export failed with exit code \" + exitCode);\n        }\n    }\n}\n"
+      }
+    ],
+    "text_fallback": {
+      "enabled": false
+    },
+    "redactions_applied": false
+  }
+}

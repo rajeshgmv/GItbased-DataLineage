@@ -1,5 +1,5 @@
-repo_url,CloneStatus,IndexStatus
-https://github.com/spring-petclinic/spring-petclinic-rest.git,cloned,Indexed
-https://github.com/rajeshgmv/crypto-kaka-rag.git,cloned,Indexed
-https://github.com/rajeshgmv/json_reader_test.git,cloned,Indexed
-https://github.com/rajeshgmv/Chroma_db_reader.git,cloned,Indexed
+repo_url,CloneStatus,IndexStatus,ContextStatus
+https://github.com/spring-petclinic/spring-petclinic-rest.git,cloned,Indexed,Contexted
+https://github.com/rajeshgmv/json_reader_test.git,cloned,Indexed,Contexted
+https://github.com/rajeshgmv/Chroma_db_reader.git,cloned,Indexed,Contexted
+https://github.com/rajeshgmv/crypto-kaka-rag.git,cloned,Indexed,Contexted

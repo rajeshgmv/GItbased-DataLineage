@@ -1,0 +1,76 @@
+{
+  "discovery_mode": "graph_first",
+  "selection": {
+    "rules": [
+      "select interface nodes and nodes carrying entry-point, route, semantic decorator-tag, transport, or environment metadata",
+      "exclude test, generated, dependency, and CI symbols from Agent 1 context",
+      "select both endpoints of direct boundary relationships; require a resource endpoint for CONFIGURES, READS, and WRITES",
+      "expand up to two graph hops across code and data relationships",
+      "select configuration and schema modules by indexed file extension",
+      "for graphs with at most 100 nodes, include all non-documentation source modules",
+      "retrieve one containing module per selected file when available",
+      "record data-file modules as artifacts without embedding their contents"
+    ],
+    "candidate_count": 3,
+    "source_file_count": 1,
+    "candidates": [
+      {
+        "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-json_reader_test.src.json_to_csv.extract_btc_rows",
+        "label": "Function",
+        "name": "extract_btc_rows",
+        "file_path": "src/json_to_csv.py",
+        "start_line": "28",
+        "end_line": "53",
+        "selection_reasons": [
+          "graph_neighbor:CALLS:depth_2"
+        ]
+      },
+      {
+        "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-json_reader_test.src.json_to_csv.convert_json_to_csv",
+        "label": "Function",
+        "name": "convert_json_to_csv",
+        "file_path": "src/json_to_csv.py",
+        "start_line": "56",
+        "end_line": "72",
+        "selection_reasons": [
+          "graph_neighbor:CALLS:depth_1"
+        ]
+      },
+      {
+        "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-json_reader_test.src.json_to_csv.main",
+        "label": "Function",
+        "name": "main",
+        "file_path": "src/json_to_csv.py",
+        "start_line": "75",
+        "end_line": "83",
+        "selection_reasons": [
+          "entry_point"
+        ]
+      }
+    ]
+  },
+  "snippets": [
+    {
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-json_reader_test.src.json_to_csv",
+      "label": "SourceFile",
+      "name": "src/json_to_csv.py",
+      "file_path": "/Users/guttikonda/gitbased-DataLineage/GItbased-DataLineage/repo_local_clone/json_reader_test/src/json_to_csv.py",
+      "start_line": 1,
+      "end_line": 88,
+      "selection_reasons": [
+        "containing_module:Function",
+        "containing_module:Module",
+        "entry_point",
+        "graph_neighbor:CALLS:depth_1",
+        "graph_neighbor:CALLS:depth_2",
+        "small_graph_source_module"
+      ],
+      "retrieval_method": "cbm_get_code_snippet",
+      "source": "#!/usr/bin/env python3\n\"\"\"Extract BTC timestamps and prices from a Chroma JSON export.\"\"\"\n\nfrom __future__ import annotations\n\nimport csv\nimport json\nimport re\nimport sys\nfrom pathlib import Path\nfrom typing import Any, Iterable, Iterator\n\n\n# Edit these values if the input or output location changes.\nINPUT_JSON_PATH = Path(\n    \"/Users/guttikonda/Desktop/training docs/chroma_db_reader/chroma-export.json\"\n)\nOUTPUT_CSV_PATH = Path(\n    \"/Users/guttikonda/Desktop/training docs/json_reader/output/btc_prices.csv\"\n)\n\nPRICE_PATTERN = re.compile(\n    r\"\\bprice\\s+of\\s+\\$([0-9]+(?:\\.[0-9]+)?)\",\n    re.IGNORECASE,\n)\n\n\ndef extract_btc_rows(records: Iterable[Any]) -> Iterator[tuple[Any, str]]:\n    \"\"\"Yield (metadata timestamp, document price) for every BTC record.\"\"\"\n    for index, record in enumerate(records):\n        if not isinstance(record, dict):\n            raise ValueError(f\"Record {index} is not a JSON object\")\n\n        metadata = record.get(\"metadata\")\n        if not isinstance(metadata, dict):\n            raise ValueError(f\"Record {index} has no valid metadata object\")\n\n        if str(metadata.get(\"asset\", \"\")).upper() != \"BTC\":\n            continue\n\n        timestamp = metadata.get(\"time\")\n        if timestamp is None:\n            raise ValueError(f\"BTC record {index} has no metadata.time value\")\n\n        document = record.get(\"document\")\n        if not isinstance(document, str):\n            raise ValueError(f\"BTC record {index} has no valid document string\")\n\n        price_match = PRICE_PATTERN.search(document)\n        if price_match is None:\n            raise ValueError(f\"Could not find the BTC price in record {index}\")\n\n        yield timestamp, price_match.group(1)\n\n\ndef convert_json_to_csv(input_path: Path, output_path: Path) -> int:\n    \"\"\"Convert a JSON array of Chroma records and return the rows written.\"\"\"\n    with input_path.open(encoding=\"utf-8\") as input_file:\n        records = json.load(input_file)\n\n    if not isinstance(records, list):\n        raise ValueError(\"The input JSON must contain an array of records\")\n\n    rows = list(extract_btc_rows(records))\n    output_path.parent.mkdir(parents=True, exist_ok=True)\n\n    with output_path.open(\"w\", encoding=\"utf-8\", newline=\"\") as output_file:\n        writer = csv.writer(output_file)\n        writer.writerow((\"timestamp\", \"btc_price\"))\n        writer.writerows(rows)\n\n    return len(rows)\n\n\ndef main() -> int:\n    try:\n        row_count = convert_json_to_csv(INPUT_JSON_PATH, OUTPUT_CSV_PATH)\n    except (OSError, json.JSONDecodeError, ValueError) as error:\n        print(f\"Error: {error}\", file=sys.stderr)\n        return 1\n\n    print(f\"Wrote {row_count} BTC rows to {OUTPUT_CSV_PATH}\")\n    return 0\n\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n"
+    }
+  ],
+  "text_fallback": {
+    "enabled": false
+  },
+  "redactions_applied": false
+}

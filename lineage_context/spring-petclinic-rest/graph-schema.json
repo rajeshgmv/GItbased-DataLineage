@@ -1,0 +1,77 @@
+{
+  "project": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest",
+  "raw_graph_coverage": {
+    "complete": true,
+    "expected_nodes": 1697,
+    "exported_nodes": 1697,
+    "expected_relationships": 6776,
+    "exported_relationships": 6776,
+    "query_limit": 100000
+  },
+  "selected_node_labels": [
+    {
+      "label": "Class",
+      "count": 52
+    },
+    {
+      "label": "Field",
+      "count": 1
+    },
+    {
+      "label": "File",
+      "count": 2
+    },
+    {
+      "label": "Function",
+      "count": 15
+    },
+    {
+      "label": "Interface",
+      "count": 20
+    },
+    {
+      "label": "Method",
+      "count": 310
+    },
+    {
+      "label": "Route",
+      "count": 22
+    },
+    {
+      "label": "Variable",
+      "count": 6
+    }
+  ],
+  "selected_relationship_types": [
+    {
+      "type": "CALLS",
+      "count": 384
+    },
+    {
+      "type": "HANDLES",
+      "count": 4
+    },
+    {
+      "type": "HTTP_CALLS",
+      "count": 7
+    },
+    {
+      "type": "INHERITS",
+      "count": 41
+    },
+    {
+      "type": "WRITES",
+      "count": 4
+    }
+  ],
+  "selected_artifact_types": [
+    {
+      "type": "configuration_file",
+      "count": 8
+    },
+    {
+      "type": "schema_file",
+      "count": 8
+    }
+  ]
+}

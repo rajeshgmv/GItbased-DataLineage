@@ -1,0 +1,13 @@
+{
+  "project": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-json_reader_test",
+  "languages": [
+    "Python"
+  ],
+  "entry_points": [
+    {
+      "name": "main",
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-json_reader_test.src.json_to_csv.main",
+      "file": "src/json_to_csv.py"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+[
+  {
+    "label": "EnvVar",
+    "name": "HTTPS_PROXY",
+    "qualified_name": "__env__HTTPS_PROXY",
+    "start_line": "0",
+    "end_line": "0",
+    "env_key": "HTTPS_PROXY"
+  },
+  {
+    "label": "EnvVar",
+    "name": "HTTP_PROXY",
+    "qualified_name": "__env__HTTP_PROXY",
+    "start_line": "0",
+    "end_line": "0",
+    "env_key": "HTTP_PROXY"
+  },
+  {
+    "label": "EnvVar",
+    "name": "NO_PROXY",
+    "qualified_name": "__env__NO_PROXY",
+    "start_line": "0",
+    "end_line": "0",
+    "env_key": "NO_PROXY"
+  },
+  {
+    "label": "EnvVar",
+    "name": "OLLAMA_HOST",
+    "qualified_name": "__env__OLLAMA_HOST",
+    "start_line": "0",
+    "end_line": "0",
+    "env_key": "OLLAMA_HOST"
+  },
+  {
+    "label": "Channel",
+    "name": "crypto-ticks",
+    "qualified_name": "__channel__kafka__crypto-ticks",
+    "start_line": "0",
+    "end_line": "0",
+    "transport": "kafka"
+  },
+  {
+    "label": "File",
+    "name": "producer.py",
+    "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.producer.__file__",
+    "file_path": "producer.py",
+    "start_line": "0",
+    "end_line": "0",
+    "extension": ".py"
+  },
+  {
+    "label": "Function",
+    "name": "query_rag_agent",
+    "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.agent.query_rag_agent",
+    "file_path": "agent.py",
+    "start_line": "6",
+    "end_line": "50",
+    "signature": "(user_question)",
+    "param_names": "[\"user_question\"]",
+    "is_entry_point": "false",
+    "is_exported": "true",
+    "is_test": "false"
+  }
+]

@@ -7,6 +7,8 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
+from config.lineage_context_config import CSV_FIELDS, CONTEXT_STATUS_PENDING
+
 
 SCRIPT_DIR = Path(__file__).resolve().parent.parent
 ENV_FILE = SCRIPT_DIR / ".env"
@@ -25,7 +27,6 @@ def configured_path(variable_name: str, default: Path) -> Path:
 PROJECT_DIR = configured_path("PROJECT_DIR", SCRIPT_DIR)
 REPO_LIST_FILE = configured_path("REPO_LIST_FILE", PROJECT_DIR / "git_repo_list.csv")
 CLONE_DIR = configured_path("CLONE_DIR", PROJECT_DIR / "repo_local_clone")
-CSV_FIELDS = ("repo_url", "CloneStatus", "IndexStatus")
 
 
 def run_command(cmd, cwd=None, capture_output=False, check=True):
@@ -46,7 +47,7 @@ def run_command(cmd, cwd=None, capture_output=False, check=True):
 
 
 def load_repository_rows(csv_path: Path):
-    """Load and validate repository clone/index statuses from the CSV file."""
+    """Load and validate repository clone, index, and context statuses."""
     if not csv_path.is_file():
         raise FileNotFoundError(f"Repository CSV file not found: {csv_path}")
 
@@ -66,6 +67,7 @@ def load_repository_rows(csv_path: Path):
                 "repo_url": repo_url,
                 "CloneStatus": (row.get("CloneStatus") or "").strip(),
                 "IndexStatus": (row.get("IndexStatus") or "").strip(),
+                "ContextStatus": (row.get("ContextStatus") or "").strip(),
             })
     return rows
 
@@ -74,7 +76,11 @@ def write_repository_rows(csv_path: Path, rows):
     """Atomically save repository rows so an interrupted write cannot corrupt the CSV."""
     temporary_path = csv_path.with_suffix(f"{csv_path.suffix}.tmp")
     with temporary_path.open("w", encoding="utf-8", newline="") as csv_file:
-        writer = csv.DictWriter(csv_file, fieldnames=CSV_FIELDS)
+        writer = csv.DictWriter(
+            csv_file,
+            fieldnames=CSV_FIELDS,
+            lineterminator="\n",
+        )
         writer.writeheader()
         writer.writerows(rows)
     temporary_path.replace(csv_path)
@@ -185,14 +191,18 @@ def main():
             if new_status and row["IndexStatus"] == "YetToStart":
                 row["CloneStatus"] = "cloned"
                 row["IndexStatus"] = "YetToStart"
+                row["ContextStatus"] = CONTEXT_STATUS_PENDING
             elif new_status:
                 row["CloneStatus"] = new_status
                 row["IndexStatus"] = "YetToStart"
+                row["ContextStatus"] = CONTEXT_STATUS_PENDING
             elif not row["CloneStatus"]:
                 row["CloneStatus"] = "cloned"
                 row["IndexStatus"] = "YetToStart"
+                row["ContextStatus"] = CONTEXT_STATUS_PENDING
             elif not row["IndexStatus"]:
                 row["IndexStatus"] = "YetToStart"
+                row["ContextStatus"] = CONTEXT_STATUS_PENDING
             write_repository_rows(REPO_LIST_FILE, rows)
         except (RuntimeError, subprocess.CalledProcessError) as exc:
             message = f"{name}: {exc}"
@@ -206,7 +216,7 @@ def main():
         sys.exit(1)
 
     print(f"\nAll repositories are ready in: {CLONE_DIR}")
-    print(f"Clone and index statuses were saved to: {REPO_LIST_FILE}")
+    print(f"Clone, index, and context statuses were saved to: {REPO_LIST_FILE}")
 
 
 if __name__ == "__main__":

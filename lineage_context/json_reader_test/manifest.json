@@ -1,0 +1,64 @@
+{
+  "lineage_context_schema_version": "1.2",
+  "exported_at": "2026-08-06T05:18:29.054924+00:00",
+  "repository": {
+    "name": "json_reader_test",
+    "configured_url": "https://github.com/rajeshgmv/json_reader_test.git",
+    "origin_url": "https://github.com/rajeshgmv/json_reader_test.git",
+    "branch": "main",
+    "commit_sha": "4322c23ab2a7ce61fc9eb522b7eeb078c3b88f2b",
+    "commit_timestamp": "2026-08-05T17:18:36-05:00",
+    "root_path": "/Users/guttikonda/gitbased-DataLineage/GItbased-DataLineage/repo_local_clone/json_reader_test",
+    "working_tree_clean": true
+  },
+  "csv_status": {
+    "CloneStatus": "cloned",
+    "IndexStatus": "Indexed",
+    "ContextStatus": "Contexted"
+  },
+  "codebase_memory": {
+    "version": "codebase-memory-mcp 0.8.1",
+    "project": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-json_reader_test",
+    "root_path": "/Users/guttikonda/gitbased-DataLineage/GItbased-DataLineage/repo_local_clone/json_reader_test",
+    "index_status": {
+      "project": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-json_reader_test",
+      "nodes": 24,
+      "edges": 38,
+      "status": "ready"
+    },
+    "graph_export_coverage": {
+      "complete": true,
+      "expected_nodes": 24,
+      "exported_nodes": 24,
+      "expected_relationships": 38,
+      "exported_relationships": 38,
+      "query_limit": 100000
+    }
+  },
+  "agent_context_scope": {
+    "test_files_excluded": true,
+    "module_records_excluded": true,
+    "empty_attributes_excluded": true,
+    "selected_symbols": 3,
+    "selected_relationships": 3,
+    "lineage_artifacts": 1,
+    "source_snippets": 1
+  },
+  "limitations": [
+    "Graph relationships are discovery evidence, not proof of field movement.",
+    "Confirmed lineage requires source evidence such as assignments, SQL, schemas, mappings, serialization, or configuration.",
+    "Source excerpts are selected from CBM graph metadata and retrieved by qualified name.",
+    "Optional text search is a fallback for graph coverage gaps and is disabled unless --enable-text-fallback is supplied.",
+    "The current Git commit is recorded, but CBM 0.8.1 does not expose the indexed commit SHA directly."
+  ],
+  "files": {
+    "graph_summary": "graph-schema.json",
+    "architecture": "architecture.json",
+    "symbols": "symbols.json",
+    "relationships": "relationships.json",
+    "artifacts": "artifacts.json",
+    "interfaces": "interfaces.json",
+    "source_evidence": "source-evidence.json",
+    "combined_context": "context.json"
+  }
+}

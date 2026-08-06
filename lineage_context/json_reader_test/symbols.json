@@ -1,0 +1,43 @@
+[
+  {
+    "label": "Function",
+    "name": "convert_json_to_csv",
+    "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-json_reader_test.src.json_to_csv.convert_json_to_csv",
+    "file_path": "src/json_to_csv.py",
+    "start_line": "56",
+    "end_line": "72",
+    "signature": "(input_path: Path, output_path: Path)",
+    "param_types": "[\"Path\"]",
+    "return_type": "int",
+    "is_entry_point": "false",
+    "is_exported": "true",
+    "is_test": "false"
+  },
+  {
+    "label": "Function",
+    "name": "extract_btc_rows",
+    "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-json_reader_test.src.json_to_csv.extract_btc_rows",
+    "file_path": "src/json_to_csv.py",
+    "start_line": "28",
+    "end_line": "53",
+    "signature": "(records: Iterable[Any])",
+    "param_types": "[\"Iterable\"]",
+    "return_type": "Iterator[tuple[Any, str]]",
+    "is_entry_point": "false",
+    "is_exported": "true",
+    "is_test": "false"
+  },
+  {
+    "label": "Function",
+    "name": "main",
+    "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-json_reader_test.src.json_to_csv.main",
+    "file_path": "src/json_to_csv.py",
+    "start_line": "75",
+    "end_line": "83",
+    "signature": "()",
+    "return_type": "int",
+    "is_entry_point": "true",
+    "is_exported": "true",
+    "is_test": "false"
+  }
+]

@@ -1,0 +1,43 @@
+{
+  "project": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag",
+  "raw_graph_coverage": {
+    "complete": true,
+    "expected_nodes": 42,
+    "exported_nodes": 42,
+    "expected_relationships": 82,
+    "exported_relationships": 82,
+    "query_limit": 100000
+  },
+  "selected_node_labels": [
+    {
+      "label": "Channel",
+      "count": 1
+    },
+    {
+      "label": "EnvVar",
+      "count": 4
+    },
+    {
+      "label": "File",
+      "count": 1
+    },
+    {
+      "label": "Function",
+      "count": 1
+    }
+  ],
+  "selected_relationship_types": [
+    {
+      "type": "CALLS",
+      "count": 1
+    },
+    {
+      "type": "CONFIGURES",
+      "count": 4
+    },
+    {
+      "type": "EMITS",
+      "count": 1
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "project": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-json_reader_test",
+  "raw_graph_coverage": {
+    "complete": true,
+    "expected_nodes": 24,
+    "exported_nodes": 24,
+    "expected_relationships": 38,
+    "exported_relationships": 38,
+    "query_limit": 100000
+  },
+  "selected_node_labels": [
+    {
+      "label": "Function",
+      "count": 3
+    }
+  ],
+  "selected_relationship_types": [
+    {
+      "type": "CALLS",
+      "count": 3
+    }
+  ],
+  "selected_artifact_types": [
+    {
+      "type": "data_file",
+      "count": 1
+    }
+  ]
+}

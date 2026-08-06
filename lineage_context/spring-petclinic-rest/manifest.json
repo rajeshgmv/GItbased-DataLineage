@@ -1,0 +1,64 @@
+{
+  "lineage_context_schema_version": "1.2",
+  "exported_at": "2026-08-06T05:18:28.662545+00:00",
+  "repository": {
+    "name": "spring-petclinic-rest",
+    "configured_url": "https://github.com/spring-petclinic/spring-petclinic-rest.git",
+    "origin_url": "https://github.com/spring-petclinic/spring-petclinic-rest.git",
+    "branch": "master",
+    "commit_sha": "698bd832eac0da48e72deb63ce7ab275d98a88fb",
+    "commit_timestamp": "2026-08-01T18:02:51+03:00",
+    "root_path": "/Users/guttikonda/gitbased-DataLineage/GItbased-DataLineage/repo_local_clone/spring-petclinic-rest",
+    "working_tree_clean": true
+  },
+  "csv_status": {
+    "CloneStatus": "cloned",
+    "IndexStatus": "Indexed",
+    "ContextStatus": "Contexted"
+  },
+  "codebase_memory": {
+    "version": "codebase-memory-mcp 0.8.1",
+    "project": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest",
+    "root_path": "/Users/guttikonda/gitbased-DataLineage/GItbased-DataLineage/repo_local_clone/spring-petclinic-rest",
+    "index_status": {
+      "project": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-spring-petclinic-rest",
+      "nodes": 1697,
+      "edges": 6776,
+      "status": "ready"
+    },
+    "graph_export_coverage": {
+      "complete": true,
+      "expected_nodes": 1697,
+      "exported_nodes": 1697,
+      "expected_relationships": 6776,
+      "exported_relationships": 6776,
+      "query_limit": 100000
+    }
+  },
+  "agent_context_scope": {
+    "test_files_excluded": true,
+    "module_records_excluded": true,
+    "empty_attributes_excluded": true,
+    "selected_symbols": 428,
+    "selected_relationships": 440,
+    "lineage_artifacts": 16,
+    "source_snippets": 97
+  },
+  "limitations": [
+    "Graph relationships are discovery evidence, not proof of field movement.",
+    "Confirmed lineage requires source evidence such as assignments, SQL, schemas, mappings, serialization, or configuration.",
+    "Source excerpts are selected from CBM graph metadata and retrieved by qualified name.",
+    "Optional text search is a fallback for graph coverage gaps and is disabled unless --enable-text-fallback is supplied.",
+    "The current Git commit is recorded, but CBM 0.8.1 does not expose the indexed commit SHA directly."
+  ],
+  "files": {
+    "graph_summary": "graph-schema.json",
+    "architecture": "architecture.json",
+    "symbols": "symbols.json",
+    "relationships": "relationships.json",
+    "artifacts": "artifacts.json",
+    "interfaces": "interfaces.json",
+    "source_evidence": "source-evidence.json",
+    "combined_context": "context.json"
+  }
+}
