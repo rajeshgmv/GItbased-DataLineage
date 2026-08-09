@@ -1,0 +1,1014 @@
+{
+  "schema_version": "repository-lineage/1.0",
+  "repository": {
+    "name": "crypto-kaka-rag",
+    "origin_url": "https://github.com/rajeshgmv/crypto-kaka-rag.git",
+    "commit_sha": "be2a62532ed4d7ab00f749d30711e3932010bdba",
+    "branch": "main",
+    "context_exported_at": "2026-08-06T05:22:04.129177+00:00"
+  },
+  "input_coverage": [
+    {
+      "section": "manifest",
+      "records_considered": 1,
+      "used_for": [
+        "repository_identity",
+        "provenance"
+      ]
+    },
+    {
+      "section": "graph_summary",
+      "records_considered": 1,
+      "used_for": [
+        "graph_completeness"
+      ]
+    },
+    {
+      "section": "architecture",
+      "records_considered": 1,
+      "used_for": [
+        "runtime_language"
+      ]
+    },
+    {
+      "section": "symbols",
+      "records_considered": 7,
+      "used_for": [
+        "component_discovery",
+        "element_discovery"
+      ]
+    },
+    {
+      "section": "relationships",
+      "records_considered": 6,
+      "used_for": [
+        "flow_discovery",
+        "contract_discovery"
+      ]
+    },
+    {
+      "section": "interfaces",
+      "records_considered": 5,
+      "used_for": [
+        "component_discovery",
+        "contract_discovery"
+      ]
+    },
+    {
+      "section": "source_evidence",
+      "records_considered": 3,
+      "used_for": [
+        "mapping_proof",
+        "operation_proof"
+      ]
+    }
+  ],
+  "components": [
+    {
+      "component_id": "CMP-001",
+      "name": "producer.py",
+      "kind": "service",
+      "repository": "crypto-kaka-rag",
+      "raw_locator": "producer.py",
+      "normalized_locator": "file://producer.py",
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "component_id": "CMP-002",
+      "name": "crypto-ticks",
+      "kind": "stream",
+      "raw_locator": "kafka://localhost:9092/crypto-ticks",
+      "normalized_locator": "kafka://localhost:9092/crypto-ticks",
+      "evidence_ids": [
+        "EV-001",
+        "EV-003",
+        "EV-002"
+      ]
+    },
+    {
+      "component_id": "CMP-003",
+      "name": "processor.py",
+      "kind": "service",
+      "repository": "crypto-kaka-rag",
+      "raw_locator": "processor.py",
+      "normalized_locator": "file://processor.py",
+      "evidence_ids": [
+        "EV-002"
+      ]
+    },
+    {
+      "component_id": "CMP-004",
+      "name": "ChromaDB",
+      "kind": "database",
+      "raw_locator": "file://./chroma_db",
+      "normalized_locator": "chromadb://./chroma_db",
+      "evidence_ids": [
+        "EV-002",
+        "EV-004"
+      ]
+    },
+    {
+      "component_id": "CMP-005",
+      "name": "agent.py",
+      "kind": "service",
+      "repository": "crypto-kaka-rag",
+      "raw_locator": "agent.py",
+      "normalized_locator": "file://agent.py",
+      "evidence_ids": [
+        "EV-004"
+      ]
+    },
+    {
+      "component_id": "CMP-006",
+      "name": "CoinGecko API",
+      "kind": "external_api",
+      "raw_locator": "https://api.coingecko.com/api/v3/simple/price",
+      "normalized_locator": "https://api.coingecko.com/api/v3/simple/price",
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "component_id": "CMP-007",
+      "name": "Ollama LLM",
+      "kind": "external_service",
+      "raw_locator": "http://127.0.0.1:11434",
+      "normalized_locator": "http://127.0.0.1:11434",
+      "evidence_ids": [
+        "EV-004"
+      ]
+    },
+    {
+      "component_id": "CMP-008",
+      "name": "HTTP_PROXY",
+      "kind": "unknown",
+      "raw_locator": "{ENV_VARIABLE}",
+      "normalized_locator": "{ENV_VARIABLE}:HTTP_PROXY",
+      "evidence_ids": [
+        "EV-004"
+      ]
+    },
+    {
+      "component_id": "CMP-009",
+      "name": "HTTPS_PROXY",
+      "kind": "unknown",
+      "raw_locator": "{ENV_VARIABLE}",
+      "normalized_locator": "{ENV_VARIABLE}:HTTPS_PROXY",
+      "evidence_ids": [
+        "EV-004"
+      ]
+    },
+    {
+      "component_id": "CMP-010",
+      "name": "OLLAMA_HOST",
+      "kind": "unknown",
+      "raw_locator": "{ENV_VARIABLE}",
+      "normalized_locator": "{ENV_VARIABLE}:OLLAMA_HOST",
+      "evidence_ids": [
+        "EV-004"
+      ]
+    },
+    {
+      "component_id": "CMP-011",
+      "name": "NO_PROXY",
+      "kind": "unknown",
+      "raw_locator": "{ENV_VARIABLE}",
+      "normalized_locator": "{ENV_VARIABLE}:NO_PROXY",
+      "evidence_ids": [
+        "EV-004"
+      ]
+    }
+  ],
+  "data_elements": [
+    {
+      "element_id": "EL-001",
+      "name": "asset",
+      "element_path": "payload.asset",
+      "component_id": "CMP-002",
+      "container": "payload",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-002",
+      "name": "price",
+      "element_path": "payload.price",
+      "component_id": "CMP-002",
+      "container": "payload",
+      "data_type": "float",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-003",
+      "name": "volume_24h",
+      "element_path": "payload.volume_24h",
+      "component_id": "CMP-002",
+      "container": "payload",
+      "data_type": "float",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-004",
+      "name": "change_24h",
+      "element_path": "payload.change_24h",
+      "component_id": "CMP-002",
+      "container": "payload",
+      "data_type": "float",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-005",
+      "name": "timestamp",
+      "element_path": "payload.timestamp",
+      "component_id": "CMP-002",
+      "container": "payload",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-006",
+      "name": "doc_text",
+      "element_path": "documents",
+      "component_id": "CMP-004",
+      "container": "collection",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-002"
+      ]
+    },
+    {
+      "element_id": "EL-007",
+      "name": "asset",
+      "element_path": "metadatas.asset",
+      "component_id": "CMP-004",
+      "container": "collection",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-002"
+      ]
+    },
+    {
+      "element_id": "EL-008",
+      "name": "time",
+      "element_path": "metadatas.time",
+      "component_id": "CMP-004",
+      "container": "collection",
+      "data_type": "integer",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-002"
+      ]
+    },
+    {
+      "element_id": "EL-009",
+      "name": "unique_id",
+      "element_path": "ids",
+      "component_id": "CMP-004",
+      "container": "collection",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-002"
+      ]
+    },
+    {
+      "element_id": "EL-010",
+      "name": "user_question",
+      "element_path": "query_texts",
+      "component_id": "CMP-004",
+      "container": "request",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-004"
+      ]
+    },
+    {
+      "element_id": "EL-011",
+      "name": "retrieved_context",
+      "element_path": "documents",
+      "component_id": "CMP-004",
+      "container": "response",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-004"
+      ]
+    },
+    {
+      "element_id": "EL-012",
+      "name": "rag_prompt",
+      "element_path": "request.prompt",
+      "component_id": "CMP-007",
+      "container": "request",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-004"
+      ]
+    },
+    {
+      "element_id": "EL-013",
+      "name": "response_content",
+      "element_path": "response.content",
+      "component_id": "CMP-007",
+      "container": "response",
+      "data_type": "string",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-004"
+      ]
+    },
+    {
+      "element_id": "EL-014",
+      "name": "usd",
+      "element_path": "response.bitcoin.usd",
+      "component_id": "CMP-006",
+      "container": "response",
+      "data_type": "float",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-015",
+      "name": "usd_24h_vol",
+      "element_path": "response.bitcoin.usd_24h_vol",
+      "component_id": "CMP-006",
+      "container": "response",
+      "data_type": "float",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    },
+    {
+      "element_id": "EL-016",
+      "name": "usd_24h_change",
+      "element_path": "response.bitcoin.usd_24h_change",
+      "component_id": "CMP-006",
+      "container": "response",
+      "data_type": "float",
+      "aliases": [],
+      "evidence_ids": [
+        "EV-003"
+      ]
+    }
+  ],
+  "boundary_contracts": [
+    {
+      "contract_id": "CTR-001",
+      "direction": "outbound",
+      "mechanism": "kafka",
+      "operation": "send",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-002",
+      "raw_locator": "kafka://localhost:9092/crypto-ticks",
+      "normalized_locator": "kafka://localhost:9092/crypto-ticks",
+      "data_element_ids": [
+        "EL-001",
+        "EL-002",
+        "EL-003",
+        "EL-004",
+        "EL-005"
+      ],
+      "schema_signature": [
+        "payload.asset:string",
+        "payload.price:float",
+        "payload.volume_24h:float",
+        "payload.change_24h:float",
+        "payload.timestamp:integer"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-003"
+      ],
+      "issue_ids": []
+    },
+    {
+      "contract_id": "CTR-002",
+      "direction": "inbound",
+      "mechanism": "kafka",
+      "operation": "consume",
+      "local_component_id": "CMP-003",
+      "remote_component_id": "CMP-002",
+      "raw_locator": "kafka://localhost:9092/crypto-ticks",
+      "normalized_locator": "kafka://localhost:9092/crypto-ticks",
+      "data_element_ids": [
+        "EL-001",
+        "EL-002",
+        "EL-003",
+        "EL-004",
+        "EL-005"
+      ],
+      "schema_signature": [
+        "payload.asset:string",
+        "payload.price:float",
+        "payload.volume_24h:float",
+        "payload.change_24h:float",
+        "payload.timestamp:integer"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-002"
+      ],
+      "issue_ids": []
+    },
+    {
+      "contract_id": "CTR-003",
+      "direction": "outbound",
+      "mechanism": "database",
+      "operation": "add",
+      "local_component_id": "CMP-003",
+      "remote_component_id": "CMP-004",
+      "raw_locator": "chromadb://./chroma_db",
+      "normalized_locator": "chromadb://./chroma_db",
+      "data_element_ids": [
+        "EL-006",
+        "EL-007",
+        "EL-008",
+        "EL-009"
+      ],
+      "schema_signature": [
+        "documents:string",
+        "metadatas.asset:string",
+        "metadatas.time:integer",
+        "ids:string"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-002"
+      ],
+      "issue_ids": []
+    },
+    {
+      "contract_id": "CTR-004",
+      "direction": "inbound",
+      "mechanism": "database",
+      "operation": "query",
+      "local_component_id": "CMP-005",
+      "remote_component_id": "CMP-004",
+      "raw_locator": "chromadb://./chroma_db",
+      "normalized_locator": "chromadb://./chroma_db",
+      "data_element_ids": [
+        "EL-010",
+        "EL-011"
+      ],
+      "schema_signature": [
+        "query_texts:string",
+        "documents:string"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-004"
+      ],
+      "issue_ids": []
+    },
+    {
+      "contract_id": "CTR-005",
+      "direction": "outbound",
+      "mechanism": "http",
+      "operation": "invoke",
+      "local_component_id": "CMP-005",
+      "remote_component_id": "CMP-007",
+      "raw_locator": "http://127.0.0.1:11434",
+      "normalized_locator": "http://127.0.0.1:11434",
+      "data_element_ids": [
+        "EL-012",
+        "EL-013"
+      ],
+      "schema_signature": [
+        "request.prompt:string",
+        "response.content:string"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-004"
+      ],
+      "issue_ids": []
+    },
+    {
+      "contract_id": "CTR-006",
+      "direction": "outbound",
+      "mechanism": "http",
+      "operation": "get",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-006",
+      "raw_locator": "https://api.coingecko.com/api/v3/simple/price",
+      "normalized_locator": "https://api.coingecko.com/api/v3/simple/price",
+      "data_element_ids": [
+        "EL-014",
+        "EL-015",
+        "EL-016"
+      ],
+      "schema_signature": [
+        "response.bitcoin.usd:float",
+        "response.bitcoin.usd_24h_vol:float",
+        "response.bitcoin.usd_24h_change:float"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-003"
+      ],
+      "issue_ids": []
+    },
+    {
+      "contract_id": "CTR-007",
+      "direction": "outbound",
+      "mechanism": "other",
+      "operation": "configure",
+      "local_component_id": "CMP-005",
+      "remote_component_id": "CMP-008",
+      "raw_locator": "{ENV_VARIABLE}",
+      "normalized_locator": "{ENV_VARIABLE}:HTTP_PROXY",
+      "data_element_ids": [],
+      "schema_signature": [],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-004"
+      ],
+      "issue_ids": []
+    },
+    {
+      "contract_id": "CTR-008",
+      "direction": "outbound",
+      "mechanism": "other",
+      "operation": "configure",
+      "local_component_id": "CMP-005",
+      "remote_component_id": "CMP-009",
+      "raw_locator": "{ENV_VARIABLE}",
+      "normalized_locator": "{ENV_VARIABLE}:HTTPS_PROXY",
+      "data_element_ids": [],
+      "schema_signature": [],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-004"
+      ],
+      "issue_ids": []
+    },
+    {
+      "contract_id": "CTR-009",
+      "direction": "outbound",
+      "mechanism": "other",
+      "operation": "configure",
+      "local_component_id": "CMP-005",
+      "remote_component_id": "CMP-010",
+      "raw_locator": "{ENV_VARIABLE}",
+      "normalized_locator": "{ENV_VARIABLE}:OLLAMA_HOST",
+      "data_element_ids": [],
+      "schema_signature": [],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-004"
+      ],
+      "issue_ids": []
+    },
+    {
+      "contract_id": "CTR-010",
+      "direction": "outbound",
+      "mechanism": "other",
+      "operation": "configure",
+      "local_component_id": "CMP-005",
+      "remote_component_id": "CMP-011",
+      "raw_locator": "{ENV_VARIABLE}",
+      "normalized_locator": "{ENV_VARIABLE}:NO_PROXY",
+      "data_element_ids": [],
+      "schema_signature": [],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-004"
+      ],
+      "issue_ids": []
+    }
+  ],
+  "lineage_flows": [
+    {
+      "flow_id": "FL-001",
+      "flow_type": "external_api_to_service",
+      "source_component_id": "CMP-006",
+      "target_component_id": "CMP-001",
+      "operation": "response",
+      "mechanism": "http",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-014"
+          ],
+          "target_element_id": "EL-002",
+          "transformation_type": "cast",
+          "expression": "float(data[\"usd\"])",
+          "evidence_ids": [
+            "EV-003"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-015"
+          ],
+          "target_element_id": "EL-003",
+          "transformation_type": "cast",
+          "expression": "float(data[\"usd_24h_vol\"])",
+          "evidence_ids": [
+            "EV-003"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-016"
+          ],
+          "target_element_id": "EL-004",
+          "transformation_type": "cast",
+          "expression": "float(data[\"usd_24h_change\"])",
+          "evidence_ids": [
+            "EV-003"
+          ]
+        },
+        {
+          "source_element_ids": [],
+          "target_element_id": "EL-001",
+          "transformation_type": "constant",
+          "expression": "\"BTC\"",
+          "evidence_ids": [
+            "EV-003"
+          ]
+        },
+        {
+          "source_element_ids": [],
+          "target_element_id": "EL-005",
+          "transformation_type": "derive",
+          "expression": "int(time.time())",
+          "evidence_ids": [
+            "EV-003"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-003"
+      ],
+      "issue_ids": []
+    },
+    {
+      "flow_id": "FL-002",
+      "flow_type": "service_to_stream",
+      "source_component_id": "CMP-001",
+      "target_component_id": "CMP-002",
+      "operation": "send",
+      "mechanism": "kafka",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-001"
+          ],
+          "target_element_id": "EL-001",
+          "transformation_type": "none",
+          "expression": "payload[\"asset\"]",
+          "evidence_ids": [
+            "EV-003"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-002"
+          ],
+          "target_element_id": "EL-002",
+          "transformation_type": "none",
+          "expression": "payload[\"price\"]",
+          "evidence_ids": [
+            "EV-003"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-003"
+          ],
+          "target_element_id": "EL-003",
+          "transformation_type": "none",
+          "expression": "payload[\"volume_24h\"]",
+          "evidence_ids": [
+            "EV-003"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-004"
+          ],
+          "target_element_id": "EL-004",
+          "transformation_type": "none",
+          "expression": "payload[\"change_24h\"]",
+          "evidence_ids": [
+            "EV-003"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-005"
+          ],
+          "target_element_id": "EL-005",
+          "transformation_type": "none",
+          "expression": "payload[\"timestamp\"]",
+          "evidence_ids": [
+            "EV-003"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-003"
+      ],
+      "issue_ids": []
+    },
+    {
+      "flow_id": "FL-003",
+      "flow_type": "stream_to_service",
+      "source_component_id": "CMP-002",
+      "target_component_id": "CMP-003",
+      "operation": "consume",
+      "mechanism": "kafka",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-001"
+          ],
+          "target_element_id": "EL-007",
+          "transformation_type": "none",
+          "expression": "row['asset']",
+          "evidence_ids": [
+            "EV-002"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-005"
+          ],
+          "target_element_id": "EL-008",
+          "transformation_type": "none",
+          "expression": "row['timestamp']",
+          "evidence_ids": [
+            "EV-002"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-001",
+            "EL-005",
+            "EL-002",
+            "EL-003",
+            "EL-004"
+          ],
+          "target_element_id": "EL-006",
+          "transformation_type": "derive",
+          "expression": "f\"Asset: {row['asset']} at timestamp: {row['timestamp']} is tracking at a price of ${row['price']:.2f}. The 24-hour exchange volume is ${row['volume_24h']:.2f} and the 24-hour value change rate is {row['change_24h']:.4f}%.\"",
+          "evidence_ids": [
+            "EV-002"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-005"
+          ],
+          "target_element_id": "EL-009",
+          "transformation_type": "derive",
+          "expression": "f\"{row['timestamp']}_{message.offset}\"",
+          "evidence_ids": [
+            "EV-002"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-002"
+      ],
+      "issue_ids": []
+    },
+    {
+      "flow_id": "FL-004",
+      "flow_type": "service_to_database",
+      "source_component_id": "CMP-003",
+      "target_component_id": "CMP-004",
+      "operation": "add",
+      "mechanism": "database",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-006"
+          ],
+          "target_element_id": "EL-006",
+          "transformation_type": "none",
+          "expression": "doc_text",
+          "evidence_ids": [
+            "EV-002"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-007"
+          ],
+          "target_element_id": "EL-007",
+          "transformation_type": "none",
+          "expression": "{\"asset\": row['asset']}",
+          "evidence_ids": [
+            "EV-002"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-008"
+          ],
+          "target_element_id": "EL-008",
+          "transformation_type": "none",
+          "expression": "{\"time\": row['timestamp']}",
+          "evidence_ids": [
+            "EV-002"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-009"
+          ],
+          "target_element_id": "EL-009",
+          "transformation_type": "none",
+          "expression": "unique_id",
+          "evidence_ids": [
+            "EV-002"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-002"
+      ],
+      "issue_ids": []
+    },
+    {
+      "flow_id": "FL-005",
+      "flow_type": "database_to_service",
+      "source_component_id": "CMP-004",
+      "target_component_id": "CMP-005",
+      "operation": "query",
+      "mechanism": "database",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-010"
+          ],
+          "target_element_id": "EL-010",
+          "transformation_type": "none",
+          "expression": "user_question",
+          "evidence_ids": [
+            "EV-004"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-011"
+          ],
+          "target_element_id": "EL-011",
+          "transformation_type": "none",
+          "expression": "results['documents'][0]",
+          "evidence_ids": [
+            "EV-004"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-004"
+      ],
+      "issue_ids": []
+    },
+    {
+      "flow_id": "FL-006",
+      "flow_type": "service_to_external_api",
+      "source_component_id": "CMP-005",
+      "target_component_id": "CMP-007",
+      "operation": "invoke",
+      "mechanism": "http",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-011",
+            "EL-010"
+          ],
+          "target_element_id": "EL-012",
+          "transformation_type": "derive",
+          "expression": "f\"\"\"You are a financial advisor assistant. Use the following real-time data snippets to answer the user question accurately.\\n    \\n    Context Data:\\n    {retrieved_context}\\n    \\n    Question: {user_question}\\n    Answer:\"\"\"",
+          "evidence_ids": [
+            "EV-004"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-013"
+          ],
+          "target_element_id": "EL-013",
+          "transformation_type": "none",
+          "expression": "response.content",
+          "evidence_ids": [
+            "EV-004"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-004"
+      ],
+      "issue_ids": []
+    }
+  ],
+  "end_to_end_paths": [
+    {
+      "path_id": "PATH-001",
+      "name": "CoinGecko to Kafka to ChromaDB to Ollama via Agent",
+      "flow_ids": [
+        "FL-001",
+        "FL-002",
+        "FL-003",
+        "FL-004",
+        "FL-005",
+        "FL-006"
+      ],
+      "source_component_id": "CMP-006",
+      "target_component_id": "CMP-007",
+      "data_element_ids": [
+        "EL-014",
+        "EL-015",
+        "EL-016",
+        "EL-002",
+        "EL-003",
+        "EL-004",
+        "EL-001",
+        "EL-005",
+        "EL-007",
+        "EL-008",
+        "EL-006",
+        "EL-009",
+        "EL-010",
+        "EL-011",
+        "EL-012",
+        "EL-013"
+      ],
+      "confidence": "confirmed",
+      "issue_ids": []
+    }
+  ],
+  "issues": [],
+  "evidence": [
+    {
+      "evidence_id": "EV-001",
+      "file_path": "producer.py",
+      "start_line": 0,
+      "end_line": 0,
+      "qualified_name": "__channel__kafka__crypto-ticks",
+      "evidence_type": "graph",
+      "excerpt": null
+    },
+    {
+      "evidence_id": "EV-002",
+      "file_path": "processor.py",
+      "start_line": 1,
+      "end_line": 51,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.processor",
+      "evidence_type": "source",
+      "excerpt": "from kafka import KafkaConsumer\nimport chromadb\n\nTOPIC_NAME = 'crypto-ticks'"
+    },
+    {
+      "evidence_id": "EV-003",
+      "file_path": "producer.py",
+      "start_line": 1,
+      "end_line": 63,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.producer",
+      "evidence_type": "source",
+      "excerpt": "from kafka import KafkaProducer\n\nBOOTSTRAP_SERVERS = \"localhost:9092\"\nTOPIC_NAME = \"crypto-ticks\""
+    },
+    {
+      "evidence_id": "EV-004",
+      "file_path": "agent.py",
+      "start_line": 1,
+      "end_line": 55,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-crypto-kaka-rag.agent",
+      "evidence_type": "source",
+      "excerpt": "import os\nimport chromadb\nfrom langchain_ollama import ChatOllama\n\ndef query_rag_agent(user_question):"
+    }
+  ]
+}

@@ -1,0 +1,389 @@
+{
+  "schema_version": "repository-lineage/1.0",
+  "repository": {
+    "name": "json_reader_test",
+    "origin_url": "https://github.com/rajeshgmv/json_reader_test.git",
+    "commit_sha": "4322c23ab2a7ce61fc9eb522b7eeb078c3b88f2b",
+    "branch": "main",
+    "context_exported_at": "2026-08-06T05:18:29.054924+00:00"
+  },
+  "input_coverage": [
+    {
+      "section": "manifest",
+      "records_considered": 1,
+      "used_for": [
+        "repository_identity",
+        "provenance"
+      ]
+    },
+    {
+      "section": "graph_summary",
+      "records_considered": 1,
+      "used_for": [
+        "coverage_metadata"
+      ]
+    },
+    {
+      "section": "architecture",
+      "records_considered": 1,
+      "used_for": [
+        "entry_points",
+        "language"
+      ]
+    },
+    {
+      "section": "symbols",
+      "records_considered": 3,
+      "used_for": [
+        "function_definitions"
+      ]
+    },
+    {
+      "section": "relationships",
+      "records_considered": 3,
+      "used_for": [
+        "call_graph"
+      ]
+    },
+    {
+      "section": "artifacts",
+      "records_considered": 1,
+      "used_for": [
+        "data_file_definitions"
+      ]
+    },
+    {
+      "section": "source_evidence",
+      "records_considered": 1,
+      "used_for": [
+        "code_snippets",
+        "mapping_details"
+      ]
+    }
+  ],
+  "components": [
+    {
+      "component_id": "CMP-001",
+      "name": "json_reader_test",
+      "kind": "service",
+      "repository": "json_reader_test",
+      "raw_locator": "/Users/guttikonda/gitbased-DataLineage/GItbased-DataLineage/repo_local_clone/json_reader_test",
+      "normalized_locator": "file:///Users/guttikonda/gitbased-DataLineage/GItbased-DataLineage/repo_local_clone/json_reader_test",
+      "evidence_ids": [
+        "EV-001"
+      ]
+    },
+    {
+      "component_id": "CMP-002",
+      "name": "chroma-export.json",
+      "kind": "file",
+      "raw_locator": "/Users/guttikonda/Desktop/training docs/chroma_db_reader/chroma-export.json",
+      "normalized_locator": "file:///Users/guttikonda/Desktop/training docs/chroma_db_reader/chroma-export.json",
+      "evidence_ids": [
+        "EV-001"
+      ]
+    },
+    {
+      "component_id": "CMP-003",
+      "name": "btc_prices.csv",
+      "kind": "file",
+      "raw_locator": "/Users/guttikonda/Desktop/training docs/json_reader/output/btc_prices.csv",
+      "normalized_locator": "file:///Users/guttikonda/Desktop/training docs/json_reader/output/btc_prices.csv",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002"
+      ]
+    }
+  ],
+  "data_elements": [
+    {
+      "element_id": "EL-001",
+      "name": "records",
+      "element_path": "records",
+      "component_id": "CMP-002",
+      "container": "file",
+      "data_type": "json_array",
+      "evidence_ids": [
+        "EV-001"
+      ]
+    },
+    {
+      "element_id": "EL-002",
+      "name": "metadata.asset",
+      "element_path": "records[].metadata.asset",
+      "component_id": "CMP-002",
+      "container": "json_object",
+      "data_type": "string",
+      "evidence_ids": [
+        "EV-001"
+      ]
+    },
+    {
+      "element_id": "EL-003",
+      "name": "metadata.time",
+      "element_path": "records[].metadata.time",
+      "component_id": "CMP-002",
+      "container": "json_object",
+      "data_type": "string",
+      "evidence_ids": [
+        "EV-001"
+      ]
+    },
+    {
+      "element_id": "EL-004",
+      "name": "document",
+      "element_path": "records[].document",
+      "component_id": "CMP-002",
+      "container": "json_object",
+      "data_type": "string",
+      "evidence_ids": [
+        "EV-001"
+      ]
+    },
+    {
+      "element_id": "EL-005",
+      "name": "price_match.group(1)",
+      "element_path": "records[].document.price_match.group(1)",
+      "component_id": "CMP-002",
+      "container": "string_match",
+      "data_type": "string",
+      "evidence_ids": [
+        "EV-001"
+      ]
+    },
+    {
+      "element_id": "EL-006",
+      "name": "timestamp",
+      "element_path": "timestamp",
+      "component_id": "CMP-003",
+      "container": "csv_row",
+      "data_type": "string",
+      "evidence_ids": [
+        "EV-001"
+      ]
+    },
+    {
+      "element_id": "EL-007",
+      "name": "btc_price",
+      "element_path": "btc_price",
+      "component_id": "CMP-003",
+      "container": "csv_row",
+      "data_type": "string",
+      "evidence_ids": [
+        "EV-001"
+      ]
+    }
+  ],
+  "boundary_contracts": [
+    {
+      "contract_id": "CTR-001",
+      "direction": "inbound",
+      "mechanism": "file",
+      "operation": "read",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-002",
+      "raw_locator": "/Users/guttikonda/Desktop/training docs/chroma_db_reader/chroma-export.json",
+      "normalized_locator": "file:///Users/guttikonda/Desktop/training docs/chroma_db_reader/chroma-export.json",
+      "data_element_ids": [
+        "EL-001",
+        "EL-002",
+        "EL-003",
+        "EL-004"
+      ],
+      "schema_signature": [
+        "records:json_array"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001"
+      ]
+    },
+    {
+      "contract_id": "CTR-002",
+      "direction": "outbound",
+      "mechanism": "file",
+      "operation": "write",
+      "local_component_id": "CMP-001",
+      "remote_component_id": "CMP-003",
+      "raw_locator": "/Users/guttikonda/Desktop/training docs/json_reader/output/btc_prices.csv",
+      "normalized_locator": "file:///Users/guttikonda/Desktop/training docs/json_reader/output/btc_prices.csv",
+      "data_element_ids": [
+        "EL-006",
+        "EL-007"
+      ],
+      "schema_signature": [
+        "timestamp:string",
+        "btc_price:string"
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001"
+      ]
+    }
+  ],
+  "lineage_flows": [
+    {
+      "flow_id": "FL-001",
+      "flow_type": "file_to_service",
+      "source_component_id": "CMP-002",
+      "target_component_id": "CMP-001",
+      "operation": "read_json",
+      "mechanism": "file",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-001"
+          ],
+          "target_element_id": "EL-001",
+          "transformation_type": "deserialize",
+          "expression": "json.load(input_file)",
+          "evidence_ids": [
+            "EV-001"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001"
+      ]
+    },
+    {
+      "flow_id": "FL-002",
+      "flow_type": "internal",
+      "source_component_id": "CMP-001",
+      "target_component_id": "CMP-001",
+      "operation": "extract_and_transform",
+      "mechanism": "in_memory",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-002"
+          ],
+          "target_element_id": "EL-003",
+          "transformation_type": "filter",
+          "expression": "str(metadata.get(\"asset\", \"\")).upper() != \"BTC\"",
+          "evidence_ids": [
+            "EV-001"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-003"
+          ],
+          "target_element_id": "EL-006",
+          "transformation_type": "none",
+          "expression": "timestamp",
+          "evidence_ids": [
+            "EV-001"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-004"
+          ],
+          "target_element_id": "EL-005",
+          "transformation_type": "parse",
+          "expression": "PRICE_PATTERN.search(document).group(1)",
+          "evidence_ids": [
+            "EV-001"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-005"
+          ],
+          "target_element_id": "EL-007",
+          "transformation_type": "rename",
+          "expression": "price_match.group(1) as btc_price",
+          "evidence_ids": [
+            "EV-001"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001"
+      ]
+    },
+    {
+      "flow_id": "FL-003",
+      "flow_type": "service_to_file",
+      "source_component_id": "CMP-001",
+      "target_component_id": "CMP-003",
+      "operation": "write_csv",
+      "mechanism": "file",
+      "element_mappings": [
+        {
+          "source_element_ids": [
+            "EL-006"
+          ],
+          "target_element_id": "EL-006",
+          "transformation_type": "serialize",
+          "expression": "writer.writerows(rows)",
+          "evidence_ids": [
+            "EV-001"
+          ]
+        },
+        {
+          "source_element_ids": [
+            "EL-007"
+          ],
+          "target_element_id": "EL-007",
+          "transformation_type": "serialize",
+          "expression": "writer.writerows(rows)",
+          "evidence_ids": [
+            "EV-001"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "evidence_ids": [
+        "EV-001"
+      ]
+    }
+  ],
+  "end_to_end_paths": [
+    {
+      "path_id": "PATH-001",
+      "name": "JSON to CSV Conversion",
+      "flow_ids": [
+        "FL-001",
+        "FL-002",
+        "FL-003"
+      ],
+      "source_component_id": "CMP-002",
+      "target_component_id": "CMP-003",
+      "data_element_ids": [
+        "EL-001",
+        "EL-002",
+        "EL-003",
+        "EL-004",
+        "EL-005",
+        "EL-006",
+        "EL-007"
+      ],
+      "confidence": "confirmed"
+    }
+  ],
+  "issues": [],
+  "evidence": [
+    {
+      "evidence_id": "EV-001",
+      "file_path": "src/json_to_csv.py",
+      "start_line": 1,
+      "end_line": 88,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-json_reader_test.src.json_to_csv",
+      "evidence_type": "source",
+      "excerpt": "INPUT_JSON_PATH = Path(\n    \"/Users/guttikonda/Desktop/training docs/chroma_db_reader/chroma-export.json\"\n)\nOUTPUT_CSV_PATH = Path(\n    \"/Users/guttikonda/Desktop/training docs/json_reader/output/btc_prices.csv\"\n)\n...\ndef extract_btc_rows(records: Iterable[Any]) -> Iterator[tuple[Any, str]]:\n    \"\"\"Yield (metadata timestamp, document price) for every BTC record.\"\"\"\n    for index, record in enumerate(records):\n        if not isinstance(record, dict):\n            raise ValueError(f\"Record {index} is not a JSON object\")\n\n        metadata = record.get(\"metadata\")\n        if not isinstance(metadata, dict):\n            raise ValueError(f\"Record {index} has no valid metadata object\")\n\n        if str(metadata.get(\"asset\", \"\")).upper() != \"BTC\":\n            continue\n\n        timestamp = metadata.get(\"time\")\n        if timestamp is None:\n            raise ValueError(f\"BTC record {index} has no metadata.time value\")\n\n        document = record.get(\"document\")\n        if not isinstance(document, str):\n            raise ValueError(f\"BTC record {index} has no valid document string\")\n\n        price_match = PRICE_PATTERN.search(document)\n        if price_match is None:\n            raise ValueError(f\"Could not find the BTC price in record {index}\")\n\n        yield timestamp, price_match.group(1)\n\n\ndef convert_json_to_csv(input_path: Path, output_path: Path) -> int:\n    \"\"\"Convert a JSON array of Chroma records and return the rows written.\"\"\"\n    with input_path.open(encoding=\"utf-8\") as input_file:\n        records = json.load(input_file)\n\n    if not isinstance(records, list):\n        raise ValueError(\"The input JSON must contain an array of records\")\n\n    rows = list(extract_btc_rows(records))\n    output_path.parent.mkdir(parents=True, exist_ok=True)\n\n    with output_path.open(\"w\", encoding=\"utf-8\", newline=\"\") as output_file:\n        writer = csv.writer(output_file)\n        writer.writerow((\"timestamp\", \"btc_price\"))\n        writer.writerows(rows)\n\n    return len(rows)\n\n\ndef main() -> int:\n    try:\n        row_count = convert_json_to_csv(INPUT_JSON_PATH, OUTPUT_CSV_PATH)\n    except (OSError, json.JSONDecodeError, ValueError) as error:\n        print(f\"Error: {error}\", file=sys.stderr)\n        return 1\n\n    print(f\"Wrote {row_count} BTC rows to {OUTPUT_CSV_PATH}\")\n    return 0"
+    },
+    {
+      "evidence_id": "EV-002",
+      "file_path": "output/btc_prices.csv",
+      "start_line": 1,
+      "end_line": 127,
+      "qualified_name": "Users-guttikonda-gitbased-DataLineage-GItbased-DataLineage-repo_local_clone-json_reader_test.output.btc_prices",
+      "evidence_type": "schema",
+      "excerpt": "timestamp,btc_price\n..."
+    }
+  ]
+}

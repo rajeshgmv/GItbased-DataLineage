@@ -1,13 +1,21 @@
 # CBM-MCP Multi-Agent Codebase Lineage
 
-This project uses Codebase Memory (CBM) through its MCP-based graph layer to
-detect data lineage across multiple code repositories. It processes repository
-inputs, builds a graph index for each codebase, and creates a compact, cleaned
-lineage context from the MCP layer for downstream AI agents.
+This project presents a multi-agent data-lineage solution for discovering how
+data is created, transformed, persisted, and exchanged across independent
+applications. It brings repository acquisition, code intelligence,
+evidence preparation, repository-level analysis, and cross-application
+correlation together in one reproducible workflow.
 
-Agent 1 produces canonical lineage for each repository. Agent 2 then matches
-compatible runtime boundaries across those repository outputs and produces the
-final cross-boundary lineage report.
+At its foundation, the solution uses Codebase Memory through the CBM-MCP layer
+to convert each codebase into a queryable graph of components, relationships,
+and supporting source evidence. That graph is processed and refined into a
+compact, cleaned lineage context designed specifically for reliable AI-agent
+analysis.
+
+Agent 1 turns the curated context into canonical lineage for each repository.
+Agent 2 then joins compatible runtime boundaries across those repository
+outputs, producing an evidence-backed view of application-to-application data
+movement and the final cross-boundary lineage report.
 
 ## Lineage workflow
 
@@ -23,7 +31,7 @@ flowchart LR
 
 ## Prerequisites
 
-- Python 3.8 or newer
+- Python 3.10 or newer
 - Git
 - Internet access for installing CBM and cloning repositories
 
@@ -70,6 +78,11 @@ All project paths are configured in the local `.env` file:
 | `CODEBASE_MEMORY_MCP_BIN` | CBM executable installed in the virtual environment |
 | `CBM_ALLOWED_ROOT` | Restricts CBM indexing to the local clone directory |
 | `LINEAGE_CONTEXT_DIR` | Generated per-repository evidence packages for Agent 1 |
+| `GROQ_API_KEY` | Groq API key used by the LangGraph agent pipeline |
+| `AGENT1_MODEL` | Agent 1 model ID; defaults to `openai/gpt-oss-120b` |
+| `AGENT1_REASONING_EFFORT` | Agent 1 reasoning level; defaults to `low` |
+| `AGENT2_MODEL` | Agent 2 model ID; defaults to `openai/gpt-oss-120b` |
+| `AGENT2_REASONING_EFFORT` | Agent 2 reasoning level; defaults to `medium` |
 
 The committed `.env.example` uses paths relative to the project root. The local
 `.env` file is ignored by Git, so it can be changed to absolute or machine-specific
@@ -197,6 +210,48 @@ Follow only the supplied agent instructions and do not read other files.
 Agent 2 validates the direct application-to-application matches and produces
 the final cross-boundary lineage report.
 
+## Run the LangGraph multi-agent pipeline
+
+The automated pipeline uses LangChain's `ChatGroq` integration and the
+LangGraph-specific prompts in
+`prompts/agent1_repository_lineage_langgraph.agent.md` and
+`prompts/agent2_cross_repository_lineage_langgraph.agent.md`. These prompts
+accept content directly from graph state and contain no file input or output
+instructions. By default, both agents use `openai/gpt-oss-120b`; Agent 1 uses
+low reasoning and Agent 2 uses medium reasoning. Add your Groq API key to `.env`,
+then select the exact repository contexts for one run:
+
+```bash
+python3 -m lib.langgraph_lineage_pipeline \
+  --repo repository-a \
+  --repo repository-b
+```
+
+To explicitly process every immediate `lineage_context/*/context.json` input,
+use:
+
+```bash
+python3 -m lib.langgraph_lineage_pipeline --all-repositories
+```
+
+The LangGraph flow is:
+
+```mermaid
+flowchart LR
+  A["Load selected contexts"] --> B["Agent 1 per repository"]
+  B --> C["Validate repository lineage"]
+  C --> D["Agent 2 cross-repository matching"]
+  D --> E["Validate final report"]
+  E --> F["Atomically write outputs"]
+```
+
+Only Agent 1 outputs created in the current run are passed to Agent 2; existing
+files under `lineage_output/` are not scanned. Oversized contexts are split into
+bounded evidence batches and consolidated into one validated repository output.
+The pipeline writes `repo-lineage.json` for each selected repository and
+`lineage_output/cross-boundary-lineage.md` only after both validation gates pass.
+Groq account limits and billing apply to model calls.
+
 ## Optional: Render Agent 1 output as Markdown
 
 After Agent 1 creates and validates a repository's `repo-lineage.json`, generate
@@ -249,14 +304,12 @@ These directories can be regenerated and normally should not be committed to Git
 
 ## Multi Agent pipeline creation
 
-Future work can automate both agents with any suitable AI model or runtime by
-passing each `.agent.md` file as the agent prompt and the exact authorized
-inputs, context, and output location in the task message. An orchestrator can
-run Agent 1 for every repository and start Agent 2 only after all repository
-outputs pass validation.
+The included LangGraph runner provides the first automated implementation. The
+same agents remain model- and runtime-portable: pass each `.agent.md` file as the
+system prompt and pass its exact authorized inputs, context, and output location
+in the task message.
 
-The agents already perform self-validation. The automated pipeline can add
-independent deterministic checks and an evaluator agent that:
+Future work can add an independent evaluator agent that:
 
 - compares each Agent 1 context with its `repo-lineage.json`;
 - compares the Agent 2 repository inputs with `cross-boundary-lineage.md`; and
